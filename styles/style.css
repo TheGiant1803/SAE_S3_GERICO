@@ -123,28 +123,77 @@ footer p {
     text-align: center;
     height: 2.5em;
 }
-.navbar{
+.navbar {
     background-color: #ffffff;
     height: 3em;
     width: 100%;
-    position:fixed;
-    margin-top: 2.5em;
+    position: fixed;
+    top: 2.5em;
     text-align: center;
-    justify-content: center;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-
+    padding: 0 20px; /* Ajoute du padding à gauche et à droite pour espacer un peu les éléments */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
 }
-.navtext{
-    display: inline;
-    margin-left: 3em;
+
+.logo-container {
+    flex: 1; /* un peu de place */
+}
+
+.logo { /* Style de l'image logo*/
+    
+    display: flex;
+    height: 4em;
+    width: 9,5em;
+    cursor: pointer;
+}
+
+.navtext {
     font-size: 18px;
     font-family: 'Chau Philomene';
     color: #517aac;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+.navtext:hover {
+    background-color: #517aac;
+    background-size: 2em;
+    border-radius: 0.2em;
+    color: white; 
+}
+
+.navbar_text {
+    list-style-type: none;
+    display: flex;
+    flex: 5; /* Permet au texte de prendre plus de place */
+    justify-content: center; 
+    gap: 2em; /* Espace entre les éléments de la nav */
 }
 
 @font-face {
     font-family: 'Chau Philomene';
     src: url(../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf);
+}
+
+
+
+.navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    cursor: pointer;
+}
+
+.notif, .profile {
+    height: 30px;
+    width: 30px;
+}
+
+.active {
+    background-color: #517aac; 
+    color: white; 
+    border-radius: 0.2em;
 }
 
