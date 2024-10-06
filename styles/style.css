@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Chau Philomene One';
+    font-family: 'Chau Philomene One', sans-serif;
     background-color: #f0f2f5;
     display: flex;
     flex-direction: column;
@@ -116,12 +116,11 @@ footer p {
     font-size: 14px;
 }
 
-/* Page d'accueil */
+/* ------------------- Page d'accueil ---------------------------- */
 
 .bar{
     background-color: #3c4652;
-    text-align: center;
-    height: 2.5em;
+    height: 2.6em;
 }
 .navbar {
     background-color: #ffffff;
@@ -129,11 +128,10 @@ footer p {
     width: 100%;
     position: fixed;
     top: 2.5em;
-    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px; /* Ajoute du padding à gauche et à droite pour espacer un peu les éléments */
+    padding: 0 20px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre */
 }
 
@@ -142,16 +140,15 @@ footer p {
 }
 
 .logo { /* Style de l'image logo*/
-    
     display: flex;
     height: 4em;
-    width: 9,5em;
+    width: 10em;
     cursor: pointer;
 }
 
 .navtext {
     font-size: 18px;
-    font-family: 'Chau Philomene';
+    font-family: 'Chau PhilomeneOne';
     color: #517aac;
     cursor: pointer;
     padding: 5px 15px;
@@ -159,7 +156,6 @@ footer p {
 
 .navtext:hover {
     background-color: #517aac;
-    background-size: 2em;
     border-radius: 0.2em;
     color: white; 
 }
@@ -172,11 +168,23 @@ footer p {
     gap: 2em; /* Espace entre les éléments de la nav */
 }
 
-@font-face {
-    font-family: 'Chau Philomene';
-    src: url(../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf);
+.navtext a {
+    padding: 5px 15px;
+    text-decoration: none; 
+    color: inherit;
 }
 
+.navtext a:hover {
+    background-color: #517aac;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 0.2em;
+}
+
+@font-face {
+    font-family: 'Chau PhilomeneOne';
+    src: url(../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf);
+}
 
 
 .navbar-icons {
@@ -197,3 +205,34 @@ footer p {
     border-radius: 0.2em;
 }
 
+/*FOOTER */
+
+.foot_bar{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.foot_ul_text{
+    list-style-type: none; /*pour faire invisible des points */
+    display: flex;
+    gap: 4em;
+    justify-content: center;
+    flex:4;
+}
+.foot_titre{
+    flex:0.8;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em;
+}
+
+.foot_text{
+    list-style-type: none;
+    font-size: 18px;
+    font-family: 'Chau PhilomeneOne';
+    cursor: pointer;
+    padding: 5px 15px;
+    color: #ffffff;
+    text-decoration: none; 
+}
