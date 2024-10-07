@@ -32,7 +32,7 @@
         </div>
     </nav>
     <main>
-        <h1 class="titre2">Validation de congés</h1>
+        <h1 class="titre">Validation de congés</h1>
 
         <div class="buttons">
             <label for="nb-elements">Afficher </label>
@@ -140,12 +140,20 @@
                 let rowIndex = row.rowIndex - 1; // Enlever l'en-tête
                 statuts[rowIndex] = statut; // Enregistre le statut correspondant à la ligne
             }
-    
-            // Fonction pour valider
-            function Valider() {
-                // Affiche les statuts sauvegardés dans la console
-                console.log("Statuts sauvegardés : ", statuts);
-                alert("Statuts sauvegardés : " + JSON.stringify(statuts));
+            
+            // Fonction pour changer le statut
+            function changerStatut(button, statut) {
+                let cell = button.parentNode; // Cellule parent du bouton
+                let statusText = statut.charAt(0).toUpperCase() + statut.slice(1); // Formate le texte (Accepté ou Refusé)
+                // Remplace le contenu de la cellule par le statut et ajoute le bouton "Reset"
+                cell.innerHTML = statusText + `<button class="btn-reset" onclick="resetStatut(this)">Reset</button>`;
+            }
+
+            // Fonction pour réinitialiser le statut
+            function resetStatut(button) {
+                let cell = button.parentNode; // Cellule parent du bouton Reset
+                // Remet les boutons "Accepter" et "Refuser"
+                cell.innerHTML = `<button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button><button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>`;
             }
         </script>
     

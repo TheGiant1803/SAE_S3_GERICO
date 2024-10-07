@@ -297,8 +297,8 @@ main {
     font-family: 'Chau philomene';
     color: #517aac;
     font-size: 36px;
-    margin-bottom: 100px;
-    margin-top: -3em;
+    margin-bottom: 50px;
+    margin-top: 1em;
 }
 
 /* Section de filtrage */
@@ -378,6 +378,15 @@ input[type="number"] {
     border-radius: 4px;
 }
 
+.btn-reset {
+    background-color: gray;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
 .btn-accepter:hover {
     background-color: #218838; /* Vert foncé au survol */
 }
@@ -386,15 +395,8 @@ input[type="number"] {
     background-color: #c82333; /* Rouge foncé au survol */
 }
 
-.titre2 {
-    font-family: 'Chau philomene';
-    color: #517aac;
-    font-size: 36px;
-    margin-bottom: 100px;
-}
-
 .table-container {
-    height: 200px; /* Hauteur fixe */
+    height: 400px; /* Hauteur fixe */
     overflow-y: auto; /* Défilement vertical activé */
     margin-bottom: 20px;
 }
