@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes demandes de congés</title>
+    <title>Validation de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one">
+    <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one" rel="stylesheet">
 </head>
 <body>
     <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
     
     <nav class="navbar">
         <div class="logo-container">
-            <a href="gestioncongé2.html">
+            <a href="admin_validation_congés.html">
                 <img class="logo" src="../assets/logo.png" alt="image de logo">
             </a>
         </div>
         <ul class="navbar_text">
             <li class="navtext"><a class="navtext" href="#accueil">Accueil</a></li>
-            <li class="navtext active"><a class="navtext" href="#conges">Gestion des congés</a></li>
+            <li class="navtext"><a class="navtext" href="#conges">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="#paie">Gestion des fiches de paie</a></li>
-            <li class="navtext"><a class="navtext" href="#admin">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="#admin">Administration</a></li>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -32,7 +32,7 @@
         </div>
     </nav>
     <main>
-        <h1 class="titre">Mes demandes de congés</h1>
+        <h1 class="titre2">Validation de congés</h1>
 
         <div class="buttons">
             <label for="nb-elements">Afficher </label>
@@ -46,6 +46,8 @@
             <thead>
                 <tr>
                     <th>N°</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
                     <th>Date début</th>
                     <th>Date fin</th>
                     <th>Cause</th>
@@ -57,11 +59,42 @@
                 <!-- Exemple de ligne par défaut -->
                 <tr>
                     <td>1</td>
+                    <td>Carpentier</td>
+                    <td>Bruno</td>
                     <td>2024-01-01</td>
                     <td>2024-01-03</td>
                     <td>Maintenance</td>
                     <td>48h</td>
-                    <td>Terminé</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
+                <tr></tr>
+                    <td>1</td>
+                    <td>Saguez</td>
+                    <td>Paul</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
+                <tr></tr>
+                    <td>1</td>
+                    <td>Jusselme</td>
+                    <td>Bruno</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -70,7 +103,6 @@
         <!-- Boutons -->
         <div class="buttons">
             <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
-            <button class="btn-classique" onclick="ajouterLigne()">Ajouter une ligne</button>
         </div>
     
         <script>
@@ -98,27 +130,22 @@
                 link.click();
                 document.body.removeChild(link);
             }
+
+            // Fonction pour changer le statut avec les boutons "Accepter" et "Refuser"
+            function changerStatut(button, statut) {
+                let cellule = button.parentElement;
+                cellule.innerHTML = statut.charAt(0).toUpperCase() + statut.slice(1);  // Remplace les boutons par le statut (Accepté ou Refusé)
+                // Enregistrer le statut dans le tableau
+                let row = button.closest('tr');
+                let rowIndex = row.rowIndex - 1; // Enlever l'en-tête
+                statuts[rowIndex] = statut; // Enregistre le statut correspondant à la ligne
+            }
     
-            // Fonction pour ajouter une ligne au tableau
-            function ajouterLigne() {
-                let table = document.getElementById("table").getElementsByTagName("tbody")[0];
-                let rowCount = table.rows.length + 1; // Pour numéroter les lignes automatiquement
-                let newRow = table.insertRow();
-    
-                // Créer des cellules et leur contenu
-                let cell1 = newRow.insertCell(0);
-                let cell2 = newRow.insertCell(1);
-                let cell3 = newRow.insertCell(2);
-                let cell4 = newRow.insertCell(3);
-                let cell5 = newRow.insertCell(4);
-                let cell6 = newRow.insertCell(5);
-    
-                cell1.textContent = rowCount;
-                cell2.textContent = "2024-01-05"; // Exemple de date
-                cell3.textContent = "2024-01-06";
-                cell4.textContent = "Incident";
-                cell5.textContent = "24h";
-                cell6.textContent = "En cours";
+            // Fonction pour valider
+            function Valider() {
+                // Affiche les statuts sauvegardés dans la console
+                console.log("Statuts sauvegardés : ", statuts);
+                alert("Statuts sauvegardés : " + JSON.stringify(statuts));
             }
         </script>
     
