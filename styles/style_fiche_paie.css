@@ -123,6 +123,12 @@ footer p {
 .bar{
     background-color: #3c4652;
     height: 2.6em;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position:fixed;
+    width: 100%;
 }
 .navbar {
     background-color: #ffffff;
@@ -221,6 +227,7 @@ footer p {
     padding: 10px 75px;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
 }
 
 .historic_fiche_paie {
@@ -235,6 +242,7 @@ footer p {
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style-type: none; /* Supprime les puces de la liste */
+    z-index: -1;
 }
 
 .list-item {
@@ -264,7 +272,8 @@ footer p {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    position:relative;
+    position:fixed;
+    width: 100%;
 }
 
 .foot_ul_text{
