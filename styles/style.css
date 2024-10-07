@@ -254,6 +254,7 @@ footer p {
 .container {
     display: flex;
     gap: 60px; /* Espacement entre les carrés */
+    justify-content: center;
 }
 
 /* Style pour les carrés bleus */
