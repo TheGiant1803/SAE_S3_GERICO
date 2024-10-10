@@ -4,61 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modification salarié</title>
-    <link rel="stylesheet" href="../styles/styleAntoine.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <style>     
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            margin-top: 5em;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container h2 {
-            color: #3a6ea5;
-            margin-bottom: 20px;
-            margin-top: 10px;
-            margin-left: 10px;
-        }
-        .form-group {
-            display: flex;
-            margin-bottom: 15px;
-            justify-content: left;
-            margin-left: 5em;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: -5px;
-            color: #333;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-group input[type="text"] {
-            width: calc(50% - 10px);
-        }
-        .form-actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-        .form-actions button {
-            background-color: #3a6ea5;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-left: 10px;
-            margin-top: 2em;
-            cursor: pointer;
-        }
-        .form-actions button.reset {
-            background-color: #555;
-        }
+        
         
         
   </style>
@@ -88,25 +36,25 @@
         </div>
     </nav>
     
-    <div class="container">
+    <div class="container_modsal">
         <h2>
          Modification du salarié
         </h2>
         <div class="form-group">
          <div>
-          <label for="nom">
+          <label for="nom" class="modsallabel">
            Nom
           </label>
           <input id="nom" type="text" size="40"/>
          </div>
          <div>
-          <label for="prenom">
+          <label for="prenom" class="modsallabel">
            Prénom
           </label>
           <input id="prenom" type="text" size="40"/>
          </div>
          <div>
-            <label for="matricule">
+            <label for="matricule" class="modsallabel">
              Matricule
             </label>
             <input id="matricule" type="text" size="40"/>
@@ -114,19 +62,19 @@
         </div>
         <div class="form-group">
          <div>
-          <label for="date-naissance">
+          <label for="date-naissance" class="modsallabel">
            Date Naissance
           </label>
           <input id="date-naissance" type="text" size="40"/>
          </div>
          <div>
-          <label for="date-embauche">
+          <label for="date-embauche" class="modsallabel">
            Date Embauche
           </label>
           <input id="date-embauche" type="text" size="40"/>
          </div>
          <div>
-            <label for="salaire">
+            <label for="salaire" class="modsallabel">
              Salaire
             </label>
             <input id="salaire" type="text" size="40"/>
@@ -134,13 +82,13 @@
         </div>
         <div class="form-group">
          <div>
-          <label for="email">
+          <label for="email" class="modsallabel">
            Email
           </label>
           <input id="email" type="text" size="40"/>
          </div>
          <div>
-          <label for="tel">
+          <label for="tel" class="modsallabel">
            Tél
           </label>
           <input id="telep" type="text" size="40"/>

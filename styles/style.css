@@ -239,9 +239,181 @@ footer p {
     text-decoration: none; 
 }
 
+/*Pour la page modification d'un salarié*/
+.saisie{
+    background-color: #ffffff;
+    display: flex;
+    margin-left: 5em;
+    width: 90%;
+}
+
+.modsallabel {
+    display: block;
+    font:
+      1rem 'Fira Sans',
+      sans-serif;
+  }
+  
+  input,
+  label {
+    margin: 0.4rem 0;
+  }
+
+  .container_modsal {
+    width: 80%;
+    margin: 20px auto;
+    margin-top: 5em;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.container h2 {
+    color: #3a6ea5;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: left;
+    margin-left: 5em;
+}
+.form-group label {
+    display: block;
+    margin-bottom: -5px;
+    color: #333;
+}
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-group input[type="text"] {
+    width: calc(50% - 10px);
+}
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.form-actions button {
+    background-color: #3a6ea5;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-top: 2em;
+    cursor: pointer;
+}
+.form-actions button.reset {
+    background-color: #555;
+}
+
+/* ------------------------ MODIFICATION DE TANGUY POUR LA GESTION DES FICHES DE PAIE------------------------------------ */
+
+.consult_paie{
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color: white;
+    position: absolute;
+    color: #000;
+    top: 20%; /* Place l'élément en haut */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    padding: 10px 75px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.historic_fiche_paie {
+    font-family: sans-serif;
+    background-color: white;
+    position: absolute;
+    color: #000;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    padding: 20px 250px 20px 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none; /* Supprime les puces de la liste */
+    z-index: -1;
+}
+
+.list-item {
+    display: flex; /* Utilise flexbox pour l'alignement */
+    justify-content: space-between; /* Espace entre les éléments */
+    padding: 5px 0; /* Espacement entre les éléments */
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.info {
+    text-align: left; /* Aligne le texte à gauche */
+}
+
+.date {
+    text-align: right; /* Aligne le texte à droite */
+}
+
+
+/* nouveau_compte */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -3em;
+}
+
+.form-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #444;
+}
+
 /*a partir d'ici gestion congé*/
 
-.main2 {
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,7 +426,6 @@ footer p {
 .container {
     display: flex;
     gap: 60px; /* Espacement entre les carrés */
-    justify-content: center;
 }
 
 /* Style pour les carrés bleus */
@@ -286,7 +457,7 @@ footer p {
 
 /*demande de congés 2*/
 
-main {
+.main_valcong {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
@@ -299,7 +470,8 @@ main {
     color: #517aac;
     font-size: 36px;
     margin-bottom: 50px;
-    margin-top: 1em;
+    margin-top: 1.5em;
+
 }
 
 /* Section de filtrage */
