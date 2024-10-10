@@ -129,7 +129,6 @@ footer p {
     width: 100%;
     display: flex;
     position: sticky;
-    
     justify-content: space-between;
     align-items: center;
     padding: 0 20px; 
@@ -424,56 +423,6 @@ footer p {
     background-color: #555;
 }
 
-/* ------------------------ MODIFICATION DE TANGUY POUR LA GESTION DES FICHES DE PAIE------------------------------------ */
-
-.consult_paie{
-    font-weight: bold;
-    font-family: sans-serif;
-    background-color: white;
-    position: absolute;
-    color: #000;
-    top: 20%; /* Place l'élément en haut */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 10px 75px;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: -1;
-}
-
-.historic_fiche_paie {
-    font-family: sans-serif;
-    background-color: white;
-    position: absolute;
-    color: #000;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 20px 250px 20px 250px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    list-style-type: none; /* Supprime les puces de la liste */
-    z-index: -1;
-}
-
-.list-item {
-    display: flex; /* Utilise flexbox pour l'alignement */
-    justify-content: space-between; /* Espace entre les éléments */
-    padding: 5px 0; /* Espacement entre les éléments */
-    border: solid;
-    border-width: 1px;
-    border-radius: 5px;
-}
-
-.info {
-    text-align: left; /* Aligne le texte à gauche */
-}
-
-.date {
-    text-align: right; /* Aligne le texte à droite */
-}
-
-
 /* nouveau_compte */
 
 .container {
@@ -683,4 +632,95 @@ input[type="number"] {
     height: 400px; /* Hauteur fixe */
     overflow-y: auto; /* Défilement vertical activé */
     margin-bottom: 20px;
+}
+
+/* ------------------------ MODIFICATION DE TANGUY------------------------------------ */
+
+.consult_paie{
+    font-weight: bold;
+    font-family: sans-serif;
+    background-color: white;
+    position: absolute;
+    color: #000;
+    top: 20%; /* Place l'élément en haut */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    padding: 10px 75px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.historic_fiche_paie {
+    font-family: sans-serif;
+    background-color: white;
+    position: absolute;
+    color: #000;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    padding: 20px 250px 20px 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none; /* Supprime les puces de la liste */
+    z-index: -1;
+}
+
+.list-item {
+    display: flex; /* Utilise flexbox pour l'alignement */
+    justify-content: space-between; /* Espace entre les éléments */
+    padding: 5px 0; /* Espacement entre les éléments */
+    border: solid;
+    width: 900px;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.info {
+    text-align: left;
+}
+
+.date {
+    text-align: right; 
+}
+
+.ajout_fiche_paie {
+    font-family: sans-serif;
+    background-color: white;
+    position: absolute;
+    color: #000;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
+    padding: 20px 250px 20px 250px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style-type: none; /* Supprime les puces de la liste */
+    z-index: -1;
+}
+
+.gestion-text{
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 27px;
+    background-color: #f0f2f5;
+    color: #517aac;
+    margin-bottom: 20px;
+    position: relative;
+    padding: 7px;
+}
+
+.gestion-text i {
+    color: #01ee38;
+    text-align: right;
+    border-style: solid;
+    border-radius:5px;
+    border-color: #000;
+    border-width: 2px;
+    padding: 1px; 
+    position: absolute;
+    right: 10px; /* Positionne l'icône à droite */
+    top: 50%;
+    transform: translateY(-50%); /* Centre verticalement l'icône */
 }
