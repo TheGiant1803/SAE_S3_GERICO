@@ -85,7 +85,6 @@ button {
     font-size: 16px;
 }
 
-
 button:hover {
     background-color: #333;
 }
@@ -241,7 +240,7 @@ footer p {
 
 /*a partir d'ici gestion congé*/
 
-.main2 {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -254,7 +253,6 @@ footer p {
 .container {
     display: flex;
     gap: 60px; /* Espacement entre les carrés */
-    justify-content: center;
 }
 
 /* Style pour les carrés bleus */
@@ -282,122 +280,4 @@ footer p {
 /* Effet hover sur les boutons */
 .box button:hover {
     background-color: #517aac;
-}
-
-/*demande de congés 2*/
-
-main {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f0f0f0;
-}
-
-/* Style pour le titre */
-.titre {
-    font-family: 'Chau philomene';
-    color: #517aac;
-    font-size: 36px;
-    margin-bottom: 50px;
-    margin-top: 1em;
-}
-
-/* Section de filtrage */
-.filter-section {
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-    text-align: center;
-}
-
-th, td {
-    padding: 12px;
-}
-
-th {
-    background-color: #517aac;
-    color: white;
-}
-
-td {
-    background-color: #f9f9f9;
-}
-
-.buttons {
-    text-align: center;
-    margin-top: 20px;
-}
-
-button, input {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-classique {
-    color: white;
-    background-color: #517aac;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-input[type="number"] {
-    border: 1px solid #ccc;
-}
-
-/* Styles des boutons */
-.btn-accepter {
-    background-color: #28a745; /* Vert */
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-right: 5px; /* Espace entre les boutons */
-}
-
-.btn-refuser {
-    background-color: #dc3545; /* Rouge */
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.btn-reset {
-    background-color: gray;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
-.btn-accepter:hover {
-    background-color: #218838; /* Vert foncé au survol */
-}
-
-.btn-refuser:hover {
-    background-color: #c82333; /* Rouge foncé au survol */
-}
-
-.table-container {
-    height: 400px; /* Hauteur fixe */
-    overflow-y: auto; /* Défilement vertical activé */
-    margin-bottom: 20px;
 }
