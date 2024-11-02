@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-10-20 18:46:38
+/* Smarty version 4.2.1, created on 2024-10-24 08:31:51
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\admin_validation_congés.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6715500e501e33_10702673',
+  'unifunc' => 'content_671a05f7d64be2_24448570',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe615ce658436181daa2a7662be26e6272b2e481' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\admin_validation_congés.tpl',
-      1 => 1729446488,
+      1 => 1729758708,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6715500e501e33_10702673 (Smarty_Internal_Template $_smarty_tpl) {
+function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -80,46 +80,35 @@ function content_6715500e501e33_10702673 (Smarty_Internal_Template $_smarty_tpl)
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de ligne par défaut -->
+               <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['conges']->value, 'conge');
+$_smarty_tpl->tpl_vars['conge']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['conge']->value) {
+$_smarty_tpl->tpl_vars['conge']->do_else = false;
+?>   
                 <tr>
-                    <td>1</td>
-                    <td>Carpentier</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['nom_emp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['prenom_emp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['date_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['date_fin'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['cause_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['duree_dcp']*12;?>
+h</td>
                     <td>
                         <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
                         <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
                     </td>
                 </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Saguez</td>
-                    <td>Paul</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Jusselme</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
         </div>

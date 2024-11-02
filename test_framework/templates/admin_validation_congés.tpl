@@ -57,46 +57,21 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de ligne par défaut -->
+               {foreach $conges as $conge}   
                 <tr>
-                    <td>1</td>
-                    <td>Carpentier</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
+                    <td>{$conge.id_dcp}</td>
+                    <td>{$conge.nom_emp}</td>
+                    <td>{$conge.prenom_emp}</td>
+                    <td>{$conge.date_dcp}</td>
+                    <td>{$conge.date_fin}</td>
+                    <td>{$conge.cause_dcp}</td>
+                    <td>{$conge.duree_dcp * 12}h</td>
                     <td>
                         <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
                         <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
                     </td>
                 </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Saguez</td>
-                    <td>Paul</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Jusselme</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
+                {/foreach}
             </tbody>
         </table>
         </div>

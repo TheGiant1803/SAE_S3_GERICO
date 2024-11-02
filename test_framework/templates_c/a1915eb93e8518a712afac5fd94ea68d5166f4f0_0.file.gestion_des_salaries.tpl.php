@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-10-20 18:34:11
+/* Smarty version 4.2.1, created on 2024-10-21 08:57:55
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67154d23089dd1_87623135',
+  'unifunc' => 'content_67161793e99df4_59793278',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1915eb93e8518a712afac5fd94ea68d5166f4f0' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1729445774,
+      1 => 1729501073,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67154d23089dd1_87623135 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67161793e99df4_59793278 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,46 +59,33 @@ function content_67154d23089dd1_87623135 (Smarty_Internal_Template $_smarty_tpl)
 
     
     <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
-        <li>
-            <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-    </ul>
+    <div class="gestion-text">
+        Gestion des salariés<i class="fas fa-plus"></i>
+    </div> 
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['employes']->value, 'employe');
+$_smarty_tpl->tpl_vars['employe']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['employe']->value) {
+$_smarty_tpl->tpl_vars['employe']->do_else = false;
+?>            
+    <li>
+        <div class="list-item">
+            <span class="info"><?php echo $_smarty_tpl->tpl_vars['employe']->value['nom_emp'];?>
+ <?php echo $_smarty_tpl->tpl_vars['employe']->value['prenom_emp'];?>
+ - Matricule <?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+</span>
+            <span class="date">
+                <a href="modifier.php?id=<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+">MODIFIER</a> | 
+                <a href="supprimer.php?id=<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+">SUPPRIMER</a>
+            </span>
+        </div>
+    </li>
+    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+</ul>
     
     
     

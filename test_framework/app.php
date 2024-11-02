@@ -41,7 +41,12 @@ Flight::register('view', 'Smarty', array(), function($smarty){
 //
 //exercice PDO : enregistrer la variable pdo avec Flight::set
 //
+// Création de l'instance PDO
+$pdo = new PDO('mysql:host=localhost;dbname=gerico', 'root', '');
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+// Enregistrer l'instance PDO dans Flight
+Flight::set('pdo', $pdo);
 
 
 //
