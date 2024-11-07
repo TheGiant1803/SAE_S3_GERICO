@@ -27,10 +27,6 @@ Flight::register('view', 'Smarty', array(), function($smarty){
    });
    //ajoute une méthode render à Flight qui affiche un template
    //en lui transmettant un tableau de données
-   Flight::map('render', function($template, $data){
-    Flight::view()->assign($data);
-    Flight::view()->display($template);
-   });
 
 
 //

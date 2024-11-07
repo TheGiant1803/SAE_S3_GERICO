@@ -16,7 +16,7 @@
         <div class="form-container">
             <h2>Créer un nouveau compte</h2>
             <p>Vous êtes déjà inscrit ? <a href="#">Se connecter</a></p>
-            <form method="POST" action="/nouveau_compte">
+            <form method="POST" action="./nouveau_compte.html">
                 <label for="matricule">MATRICULE</label>
                 <input type="text" id="matricule" name="matricule" value="{$post->matricule|default:''}" required>
                 {if isset($errors.matricule)}
@@ -29,7 +29,13 @@
                     <span class="error-message">{$errors.email}</span>
                 {/if}
 
-                <label for="password">MOT DE PASSE</label>
+                <label for="provisoire">MOT DE PASSE PROVISOIRE</label>
+                <input type="password" id="provisoire" name="provisoire" required>
+                {if isset($errors.password)}
+                    <span class="error-message">{$errors.password}</span>
+                {/if}                
+
+                <label for="password">NOUVEAU MOT DE PASSE</label>
                 <input type="password" id="password" name="password" required>
                 {if isset($errors.password)}
                     <span class="error-message">{$errors.password}</span>

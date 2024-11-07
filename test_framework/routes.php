@@ -117,6 +117,11 @@ Flight::route('POST /nouveau_compte.html',function(){
     $errors['matricule'] = "Le matricule est requis";
     }
 
+    if (empty($post->provisoire)) {
+        $errors['provisoire'] = "Le mot provisoire est requis";
+    } 
+
+
     if (empty($post->email)) {
         $errors['email'] = "L'email est requis";
     } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) { //Teste du format de l'email avec filer_validate_email
@@ -143,67 +148,82 @@ Flight::route('POST /nouveau_compte.html',function(){
     // Si des erreurs existent
     if (!empty($errors)) {
         // Réafficher le formulaire avec les erreurs et les données précédemment saisies
-        Flight::render('nouveau_compte.tpl', [
+        Flight::render('./templates/nouveau_compte.tpl', [
             'errors' => $errors,
             'post' => $post
         ]);
         return;
     }
-    try{
+    try {
         $pdo = Flight::get('pdo');
+    
         // Vérifier si le matricule existe déjà
-        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.id_emp = $matricule");
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.id_emp = ?");
         $checkStmt->execute([$post->matricule]);
-        if ($checkStmt->fetchColumn() > 0) {
-            $errors['matricule'] = "Ce n'est pas un matricule existant";
+        if ($checkStmt->fetchColumn() == 0) {
+            $errors['matricule'] = "Ce matricule n'existe pas";
             
             // Réafficher le formulaire avec l'erreur
-            Flight::render('nouveau_compte.tpl', [
+            Flight::render('./templates/nouveau_compte.tpl', [
                 'errors' => $errors,
                 'post' => $post
             ]);
             return;
         }       
-
+    
         // Vérifier si l'email existe déjà
-        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.email = $email");
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.email = ?");
         $checkStmt->execute([$post->email]);
-        if ($checkStmt->fetchColumn() > 0) {
-            $errors['email'] = "Cet email est déjà utilisé";
+        if ($checkStmt->fetchColumn() == 0) {
+            $errors['email'] = "Cet email n'existe pas";
             
             // Réafficher le formulaire avec l'erreur
-            Flight::render('nouveau_compte.tpl', [
+            Flight::render('./templates/nouveau_compte.tpl', [
                 'errors' => $errors,
                 'post' => $post
             ]);
             return;
         }
+    
+        // Vérification du mot de passe provisoire
+        $checkStmt = $pdo->prepare("SELECT pwd FROM employe WHERE employe.email = ?");
+        $checkStmt->execute([$post->email]);
+        if ($checkStmt->fetchColumn() != $post->provisoire) {
+            $errors['provisoire'] = "Le mot de passe provisoire ne correspond pas";
+    
+            Flight::render('./templates/nouveau_compte.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }
+        
         // Hasher le mot de passe
         $hashedPassword = password_hash($post->password, PASSWORD_DEFAULT);
-
-        // Préparer la requête d'insertion
-        $stmt = $pdo->prepare("UPDATE employe SET pwd=:hashedPassword where id_emp=:matricule");
-        // Exécuter la requête
-
+    
+        // Préparer la requête de mise à jour
+        $stmt = $pdo->prepare("UPDATE employe SET pwd = :hashedPassword WHERE id_emp = :matricule");
+        
+        // Exécuter la requête avec les paramètres
         if ($stmt->execute([
             'hashedPassword' => $hashedPassword,
-            'matricule' => $matricule
+            'matricule' => $post->matricule
         ])) {
             // Redirection vers la page de succès
-            Flight::redirect('connexion.tpl');
+            Flight::redirect('./templates/connexion.tpl');
             exit();
         } else {
             // Erreur lors de l'insertion
             $errors['general'] = "Erreur lors de l'inscription";
-            Flight::render('nouveau_compte.tpl', [
+            Flight::render('./templates/nouveau_compte.tpl', [
                 'errors' => $errors,
                 'post' => $post
             ]);
         }     
     } catch (PDOException $e) {
         // Erreur de base de données
-        $errors['general'] = "Erreur de base de données";
-        Flight::render('nouveau_compte.tpl', [
+        $errors['general'] = "Erreur de base de données : " . $e->getMessage(); // Ajout pour débogage (à retirer en production)
+        Flight::render('./templates/nouveau_compte.tpl', [
             'errors' => $errors,
             'post' => $post
         ]);

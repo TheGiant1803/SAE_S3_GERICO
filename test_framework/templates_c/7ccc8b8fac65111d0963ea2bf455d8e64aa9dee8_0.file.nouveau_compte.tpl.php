@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-07 10:13:52
+/* Smarty version 4.2.1, created on 2024-11-07 13:59:51
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\nouveau_compte.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_672c92e02966b5_76752604',
+  'unifunc' => 'content_672cc7d78f66a6_93048789',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7ccc8b8fac65111d0963ea2bf455d8e64aa9dee8' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\nouveau_compte.tpl',
-      1 => 1730974428,
+      1 => 1730987981,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672c92e02966b5_76752604 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672cc7d78f66a6_93048789 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -39,7 +39,7 @@ function content_672c92e02966b5_76752604 (Smarty_Internal_Template $_smarty_tpl)
         <div class="form-container">
             <h2>Créer un nouveau compte</h2>
             <p>Vous êtes déjà inscrit ? <a href="#">Se connecter</a></p>
-            <form method="POST" action="/nouveau_compte">
+            <form method="POST" action="./nouveau_compte.html">
                 <label for="matricule">MATRICULE</label>
                 <input type="text" id="matricule" name="matricule" value="<?php echo (($tmp = $_smarty_tpl->tpl_vars['post']->value->matricule ?? null)===null||$tmp==='' ? '' ?? null : $tmp);?>
 " required>
@@ -56,7 +56,14 @@ function content_672c92e02966b5_76752604 (Smarty_Internal_Template $_smarty_tpl)
 </span>
                 <?php }?>
 
-                <label for="password">MOT DE PASSE</label>
+                <label for="provisoire">MOT DE PASSE PROVISOIRE</label>
+                <input type="password" id="provisoire" name="provisoire" required>
+                <?php if ((isset($_smarty_tpl->tpl_vars['errors']->value['password']))) {?>
+                    <span class="error-message"><?php echo $_smarty_tpl->tpl_vars['errors']->value['password'];?>
+</span>
+                <?php }?>                
+
+                <label for="password">NOUVEAU MOT DE PASSE</label>
                 <input type="password" id="password" name="password" required>
                 <?php if ((isset($_smarty_tpl->tpl_vars['errors']->value['password']))) {?>
                     <span class="error-message"><?php echo $_smarty_tpl->tpl_vars['errors']->value['password'];?>
