@@ -57,10 +57,96 @@ function conges1() {
 }
 Flight::route('/congé1.html', 'conges1');
 
-function connexion() {
-    Flight::render('./templates/connexion.tpl', []);
-}
-Flight::route('/connexion.html', 'connexion');
+
+
+Flight::route('GET /connexion.html', function() {
+    Flight::render('./templates/connexion.tpl',[]);
+});
+
+Flight::route('POST /connexion.html', function(){
+
+     // Démarrer la session si ce n'est pas déjà fait
+     if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    // Récupérer les données du formulaire
+    $post = Flight::request()->data;
+    
+    // Initialisation des erreurs
+    $errors = [];
+    
+    // Validation des champs
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    }
+    
+    if (empty($post->password)) {
+        $errors['password'] = "Le mot de passe est requis";
+    }
+
+    // Si des champs sont vides, réafficher le formulaire
+    if (!empty($errors)) {
+        Flight::render('./templates/connexion.tpl', [
+            'errors' => $errors,
+            'post' => $post
+        ]);
+        return;
+    }
+    try {
+        // Connexion à la base de données
+        $pdo = Flight::get('pdo');
+        
+        // Préparer la requête pour vérifier l'email
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE utilisateur.Email = ?");
+        $stmt->execute([$post->email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Vérifier si l'utilisateur existe
+        if (!$user) {
+            $errors['general'] = "Email ou mot de passe incorrect";
+            Flight::render('./templates/connexion.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }
+        
+        if (!password_verify($post->password, $user['Motdepasse'])) {
+            $errors['general'] = "Email ou mot de passe incorrect";
+            Flight::render('./templates/connexion.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }
+        
+        // Connexion réussie : ajouter des informations à la session
+        $_SESSION['user_name'] = $user['Nom'];
+        $_SESSION['user_email'] = $user['Email'];
+        
+        // Rediriger vers la page d'accueil
+        Flight::redirect('./templates/accueil.tpl');
+        exit();
+        
+    } catch (PDOException $e) {
+        // Gestion des erreurs de base de données
+        $errors['general'] = "Erreur de connexion à la base de données";
+        Flight::render('./templates/nouveau_compte.tpl', [
+            'errors' => $errors,
+            'post' => $post
+        ]);
+    }
+
+
+});
+
+
+
+
+
+
+
+
 
 function Fiche_De_Paie() {
     Flight::render('./templates/Fiche_De_Paie.tpl', []);
