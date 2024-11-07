@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-10-20 17:44:04
-  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\conges1.tpl' */
+/* Smarty version 4.2.1, created on 2024-11-07 10:12:58
+  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67154164551d07_54656282',
+  'unifunc' => 'content_672c92aa80d703_69526649',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'b0d2893acad73f607510a2467bf6d41dd6382c1c' => 
+    'a037d656b97298688a5917a8d91e9d6b63b11eec' => 
     array (
-      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\conges1.tpl',
-      1 => 1729445845,
+      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
+      1 => 1730970257,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67154164551d07_54656282 (Smarty_Internal_Template $_smarty_tpl) {
+function content_672c92aa80d703_69526649 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes demandes de congés</title>
+    <title>Administration</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -40,9 +40,9 @@ function content_67154164551d07_54656282 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <ul class="navbar_text">
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
-            <li class="navtext active"><a class="navtext" href="">Gestion des congés</a></li>
+            <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -55,18 +55,17 @@ function content_67154164551d07_54656282 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     <main>
         <div class="container">
-            <a class="navtext_cong" href="gestioncongé2.html">
+        <a href="gestion_des_salaries.html">
             <div class="box">
-                <button>Historique de mes congés</button>
+                <button>Gestion des salariés</button>
             </div>
-            </a>
-    
-            <a class="navtext_cong" href="gestion_cong_date.html">
+        </a>
+        <a href="admin_validation_congés.html">
             <div class="box">
-                <button>Demander un congé</button>
+                <button>Validation des congés</button>
             </div>
-            </a>
         </div>
+        </a>
     </main>
     
     <footer class="foot_bar bar">

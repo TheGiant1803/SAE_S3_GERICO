@@ -29,14 +29,12 @@ function demo(){
 }
 
 function accueil() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/accueil.tpl', $tab);
+    Flight::render('./templates/accueil.tpl', []);
 }
 Flight::route('/', 'accueil');
 
 function admin_validation_congés() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/admin_validation_congés.tpl', $tab);
+    Flight::render('./templates/admin_validation_congés.tpl', []);
 }
 
 // Route associée à la fonction
@@ -45,38 +43,32 @@ Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
 
 
 function admin() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/admin.tpl', $tab);
+    Flight::render('./templates/admin.tpl',[]);
 }
 Flight::route('/admin.html', 'admin');
 
 function Ajout_fiche_paie() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/Ajout_fiche_paie.tpl', $tab);
+    Flight::render('./templates/Ajout_fiche_paie.tpl', []);
 }
 Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
 
 function conges1() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/conges1.tpl', $tab);
+    Flight::render('./templates/conges1.tpl', []);
 }
 Flight::route('/congé1.html', 'conges1');
 
 function connexion() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/connexion.tpl', $tab);
+    Flight::render('./templates/connexion.tpl', []);
 }
 Flight::route('/connexion.html', 'connexion');
 
 function Fiche_De_Paie() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/Fiche_De_Paie.tpl', $tab);
+    Flight::render('./templates/Fiche_De_Paie.tpl', []);
 }
 Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
 
 function gestion_cong_date() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/gestion_cong_date.tpl', $tab);
+    Flight::render('./templates/gestion_cong_date.tpl', []);
 }
 Flight::route('/gestion_cong_date.html', 'gestion_cong_date');
 
@@ -95,23 +87,128 @@ function gestion_des_salaries() {
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
 function gestioncongé2() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/gestioncongé2.tpl', $tab);
+    Flight::render('./templates/gestioncongé2.tpl', []);
 }
 Flight::route('/gestioncongé2.html', 'gestioncongé2');
 
 function modificationSalarie() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/modificationSalarie.tpl', $tab);
+    Flight::render('./templates/modificationSalarie.tpl', []);
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
 
-function nouveau_compte() {
-    $tab['test'] = 'test';
-    Flight::render('./templates/nouveau_compte.tpl', $tab);
-}
-Flight::route('/nouveau_compte.html', 'nouveau_compte');
 
+
+
+
+Flight::route('GET /nouveau_compte.html', function(){
+    Flight::render('./templates/nouveau_compte.tpl', []);
+});
+
+Flight::route('POST /nouveau_compte.html',function(){
+
+    // Récupérer les données du formulaire que l'utilisateur a écrit
+    $post = Flight::request()->data;
+
+    // Initialisation d'un tableau pour les erreurs
+    $errors = [];
+
+    // Validation des données
+    if (empty($post->matricule)) {
+    $errors['matricule'] = "Le matricule est requis";
+    }
+
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) { //Teste du format de l'email avec filer_validate_email
+        $errors['email'] = "Format d'email invalide";
+    }
+
+    if (empty($post->password)) {
+        $errors['password'] = "Le mot de passe est requis";
+    } elseif (strlen($post->password) < 8) {
+        $errors['password'] = "Le mot de passe doit faire au moins 8 caractères";
+    } elseif (!preg_match('/[A-Z]/', $post->password)) {  //preg_match sert pour effectuer une recherche de correspondance de motif
+        $errors['password'] = "Le mot de passe doit contenir au moins une majuscule";
+    } elseif (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $post->password)) {
+        $errors['password'] = "Le mot de passe doit contenir au moins un caractère spécial";
+    } elseif (!preg_match('/[0-9]/', $post->password)) {
+        $errors['password'] = "Le mot de passe doit contenir au moins un chiffre";
+    }
+
+    if (empty($post->confirm_password)) {
+        $errors['confirm_password'] = "Veuillez confirmer le mot de passe";
+    } elseif ($post->password !== $post->confirm_password) {
+        $errors['confirm_password'] = "La confirmation du mot de passe ne correspond pas";
+    }
+    // Si des erreurs existent
+    if (!empty($errors)) {
+        // Réafficher le formulaire avec les erreurs et les données précédemment saisies
+        Flight::render('nouveau_compte.tpl', [
+            'errors' => $errors,
+            'post' => $post
+        ]);
+        return;
+    }
+    try{
+        $pdo = Flight::get('pdo');
+        // Vérifier si le matricule existe déjà
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.id_emp = $matricule");
+        $checkStmt->execute([$post->matricule]);
+        if ($checkStmt->fetchColumn() > 0) {
+            $errors['matricule'] = "Ce n'est pas un matricule existant";
+            
+            // Réafficher le formulaire avec l'erreur
+            Flight::render('nouveau_compte.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }       
+
+        // Vérifier si l'email existe déjà
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.email = $email");
+        $checkStmt->execute([$post->email]);
+        if ($checkStmt->fetchColumn() > 0) {
+            $errors['email'] = "Cet email est déjà utilisé";
+            
+            // Réafficher le formulaire avec l'erreur
+            Flight::render('nouveau_compte.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }
+        // Hasher le mot de passe
+        $hashedPassword = password_hash($post->password, PASSWORD_DEFAULT);
+
+        // Préparer la requête d'insertion
+        $stmt = $pdo->prepare("UPDATE employe SET pwd=:hashedPassword where id_emp=:matricule");
+        // Exécuter la requête
+
+        if ($stmt->execute([
+            'hashedPassword' => $hashedPassword,
+            'matricule' => $matricule
+        ])) {
+            // Redirection vers la page de succès
+            Flight::redirect('connexion.tpl');
+            exit();
+        } else {
+            // Erreur lors de l'insertion
+            $errors['general'] = "Erreur lors de l'inscription";
+            Flight::render('nouveau_compte.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+        }     
+    } catch (PDOException $e) {
+        // Erreur de base de données
+        $errors['general'] = "Erreur de base de données";
+        Flight::render('nouveau_compte.tpl', [
+            'errors' => $errors,
+            'post' => $post
+        ]);
+    }
+});
 
 
 

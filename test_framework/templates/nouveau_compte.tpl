@@ -16,15 +16,32 @@
         <div class="form-container">
             <h2>Créer un nouveau compte</h2>
             <p>Vous êtes déjà inscrit ? <a href="#">Se connecter</a></p>
-            <form action="#">
+            <form method="POST" action="/nouveau_compte">
                 <label for="matricule">MATRICULE</label>
-                <input type="text" name="matricule" required>
+                <input type="text" id="matricule" name="matricule" value="{$post->matricule|default:''}" required>
+                {if isset($errors.matricule)}
+                    <span class="error-message">{$errors.matricule}</span>
+                {/if}
+
                 <label for="email">E-MAIL</label>
-                <input type="email" name="email" required>
+                <input type="email" id="email" name="email" value="{$post->email|default:''}" required>
+                {if isset($errors.email)}
+                    <span class="error-message">{$errors.email}</span>
+                {/if}
+
                 <label for="password">MOT DE PASSE</label>
-                <input type="password" name="password" required>
+                <input type="password" id="password" name="password" required>
+                {if isset($errors.password)}
+                    <span class="error-message">{$errors.password}</span>
+                {/if}
+
                 <label for="confirm_password">CONFIRMATION DU MOT DE PASSE</label>
-                <input type="password" name="confirm_password" required>
+                <input type="password" name="confirm_password" id="confirm_password" required>
+
+                {if isset($errors.confirm_password)}
+                    <span class="error-message">{$errors.confirm_password}</span>
+                {/if}
+
                 <input type="submit" value="S'inscrire">
             </form>
             

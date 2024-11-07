@@ -37,6 +37,10 @@ Flight::register('view', 'Smarty', array(), function($smarty){
 //copier le code de la fonction render
 //
 
+Flight::map('render', function($template, $data){
+    Flight::view()->assign($data);
+    Flight::view()->display($template);
+   }); 
 
 //
 //exercice PDO : enregistrer la variable pdo avec Flight::set
