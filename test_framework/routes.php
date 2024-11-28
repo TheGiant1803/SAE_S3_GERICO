@@ -33,6 +33,10 @@ function accueil() {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
         
         // Préparer les données à passer au template
         $data = [
@@ -50,7 +54,25 @@ function accueil() {
 Flight::route('/', 'accueil');
 
 function admin_validation_congés() {
-    Flight::render('./templates/admin_validation_congés.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    
+    Flight::render('./templates/admin_validation_congés.tpl', $data);
 }
 
 // Route associée à la fonction
@@ -59,17 +81,68 @@ Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
 
 
 function admin() {
-    Flight::render('./templates/admin.tpl',[]);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/admin.tpl',$data);
 }
 Flight::route('/admin.html', 'admin');
 
 function Ajout_fiche_paie() {
-    Flight::render('./templates/Ajout_fiche_paie.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/Ajout_fiche_paie.tpl', $data);
 }
 Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
 
 function conges1() {
-    Flight::render('./templates/conges1.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/conges1.tpl', $data);
 }
 Flight::route('/congé1.html', 'conges1');
 
@@ -113,7 +186,7 @@ Flight::route('POST /connexion.html', function(){
         $pdo = Flight::get('pdo');
         
         // Préparer la requête pour vérifier l'email
-        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email or employe.id_emp= ?");
         $stmt->execute([$post->email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -162,43 +235,116 @@ Flight::route('POST /connexion.html', function(){
 
 
 
-
-
-
-
-
-
 function Fiche_De_Paie() {
-    Flight::render('./templates/Fiche_De_Paie.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/Fiche_De_Paie.tpl', $data);
 }
 Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
 
 function gestion_cong_date() {
-    Flight::render('./templates/gestion_cong_date.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/gestion_cong_date.tpl', $data);
 }
 Flight::route('/gestion_cong_date.html', 'gestion_cong_date');
 
 
 function gestion_des_salaries() {
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
     // Récupérer l'instance PDO via Flight
     $pdo = Flight::get('pdo');
-    
-    // Préparer et exécuter la requête SQL
-    $stmt = $pdo->query('SELECT nom, prenom, id_emp FROM employe order by id_emp');
-
-    $tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    Flight::render('./templates/gestion_des_salaries.tpl', ['employes' => $tab]);
+    Flight::render('./templates/gestion_des_salaries.tpl', $data);
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
 function gestioncongé2() {
-    Flight::render('./templates/gestioncongé2.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/gestioncongé2.tpl', $data);
 }
 Flight::route('/gestioncongé2.html', 'gestioncongé2');
 
 function modificationSalarie() {
-    Flight::render('./templates/modificationSalarie.tpl', []);
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    Flight::render('./templates/modificationSalarie.tpl', $data);
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
 
@@ -337,6 +483,22 @@ Flight::route('POST /nouveau_compte.html',function(){
     }
 });
 
+Flight::route('GET /logout', function() {
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Vider complètement le tableau de SESSION
+    $_SESSION = [];
+    
+    // Détruire la session
+    session_destroy();
+    
+    // Rediriger vers la page d'accueil
+    Flight::redirect('/');
+    exit();
+});
 
 
 

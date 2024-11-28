@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-07 10:12:58
+/* Smarty version 4.2.1, created on 2024-11-28 13:20:45
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_672c92aa80d703_69526649',
+  'unifunc' => 'content_67486e2dd0fe86_14873188',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a037d656b97298688a5917a8d91e9d6b63b11eec' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1730970257,
+      1 => 1732799283,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672c92aa80d703_69526649 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67486e2dd0fe86_14873188 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +30,8 @@ function content_672c92aa80d703_69526649 (Smarty_Internal_Template $_smarty_tpl)
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
+    <nav>
+        <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
     
     <nav class="navbar">
         <div class="logo-container">
@@ -39,10 +40,12 @@ function content_672c92aa80d703_69526649 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
+            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -53,8 +56,9 @@ function content_672c92aa80d703_69526649 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
     </nav>
+    </nav>
     <main>
-        <div class="container">
+        <div class="container_b">
         <a href="gestion_des_salaries.html">
             <div class="box">
                 <button>Gestion des salariés</button>
