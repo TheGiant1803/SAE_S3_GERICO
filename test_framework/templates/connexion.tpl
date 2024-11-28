@@ -18,7 +18,7 @@
             <div class="login-box">
                 <h1>Connexion</h1>
                 <p>Vous n'êtes pas encore inscrit ?
-                    <a href="#">S'inscrire</a>
+                    <a href="./nouveau_compte.html">S'inscrire</a>
                 </p>
                 <form action="#" method="post">
                     <label for="email">MATRICULE / EMAIL</label>

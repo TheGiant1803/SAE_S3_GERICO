@@ -186,7 +186,7 @@ Flight::route('POST /connexion.html', function(){
         $pdo = Flight::get('pdo');
         
         // Préparer la requête pour vérifier l'email
-        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email or employe.id_emp= ?");
         $stmt->execute([$post->email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -300,13 +300,7 @@ function gestion_des_salaries() {
         ];
     // Récupérer l'instance PDO via Flight
     $pdo = Flight::get('pdo');
-    
-    // Préparer et exécuter la requête SQL
-    $stmt = $pdo->query('SELECT nom, prenom, id_emp FROM employe order by id_emp');
-
-    $tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    Flight::render('./templates/gestion_des_salaries.tpl', ['employes' => $tab]);
+    Flight::render('./templates/gestion_des_salaries.tpl', $data);
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
@@ -489,6 +483,22 @@ Flight::route('POST /nouveau_compte.html',function(){
     }
 });
 
+Flight::route('GET /logout', function() {
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Vider complètement le tableau de SESSION
+    $_SESSION = [];
+    
+    // Détruire la session
+    session_destroy();
+    
+    // Rediriger vers la page d'accueil
+    Flight::redirect('/');
+    exit();
+});
 
 
 

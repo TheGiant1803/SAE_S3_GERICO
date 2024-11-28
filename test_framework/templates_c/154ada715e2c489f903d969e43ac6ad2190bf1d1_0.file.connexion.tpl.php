@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 13:05:20
+/* Smarty version 4.2.1, created on 2024-11-28 13:13:23
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67486a90c97a14_57736210',
+  'unifunc' => 'content_67486c735d6a20_24742859',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1732797927,
+      1 => 1732799598,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67486a90c97a14_57736210 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67486c735d6a20_24742859 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -41,7 +41,7 @@ function content_67486a90c97a14_57736210 (Smarty_Internal_Template $_smarty_tpl)
             <div class="login-box">
                 <h1>Connexion</h1>
                 <p>Vous n'êtes pas encore inscrit ?
-                    <a href="#">S'inscrire</a>
+                    <a href="./nouveau_compte.html">S'inscrire</a>
                 </p>
                 <form action="#" method="post">
                     <label for="email">MATRICULE / EMAIL</label>
