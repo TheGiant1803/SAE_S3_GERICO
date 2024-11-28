@@ -184,7 +184,7 @@ function gestion_des_salaries() {
     $pdo = Flight::get('pdo');
     
     // Préparer et exécuter la requête SQL
-    $stmt = $pdo->query('SELECT nom_emp, prenom_emp, id_emp FROM employe order by id_emp');
+    $stmt = $pdo->query('SELECT nom, prenom, id_emp FROM employe order by id_emp');
 
     $tab = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

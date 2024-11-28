@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
-    <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
+    <nav>
+        <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
     
     <nav class="navbar">
         <div class="logo-container">
@@ -16,7 +17,7 @@
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
@@ -30,8 +31,9 @@
             </a>
         </div>
     </nav>
+    </nav>
     <main>
-        <div class="container">
+        <div class="container_b">
         <a href="gestion_des_salaries.html">
             <div class="box">
                 <button>Gestion des salariés</button>

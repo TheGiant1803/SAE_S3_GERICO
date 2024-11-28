@@ -8,7 +8,8 @@
     <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one" rel="stylesheet">
 </head>
 <body>
-    <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
+    <nav>
+        <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
     
     <nav class="navbar">
         <div class="logo-container">
@@ -17,7 +18,7 @@
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
@@ -30,6 +31,7 @@
                 <img class="profile" src="../assets/profile.png" alt="image du profile">
             </a>
         </div>
+    </nav>
     </nav>
 
     <main class="main_valcong">
@@ -57,21 +59,46 @@
                 </tr>
             </thead>
             <tbody>
-               {foreach $conges as $conge}   
+                <!-- Exemple de ligne par défaut -->
                 <tr>
-                    <td>{$conge.id_dcp}</td>
-                    <td>{$conge.nom_emp}</td>
-                    <td>{$conge.prenom_emp}</td>
-                    <td>{$conge.date_dcp}</td>
-                    <td>{$conge.date_fin}</td>
-                    <td>{$conge.cause_dcp}</td>
-                    <td>{$conge.duree_dcp * 12}h</td>
+                    <td>1</td>
+                    <td>Carpentier</td>
+                    <td>Bruno</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
                     <td>
                         <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
                         <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
                     </td>
                 </tr>
-                {/foreach}
+                <tr></tr>
+                    <td>1</td>
+                    <td>Saguez</td>
+                    <td>Paul</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
+                <tr></tr>
+                    <td>1</td>
+                    <td>Jusselme</td>
+                    <td>Bruno</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
         </div>

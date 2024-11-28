@@ -16,38 +16,15 @@
         <div class="form-container">
             <h2>Créer un nouveau compte</h2>
             <p>Vous êtes déjà inscrit ? <a href="#">Se connecter</a></p>
-            <form method="POST" action="./nouveau_compte.html">
+            <form action="#">
                 <label for="matricule">MATRICULE</label>
-                <input type="text" id="matricule" name="matricule" value="{$post->matricule|default:''}" required>
-                {if isset($errors.matricule)}
-                    <span class="error-message">{$errors.matricule}</span>
-                {/if}
-
+                <input type="text" name="matricule" required>
                 <label for="email">E-MAIL</label>
-                <input type="email" id="email" name="email" value="{$post->email|default:''}" required>
-                {if isset($errors.email)}
-                    <span class="error-message">{$errors.email}</span>
-                {/if}
-
-                <label for="provisoire">MOT DE PASSE PROVISOIRE</label>
-                <input type="password" id="provisoire" name="provisoire" required>
-                {if isset($errors.password)}
-                    <span class="error-message">{$errors.password}</span>
-                {/if}                
-
-                <label for="password">NOUVEAU MOT DE PASSE</label>
-                <input type="password" id="password" name="password" required>
-                {if isset($errors.password)}
-                    <span class="error-message">{$errors.password}</span>
-                {/if}
-
+                <input type="email" name="email" required>
+                <label for="password">MOT DE PASSE</label>
+                <input type="password" name="password" required>
                 <label for="confirm_password">CONFIRMATION DU MOT DE PASSE</label>
-                <input type="password" name="confirm_password" id="confirm_password" required>
-
-                {if isset($errors.confirm_password)}
-                    <span class="error-message">{$errors.confirm_password}</span>
-                {/if}
-
+                <input type="password" name="confirm_password" required>
                 <input type="submit" value="S'inscrire">
             </form>
             

@@ -21,7 +21,7 @@
                     <a href="#">S'inscrire</a>
                 </p>
                 <form action="#" method="post">
-                    <label for="email">EMAIL</label>
+                    <label for="email">MATRICULE / EMAIL</label>
                     <input type="text" id="email" name="email" required="required">
 
                     <label for="password">MOT DE PASSE</label>

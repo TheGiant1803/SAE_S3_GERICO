@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-10-24 08:31:51
+/* Smarty version 4.2.1, created on 2024-11-28 12:43:00
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\admin_validation_congés.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_671a05f7d64be2_24448570',
+  'unifunc' => 'content_674865544fb581_77072399',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe615ce658436181daa2a7662be26e6272b2e481' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\admin_validation_congés.tpl',
-      1 => 1729758708,
+      1 => 1732797510,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674865544fb581_77072399 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,7 +31,8 @@ function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl)
     <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one" rel="stylesheet">
 </head>
 <body>
-    <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
+    <nav>
+        <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
     
     <nav class="navbar">
         <div class="logo-container">
@@ -40,7 +41,7 @@ function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
@@ -53,6 +54,7 @@ function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="profile" src="../assets/profile.png" alt="image du profile">
             </a>
         </div>
+    </nav>
     </nav>
 
     <main class="main_valcong">
@@ -80,35 +82,46 @@ function content_671a05f7d64be2_24448570 (Smarty_Internal_Template $_smarty_tpl)
                 </tr>
             </thead>
             <tbody>
-               <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['conges']->value, 'conge');
-$_smarty_tpl->tpl_vars['conge']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['conge']->value) {
-$_smarty_tpl->tpl_vars['conge']->do_else = false;
-?>   
+                <!-- Exemple de ligne par défaut -->
                 <tr>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['nom_emp'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['prenom_emp'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['date_dcp'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['date_fin'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['cause_dcp'];?>
-</td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['conge']->value['duree_dcp']*12;?>
-h</td>
+                    <td>1</td>
+                    <td>Carpentier</td>
+                    <td>Bruno</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
                     <td>
                         <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
                         <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
                     </td>
                 </tr>
-                <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                <tr></tr>
+                    <td>1</td>
+                    <td>Saguez</td>
+                    <td>Paul</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
+                <tr></tr>
+                    <td>1</td>
+                    <td>Jusselme</td>
+                    <td>Bruno</td>
+                    <td>2024-01-01</td>
+                    <td>2024-01-03</td>
+                    <td>Maintenance</td>
+                    <td>48h</td>
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                </tr>
             </tbody>
         </table>
         </div>

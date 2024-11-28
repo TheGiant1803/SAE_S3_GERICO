@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 12:44:27
-  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
+/* Smarty version 4.2.1, created on 2024-11-28 12:42:23
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674865abf00a79_35510103',
+  'unifunc' => 'content_6748652f9b45a1_76961582',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a1915eb93e8518a712afac5fd94ea68d5166f4f0' => 
+    'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
-      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732797675,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
+      1 => 1732797639,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674865abf00a79_35510103 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6748652f9b45a1_76961582 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des salariés</title>
+    <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -43,8 +42,8 @@ function content_674865abf00a79_35510103 (Smarty_Internal_Template $_smarty_tpl)
         <ul class="navbar_text">
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
-            <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -57,45 +56,48 @@ function content_674865abf00a79_35510103 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
+    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
+    <ul class="historic_fiche_paie">
         <li>
             <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
+                <span class="info">Période 09/2024 - Matricule 0222</span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
+                <span class="info">Période 08/2024 - Matricule 0222</span>
+                <span class="date">27/08/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
+                <span class="info">Période 07/2024 - Matricule 0222</span>
+                <span class="date">27/07/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
+                <span class="info">Période 06/2024 - Matricule 0222</span>
+                <span class="date">27/06/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
+                <span class="info">Période 05/2024 - Matricule 0222</span>
+                <span class="date">27/05/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
+                <span class="info">Période 04/2024 - Matricule 0222</span>
+                <span class="date">27/04/2024</span>
+            </div>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">Période 03/2024 - Matricule 0222</span>
+                <span class="date">27/03/2024</span>
             </div>
         </li>
     </ul>

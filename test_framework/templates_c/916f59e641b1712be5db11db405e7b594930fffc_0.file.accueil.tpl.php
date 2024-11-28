@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-10-21 08:12:16
+/* Smarty version 4.2.1, created on 2024-11-28 12:42:21
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67160ce0177b71_61481515',
+  'unifunc' => 'content_6748652d7dee03_53022289',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '916f59e641b1712be5db11db405e7b594930fffc' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\accueil.tpl',
-      1 => 1729498172,
+      1 => 1732797476,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67160ce0177b71_61481515 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6748652d7dee03_53022289 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -35,12 +35,12 @@ function content_67160ce0177b71_61481515 (Smarty_Internal_Template $_smarty_tpl)
     
     <nav class="navbar">
         <div class="logo-container">
-            <a href="">
+            <a href="./">
                 <img class="logo" src="../assets/logo.png" alt="image de logo">
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext active"><a class="navtext" href="">Accueil</a></li>
+            <li class="navtext active"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
@@ -102,7 +102,7 @@ function content_67160ce0177b71_61481515 (Smarty_Internal_Template $_smarty_tpl)
     </div>
     
     
-    <footer class="foot_bar bar">
+    <footer class="foot_bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
             <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>

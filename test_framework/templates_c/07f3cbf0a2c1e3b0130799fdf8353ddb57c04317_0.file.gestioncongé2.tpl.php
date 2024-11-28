@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-11-28 12:42:31
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_67486537c0fa12_82036946',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
+    array (
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
+      1 => 1732797690,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_67486537c0fa12_82036946 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -75,7 +98,8 @@
             <button class="btn-classique" onclick="ajouterLigne()">Ajouter une ligne</button>
         </div>
     
-        <script>
+        <?php echo '<script'; ?>
+>
             // Fonction pour exporter le tableau en CSV
             function exporterCSV() {
                 let table = document.getElementById("table");
@@ -122,7 +146,8 @@
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
-        </script>
+        <?php echo '</script'; ?>
+>
     
     </main>
     
@@ -136,4 +161,5 @@
     </footer>
     
 </body>
-</html>
+</html><?php }
+}
