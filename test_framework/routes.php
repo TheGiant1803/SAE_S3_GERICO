@@ -81,7 +81,7 @@ Flight::route('POST /connexion.html', function(){
     }
     
     if (empty($post->password)) {
-        $errors['password'] = "Le mot de passe est requis";
+        $errors['pwd'] = "Le mot de passe est requis";
     }
 
     // Si des champs sont vides, réafficher le formulaire
@@ -97,7 +97,7 @@ Flight::route('POST /connexion.html', function(){
         $pdo = Flight::get('pdo');
         
         // Préparer la requête pour vérifier l'email
-        $stmt = $pdo->prepare("SELECT * FROM employe WHERE utilisateur.Email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email = ?");
         $stmt->execute([$post->email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -111,7 +111,7 @@ Flight::route('POST /connexion.html', function(){
             return;
         }
         
-        if (!password_verify($post->password, $user['Motdepasse'])) {
+        if (!password_verify($post->password, $user['pwd'])) {
             $errors['general'] = "Email ou mot de passe incorrect";
             Flight::render('./templates/connexion.tpl', [
                 'errors' => $errors,
@@ -121,15 +121,15 @@ Flight::route('POST /connexion.html', function(){
         }
         
         // Connexion réussie : ajouter des informations à la session
-        $_SESSION['user_name'] = $user['Nom'];
-        $_SESSION['user_email'] = $user['Email'];
+        $_SESSION['user_name'] = $user['nom'];
+        $_SESSION['user_email'] = $user['email'];
         
         // Rediriger vers la page d'accueil
-        Flight::redirect('./templates/accueil.tpl');
+        Flight::redirect('/');
         exit();
         
     } catch (PDOException $e) {
-        // Gestion des erreurs de base de données
+         //Gestion des erreurs de base de données
         $errors['general'] = "Erreur de connexion à la base de données";
         Flight::render('./templates/nouveau_compte.tpl', [
             'errors' => $errors,
@@ -138,7 +138,8 @@ Flight::route('POST /connexion.html', function(){
     }
 
 
-});
+}
+);
 
 
 
@@ -296,7 +297,7 @@ Flight::route('POST /nouveau_compte.html',function(){
             'matricule' => $post->matricule
         ])) {
             // Redirection vers la page de succès
-            Flight::redirect('./templates/connexion.tpl');
+            Flight::redirect('/connexion.html');
             exit();
         } else {
             // Erreur lors de l'insertion
@@ -307,12 +308,13 @@ Flight::route('POST /nouveau_compte.html',function(){
             ]);
         }     
     } catch (PDOException $e) {
-        // Erreur de base de données
+         //Erreur de base de données
         $errors['general'] = "Erreur de base de données : " . $e->getMessage(); // Ajout pour débogage (à retirer en production)
         Flight::render('./templates/nouveau_compte.tpl', [
             'errors' => $errors,
             'post' => $post
-        ]);
+        ]
+    );
     }
 });
 
