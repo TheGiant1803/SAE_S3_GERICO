@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 09:31:48
+/* Smarty version 4.2.1, created on 2024-11-28 13:09:33
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67483884b3f776_20713658',
+  'unifunc' => 'content_67486b8d4819d2_29833006',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'df3fa0c6ecbe5af2c1d283fca1721ede60ac41ca' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1732786306,
+      1 => 1732798812,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67483884b3f776_20713658 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67486b8d4819d2_29833006 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -31,7 +31,8 @@ function content_67483884b3f776_20713658 (Smarty_Internal_Template $_smarty_tpl)
     <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one">
 </head>
 <body>
-    <nav class="bar"></nav> <!-- C'st la ligne bleu foncé tout en haut-->
+    <nav>
+        <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
     
     <nav class="navbar">
         <div class="logo-container">
@@ -40,10 +41,12 @@ function content_67483884b3f776_20713658 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -53,6 +56,7 @@ function content_67483884b3f776_20713658 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="profile" src="../assets/profile.png" alt="image du profile">
             </a>
         </div>
+    </nav>
     </nav>
     <main>
         <h1 class="titre">Mes demandes de congés</h1>

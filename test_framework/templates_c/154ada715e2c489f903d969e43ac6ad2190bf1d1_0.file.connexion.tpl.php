@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-07 15:09:33
+/* Smarty version 4.2.1, created on 2024-11-28 13:05:20
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_672cd82d9fdf32_05869107',
+  'unifunc' => 'content_67486a90c97a14_57736210',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1730991685,
+      1 => 1732797927,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672cd82d9fdf32_05869107 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67486a90c97a14_57736210 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -44,7 +44,7 @@ function content_672cd82d9fdf32_05869107 (Smarty_Internal_Template $_smarty_tpl)
                     <a href="#">S'inscrire</a>
                 </p>
                 <form action="#" method="post">
-                    <label for="email">EMAIL</label>
+                    <label for="email">MATRICULE / EMAIL</label>
                     <input type="text" id="email" name="email" required="required">
 
                     <label for="password">MOT DE PASSE</label>

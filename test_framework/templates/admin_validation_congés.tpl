@@ -21,7 +21,9 @@
             <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
+            {if $user_admin==1}
+            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            {/if}
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
