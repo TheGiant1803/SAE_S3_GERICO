@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 12:42:22
+/* Smarty version 4.2.1, created on 2024-11-28 14:08:05
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\conges1.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6748652e2fc4c4_16467544',
+  'unifunc' => 'content_6748794587e557_75966150',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b0d2893acad73f607510a2467bf6d41dd6382c1c' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\conges1.tpl',
-      1 => 1732797561,
+      1 => 1732801341,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6748652e2fc4c4_16467544 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6748794587e557_75966150 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,7 +43,9 @@ function content_6748652e2fc4c4_16467544 (Smarty_Internal_Template $_smarty_tpl)
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">

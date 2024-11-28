@@ -275,6 +275,22 @@ function gestion_cong_date() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
+
+        $pdo = Flight::get('pdo');
+
+
+        //Récupération des données envoyées dans une variable
+        //$date = $_POST["date_cong"];
+        //$durée = $_POST["duration"];
+        //$motif = $_POST["motif"];
+
+        //Requête SQL INSERT
+        //$sql_conge = "INSERT IGNORE INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date','$durée','','$motif',1,1);";
+
+        //Préaparation de la requête d'insertion
+        //$i_conge = $pdo->prepare($sql_conge);
+
+        //$i_conge->execute();
     Flight::render('./templates/gestion_cong_date.tpl', $data);
 }
 Flight::route('/gestion_cong_date.html', 'gestion_cong_date');

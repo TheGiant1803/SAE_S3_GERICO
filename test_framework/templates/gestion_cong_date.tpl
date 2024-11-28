@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion date de congés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
   </head>
   <body>
 
     <nav>
-      <nav class="bar"></nav> <!-- C'st la ligne bleu foncé touten haut-->
+      <nav class="bar"></nav> <!-- C'est la ligne bleu foncé touten haut-->
   
   <nav class="navbar">
       <div class="logo-container">
@@ -21,7 +22,7 @@
           <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
           <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
           <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            {if $user_admin==1}
+          {if $user_admin==1}
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
             {/if}
       </ul>
@@ -37,46 +38,29 @@
   </nav>
 
 
-    <div id="container">
-      <div id="header">
-        <div id="monthDisplay"></div>
-        <div>
-          <button id="backButton" class="btn_calendar">Précédent</button>
-          <button id="nextButton" class="btn_calendar">Suivant</button>
-        </div>
-      </div>
-
-      <div id="weekdays">
-        <div>Lundi</div>
-        <div>Mardi</div>
-        <div>Mercredi</div>
-        <div>Jeudi</div>
-        <div>Vendredi</div>
-        <div>Samedi</div>
-        <div>Dimanche</div>
-      </div>
-
-      <div id="calendar"></div>
+    <div id="container-cong">
+        <h1>Demande de Congés :</h1>
+        <form method="post" action="conge.php">
+          <div class="form-group">
+            <label for="date_cong">Date :</label>
+            <input type="date" class="form-control" id="date_cong" name="date_cong" required>
+          </div>
+          <div class="form-group">
+            <label for="duration">Sélectionnez la durée :</label>
+              <select class="form-select" id="duration" name="duration" required>
+                <option selected disabled>-</option>
+                <option value="matin">Matin</option>
+                <option value="après_midi">Après-midi</option>
+                <option value="Journée">Journée complète</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="motif">Motif du congé</label>
+            <input type="text" class="form-control motif" id="motif" name="motif" required>
+          </div>
+          <input type="submit" value ="Envoyer la demande">
+        </form>
     </div>
-    <div id="newEventModal">
-      <h2>Demande Congés</h2>
-
-      <input id="eventTitleInput" placeholder="Motif" />
-
-      <button id="saveButton">Valider</button>
-      <button id="cancelButton">Annuler</button>
-    </div>
-
-    <div id="deleteEventModal">
-      <h2>Event</h2>
-
-      <p id="eventText">En attente :</p>
-
-      <button id="deleteButton">Delete</button>
-      <button id="closeButton">Close</button>
-    </div>
-
-    <div id="modalBackDrop"></div>
 
     <footer class="foot_bar bar">
       <div class="foot_titre">@2024 Gerico. Transport</div>
@@ -86,7 +70,6 @@
           <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
       </ul>
   </footer>
-
-    <script src="../script/calendar.js"></script>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
