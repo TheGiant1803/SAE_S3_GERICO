@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 14:09:43
+/* Smarty version 4.2.1, created on 2024-11-28 14:18:47
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674879a7eb1fd1_49613334',
+  'unifunc' => 'content_67487bc70029d8_11102018',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8568bac4e5a399223cff34fa787ecda1dbf930' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1732802629,
+      1 => 1732803515,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674879a7eb1fd1_49613334 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67487bc70029d8_11102018 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -63,7 +63,7 @@ function content_674879a7eb1fd1_49613334 (Smarty_Internal_Template $_smarty_tpl)
 
     <div id="container-cong">
         <h1>Demande de Congés :</h1>
-        <form method="post" action="conge.php">
+        <form action="#" method="post">
           <div class="form-group">
             <label for="date_cong">Date :</label>
             <input type="date" class="form-control" id="date_cong" name="date_cong" required>

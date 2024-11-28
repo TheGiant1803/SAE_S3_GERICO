@@ -278,19 +278,19 @@ function gestion_cong_date() {
 
         $pdo = Flight::get('pdo');
 
-
+        $post = Flight::request()->data;
         //Récupération des données envoyées dans une variable
-        //$date = $_POST["date_cong"];
-        //$durée = $_POST["duration"];
-        //$motif = $_POST["motif"];
+        $date = $post->date_cong;
+        $durée = $post->duration;
+        $motif = $post->motif;
 
         //Requête SQL INSERT
-        //$sql_conge = "INSERT IGNORE INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date','$durée','','$motif',1,1);";
+        $sql_conge = "INSERT IGNORE INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date','$durée','','$motif',1,1);";
 
         //Préaparation de la requête d'insertion
-        //$i_conge = $pdo->prepare($sql_conge);
+        $i_conge = $pdo->prepare($sql_conge);
 
-        //$i_conge->execute();
+        $i_conge->execute();
     Flight::render('./templates/gestion_cong_date.tpl', $data);
 }
 Flight::route('/gestion_cong_date.html', 'gestion_cong_date');

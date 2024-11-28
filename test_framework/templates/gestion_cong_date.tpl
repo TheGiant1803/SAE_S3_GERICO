@@ -40,7 +40,7 @@
 
     <div id="container-cong">
         <h1>Demande de Congés :</h1>
-        <form method="post" action="conge.php">
+        <form action="#" method="post">
           <div class="form-group">
             <label for="date_cong">Date :</label>
             <input type="date" class="form-control" id="date_cong" name="date_cong" required>
