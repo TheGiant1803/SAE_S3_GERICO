@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-07 10:12:49
+/* Smarty version 4.2.1, created on 2024-11-28 10:07:56
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_672c92a1c4b864_92661251',
+  'unifunc' => 'content_674840fc8737b9_14196409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5aedfb7e23722af1d2aff3ba23cfa570683ef24a' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\accueil.tpl',
-      1 => 1730970254,
+      1 => 1732788473,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_672c92a1c4b864_92661251 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674840fc8737b9_14196409 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,7 +43,9 @@ function content_672c92a1c4b864_92661251 (Smarty_Internal_Template $_smarty_tpl)
             <li class="navtext active"><a class="navtext" href="">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -59,7 +61,15 @@ function content_672c92a1c4b864_92661251 (Smarty_Internal_Template $_smarty_tpl)
     
     <div class="accueil">
         <div class="block_news">
-            <h1 class="titre_news">Actualités :</h1>
+            <h1 class="titre_news">
+        <?php if ($_smarty_tpl->tpl_vars['user_name']->value) {?>
+        <p>Bonjour <?php echo $_smarty_tpl->tpl_vars['user_name']->value;?>
+ <?php echo $_smarty_tpl->tpl_vars['user_prenom']->value;?>
+ !</p>
+        <?php }?>
+
+
+            Actualités :</h1>
             <ul>
                 <li class="text_news">Gérico célèbre ses 25 ans d'excellence dans le transport routier, <span class="blue-text">30 décembre 2024</span></li>
                 <li class="text_news">Mise en place d'un nouveau programme de formation pour les employés, <span class="blue-text">12 octobre 2024</span></li>

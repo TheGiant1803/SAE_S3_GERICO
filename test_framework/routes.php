@@ -29,8 +29,24 @@ function demo(){
 }
 
 function accueil() {
-    Flight::render('./templates/accueil.tpl', []);
-}
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+        Flight::render('./templates/accueil.tpl', $data);
+};
+
+
+
 Flight::route('/', 'accueil');
 
 function admin_validation_congés() {
@@ -123,6 +139,9 @@ Flight::route('POST /connexion.html', function(){
         // Connexion réussie : ajouter des informations à la session
         $_SESSION['user_name'] = $user['nom'];
         $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_id']=$user['id_emp'];
+        $_SESSION['user_prenom']=$user['prenom'];
+        $_SESSION['user_admin']=$user['admin'];
         
         // Rediriger vers la page d'accueil
         Flight::redirect('/');
