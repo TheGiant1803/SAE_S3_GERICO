@@ -186,8 +186,8 @@ Flight::route('POST /connexion.html', function(){
         $pdo = Flight::get('pdo');
         
         // Préparer la requête pour vérifier l'email et le matricule
-        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email=? or employe.id_emp= ?");
-        $stmt->execute([$post->email,$post->id_emp]);
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email=? or employe.id_emp=?");
+        $stmt->execute([$post->email,$post->email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
         // Vérifier si l'utilisateur existe
@@ -253,6 +253,14 @@ function Fiche_De_Paie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
+
+        $pdo = Flight::get('pdo');
+        $stmt = $pdo->prepare("SELECT DATE_FORMAT(date_fp, '%e/%c/%Y') as date, id_emp, id_fp, DATE_FORMAT(date_fp, '%c/%y') as periode
+                                         FROM fiche_paie WHERE id_emp = :matricule");
+        $stmt->execute([':matricule' => $_SESSION['user_id']]);
+        $fiche_paie = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data['fiche_paie'] = $fiche_paie;
+
     Flight::render('./templates/Fiche_De_Paie.tpl', $data);
 }
 Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
