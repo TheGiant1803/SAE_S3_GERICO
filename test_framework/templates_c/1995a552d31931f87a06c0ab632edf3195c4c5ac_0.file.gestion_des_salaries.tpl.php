@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 08:20:43
+/* Smarty version 4.2.1, created on 2024-11-29 09:16:51
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6749795b399f56_75932505',
+  'unifunc' => 'content_67498683afe152_74013369',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732868392,
+      1 => 1732871809,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6749795b399f56_75932505 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67498683afe152_74013369 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,11 +59,11 @@ function content_6749795b399f56_75932505 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
+        <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+        <ul class="ajout_fiche_paie">
         <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
+            Gestion des salariés
+        </div>
         <li>
             <div class="list-item">
                 <span class="info">CARPENTIER Bruno - Matricule 006</span>

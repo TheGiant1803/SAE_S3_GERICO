@@ -36,11 +36,11 @@
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
+        <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+        <ul class="ajout_fiche_paie">
         <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
+            Gestion des salariés
+        </div>
         <li>
             <div class="list-item">
                 <span class="info">CARPENTIER Bruno - Matricule 006</span>
