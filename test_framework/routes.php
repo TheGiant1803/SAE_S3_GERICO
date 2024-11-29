@@ -185,9 +185,9 @@ Flight::route('POST /connexion.html', function(){
         // Connexion à la base de données
         $pdo = Flight::get('pdo');
         
-        // Préparer la requête pour vérifier l'email
-        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email or employe.id_emp= ?");
-        $stmt->execute([$post->email]);
+        // Préparer la requête pour vérifier l'email et le matricule
+        $stmt = $pdo->prepare("SELECT * FROM employe WHERE employe.email=? or employe.id_emp= ?");
+        $stmt->execute([$post->email,$post->id_emp]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         
         // Vérifier si l'utilisateur existe
@@ -223,7 +223,7 @@ Flight::route('POST /connexion.html', function(){
     } catch (PDOException $e) {
          //Gestion des erreurs de base de données
         $errors['general'] = "Erreur de connexion à la base de données";
-        Flight::render('./templates/nouveau_compte.tpl', [
+        Flight::render('./templates/connexion.tpl', [
             'errors' => $errors,
             'post' => $post
         ]);
