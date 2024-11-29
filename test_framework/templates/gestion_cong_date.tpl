@@ -30,9 +30,9 @@
           <a class="navbar-icons" href="#notifications">
               <img class="notif" src="../assets/notif.png" alt="image de notifications">
           </a>
-          <a class="navbar-icons" href="#profil">
-              <img class="profile" src="../assets/profile.png" alt="image du profile">
-          </a>
+            <a class="navbar-icons" href="#profil">
+                <a href="./logout"><p>Se déconnecter</p></a>
+            </a>
       </div>
   </nav>
   </nav>
