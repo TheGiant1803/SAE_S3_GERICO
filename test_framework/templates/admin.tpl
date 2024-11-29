@@ -21,7 +21,7 @@
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             {if $user_admin==1}
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             {/if}
         </ul>
         <div class="navbar-icons">
@@ -46,6 +46,11 @@
                 <button>Validation des congés</button>
             </div>
         </div>
+        </a>
+        <a href="Ajout_fiche_paie.html">
+            <div class="box">
+                <button>Ajouter des fiches de paie</button>
+            </div>
         </a>
     </main>
     

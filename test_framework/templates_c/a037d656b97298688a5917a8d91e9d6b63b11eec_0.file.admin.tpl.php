@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 08:20:42
+/* Smarty version 4.2.1, created on 2024-11-29 09:24:55
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6749795a9729d4_10502828',
+  'unifunc' => 'content_674988675bf969_25501248',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a037d656b97298688a5917a8d91e9d6b63b11eec' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1732868345,
+      1 => 1732872289,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6749795a9729d4_10502828 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,7 +44,7 @@ function content_6749795a9729d4_10502828 (Smarty_Internal_Template $_smarty_tpl)
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             <?php }?>
         </ul>
         <div class="navbar-icons">
@@ -69,6 +69,11 @@ function content_6749795a9729d4_10502828 (Smarty_Internal_Template $_smarty_tpl)
                 <button>Validation des congés</button>
             </div>
         </div>
+        </a>
+        <a href="Ajout_fiche_paie.html">
+            <div class="box">
+                <button>Ajouter des fiches de paie</button>
+            </div>
         </a>
     </main>
     

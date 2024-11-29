@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:22:16
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
+/* Smarty version 4.2.1, created on 2024-11-29 09:25:42
+  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\Ajout_fiche_paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674987c81dbf49_06430445',
+  'unifunc' => 'content_67498896f30611_28859015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
+    '81f6f5aeb76b414fb1fea6b1f2d60fdb94a388ad' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732872121,
+      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\Ajout_fiche_paie.tpl',
+      1 => 1732872341,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674987c81dbf49_06430445 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67498896f30611_28859015 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des salariés</title>
+    <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -58,50 +58,50 @@ function content_674987c81dbf49_06430445 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </nav>
     </nav>
-
-        <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
-        <ul class="ajout_fiche_paie">
+    
+    <div>
+    <ul class="ajout_fiche_paie">
         <div class="gestion-text">
-            Gestion des salariés
-        </div>
+            Gestion des payes <i class="fas fa-plus"></i>
+        </div>             
         <li>
             <div class="list-item">
                 <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
                 <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
                 <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
                 <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
                 <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
         <li>
             <div class="list-item">
                 <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
+                <span class="date">27/09/2024</span>
             </div>
         </li>
     </ul>
-    
+</div>
     
     
     <footer class="foot_bar bar">
