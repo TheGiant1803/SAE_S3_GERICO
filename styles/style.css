@@ -351,6 +351,7 @@ footer p {
     color: #ffffff;
     text-decoration: none; 
 }
+
 /*Pour la page modification d'un salarié*/
 .saisie{
     background-color: #ffffff;
@@ -704,6 +705,8 @@ input[type="number"] {
     z-index: -1;
 }
 
+
+
 .gestion-text{
     font-weight: bold;
     font-family: sans-serif;
@@ -711,7 +714,6 @@ input[type="number"] {
     background-color: #f0f2f5;
     color: #517aac;
     margin-bottom: 20px;
-    position: relative;
     padding: 7px;
 }
 

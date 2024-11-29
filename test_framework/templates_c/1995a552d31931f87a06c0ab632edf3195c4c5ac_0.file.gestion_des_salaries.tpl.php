@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:22:16
+/* Smarty version 4.2.1, created on 2024-11-29 09:49:06
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674987c81dbf49_06430445',
+  'unifunc' => 'content_67498e12cf9a23_26800028',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732872121,
+      1 => 1732873745,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674987c81dbf49_06430445 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67498e12cf9a23_26800028 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,10 +59,11 @@ function content_674987c81dbf49_06430445 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
 
-        <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+
         <ul class="ajout_fiche_paie">
         <div class="gestion-text">
             Gestion des salariés
+            <li><a href="./ajoutSalarie.html"><p>Ajouter</p></a></li>
         </div>
         <li>
             <div class="list-item">
@@ -101,6 +102,7 @@ function content_674987c81dbf49_06430445 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </li>
     </ul>
+
     
     
     

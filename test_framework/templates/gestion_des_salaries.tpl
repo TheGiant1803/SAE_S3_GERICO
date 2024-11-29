@@ -36,10 +36,11 @@
     </nav>
     </nav>
 
-        <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+
         <ul class="ajout_fiche_paie">
         <div class="gestion-text">
             Gestion des salariés
+            <li><a href="./ajoutSalarie.html"><p>Ajouter</p></a></li>
         </div>
         <li>
             <div class="list-item">
@@ -78,6 +79,7 @@
             </div>
         </li>
     </ul>
+
     
     
     
