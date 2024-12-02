@@ -42,7 +42,7 @@
             <label for="nb-elements">Afficher </label>
             <input type="number" id="nb-elements" value="5" min="1" />
             <label for="nb-elements">éléments</label>
-            <button class="btn-classique" onclick="afficherElements()">Afficher</button>
+            <button class="btn-classique">Afficher</button>
         </div>
         
         <div class="table-container">
@@ -58,15 +58,16 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de ligne par défaut -->
+                {foreach $demande_cp as $demande} 
                 <tr>
-                    <td>1</td>
-                    <td>2024-01-01</td>
+                    <td>{$demande.id_dcp}</td>
+                    <td>{$demande.date_dcp}</td>
                     <td>2024-01-03</td>
-                    <td>Maintenance</td>
+                    <td>{$demande.motif}</td>
                     <td>48h</td>
                     <td>Terminé</td>
                 </tr>
+                {/foreach}
             </tbody>
         </table>
         </div>
