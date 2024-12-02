@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 08:20:39
+/* Smarty version 4.2.1, created on 2024-12-02 08:36:46
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67497957f3ea80_06438695',
+  'unifunc' => 'content_674d719e875508_40263526',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '000076ac02cdb894df22a5581dcdcfc1d3ba7558' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1732868377,
+      1 => 1733128436,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67497957f3ea80_06438695 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674d719e875508_40263526 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -60,48 +60,24 @@ function content_67497957f3ea80_06438695 (Smarty_Internal_Template $_smarty_tpl)
 
     <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
     <ul class="historic_fiche_paie">
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['fiche_paie']->value, 'fiche');
+$_smarty_tpl->tpl_vars['fiche']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['fiche']->value) {
+$_smarty_tpl->tpl_vars['fiche']->do_else = false;
+?> 
         <li>
             <div class="list-item">
-                <span class="info">Période 09/2024 - Matricule 0222</span>
-                <span class="date">27/09/2024</span>
+                <span class="info">Période <?php echo $_smarty_tpl->tpl_vars['fiche']->value['periode'];?>
+ - N° <?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
+</span>
+                <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
+</span>
             </div>
         </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 08/2024 - Matricule 0222</span>
-                <span class="date">27/08/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 07/2024 - Matricule 0222</span>
-                <span class="date">27/07/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 06/2024 - Matricule 0222</span>
-                <span class="date">27/06/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 05/2024 - Matricule 0222</span>
-                <span class="date">27/05/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 04/2024 - Matricule 0222</span>
-                <span class="date">27/04/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 03/2024 - Matricule 0222</span>
-                <span class="date">27/03/2024</span>
-            </div>
-        </li>
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
     
     

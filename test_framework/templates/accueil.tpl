@@ -39,11 +39,11 @@
     <div class="accueil">
         <div class="block_news">
             <h1 class="titre_news">
-        {if $user_name}
-        <p>Bonjour {$user_name} {$user_prenom} !</p>
-        {/if}
-
-
+            <div>{if $user_name}
+            Bonjour {$user_name} {$user_prenom} !
+            {/if}
+            </div>
+            <br>
             Actualités :</h1>
             <ul>
                 <li class="text_news">Gérico célèbre ses 25 ans d'excellence dans le transport routier, <span class="blue-text">30 décembre 2024</span></li>
