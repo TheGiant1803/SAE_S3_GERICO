@@ -346,6 +346,14 @@ function gestioncongé2() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
+
+        $pdo = Flight::get('pdo');
+        $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
+        $stmt->execute([':matricule' => $_SESSION['user_id']]);
+        $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $data['demande_cp'] = $demande_cp;
+        
+
     Flight::render('./templates/gestioncongé2.tpl', $data);
 }
 Flight::route('/gestioncongé2.html', 'gestioncongé2');
