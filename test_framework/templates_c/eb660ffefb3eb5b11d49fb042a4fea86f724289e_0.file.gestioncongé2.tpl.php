@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-12-02 08:51:40
+  from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_674d751cd82371_39387176',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'eb660ffefb3eb5b11d49fb042a4fea86f724289e' => 
+    array (
+      0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
+      1 => 1733129492,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_674d751cd82371_39387176 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -21,9 +44,9 @@
             <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            {if $user_admin==1}
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
-            {/if}
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -58,16 +81,28 @@
                 </tr>
             </thead>
             <tbody>
-                {foreach $demande_cp as $demande} 
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['demande_cp']->value, 'demande');
+$_smarty_tpl->tpl_vars['demande']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['demande']->value) {
+$_smarty_tpl->tpl_vars['demande']->do_else = false;
+?> 
                 <tr>
-                    <td>{$demande.id_dcp}</td>
-                    <td>{$demande.date_dcp}</td>
-                    <td>{$demande.heure_deb} H</td>  
-                    <td>{$demande.motif}</td>
-                    <td>{$demande.duree} Heure(s)</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['id_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['heure_deb'];?>
+ H</td>  
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['duree'];?>
+ Heure(s)</td>
                     <td>Terminé</td>
                 </tr>
-                {/foreach}
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
         </div>
@@ -78,7 +113,8 @@
             <button class="btn-classique" onclick="ajouterLigne()">Ajouter une ligne</button>
         </div>
     
-        <script>
+        <?php echo '<script'; ?>
+>
             // Fonction pour exporter le tableau en CSV
             function exporterCSV() {
                 let table = document.getElementById("table");
@@ -125,7 +161,8 @@
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
-        </script>
+        <?php echo '</script'; ?>
+>
     
     </main>
     
@@ -139,4 +176,5 @@
     </footer>
     
 </body>
-</html>
+</html><?php }
+}
