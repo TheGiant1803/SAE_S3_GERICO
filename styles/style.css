@@ -693,25 +693,25 @@ input[type="number"] {
 .ajout_fiche_paie {
     font-family: sans-serif;
     background-color: white;
-    position: absolute;
     color: #000;
     top: 30%;
     left: 50%;
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 20px 250px 20px 250px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style-type: none; /* Supprime les puces de la liste */
     z-index: -1;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 
 
 .gestion-text{
-    font-weight: bold;
-    font-family: sans-serif;
+   
+    font-family: 'Chau PhilomeneOne';
     font-size: 27px;
     background-color: #f0f2f5;
+    background-size: 100vw;
     color: #517aac;
     margin-bottom: 20px;
     padding: 7px;
@@ -729,8 +729,14 @@ input[type="number"] {
     right: 10px; /* Positionne l'icône à droite */
     top: 50%;
     transform: translateY(-50%); /* Centre verticalement l'icône */
+    
 }
-
+.gestion-fiches{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 /*------------------------------------------------------------MODIFICATION CALENDAR-------------------------------------*/
 
 .container-cong{
