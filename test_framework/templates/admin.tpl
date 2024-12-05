@@ -36,22 +36,22 @@
     </nav>
     <main>
         <div class="container_b">
-        <a href="gestion_des_salaries.html">
-            <div class="box">
-                <button>Gestion des salariés</button>
-            </div>
-        </a>
-        <a href="admin_validation_congés.html">
-            <div class="box">
-                <button>Validation des congés</button>
-            </div>
+            <a href="gestion_des_salaries.html">
+                <div class="box">
+                    <button>Gestion des salariés</button>
+                </div>
+            </a>
+            <a href="admin_validation_congés.html">
+                <div class="box">
+                    <button>Validation des congés</button>
+                </div>
+            </a>
+            <a href="Ajout_fiche_paie.html">
+                <div class="box">
+                    <button>Ajouter des fiches de paie</button>
+                </div>
+            </a>
         </div>
-        </a>
-        <a href="Ajout_fiche_paie.html">
-            <div class="box">
-                <button>Ajouter des fiches de paie</button>
-            </div>
-        </a>
     </main>
     
     <footer class="foot_bar bar">

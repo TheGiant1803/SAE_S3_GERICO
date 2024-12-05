@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:59:20
+/* Smarty version 4.2.1, created on 2024-12-05 09:59:07
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674990784daed2_21217717',
+  'unifunc' => 'content_6751796bd29308_60883713',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '29e7123d045c484ea18a4baaa994e704761a6bd0' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1732874169,
+      1 => 1733392746,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674990784daed2_21217717 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751796bd29308_60883713 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,22 +59,22 @@ function content_674990784daed2_21217717 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     <main>
         <div class="container_b">
-        <a href="gestion_des_salaries.html">
-            <div class="box">
-                <button>Gestion des salariés</button>
-            </div>
-        </a>
-        <a href="admin_validation_congés.html">
-            <div class="box">
-                <button>Validation des congés</button>
-            </div>
+            <a href="gestion_des_salaries.html">
+                <div class="box">
+                    <button>Gestion des salariés</button>
+                </div>
+            </a>
+            <a href="admin_validation_congés.html">
+                <div class="box">
+                    <button>Validation des congés</button>
+                </div>
+            </a>
+            <a href="Ajout_fiche_paie.html">
+                <div class="box">
+                    <button>Ajouter des fiches de paie</button>
+                </div>
+            </a>
         </div>
-        </a>
-        <a href="Ajout_fiche_paie.html">
-            <div class="box">
-                <button>Ajouter des fiches de paie</button>
-            </div>
-        </a>
     </main>
     
     <footer class="foot_bar bar">

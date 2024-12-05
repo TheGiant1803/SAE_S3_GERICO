@@ -42,7 +42,6 @@ h1 {
 }
 
 p {
-    margin-bottom: 20px;
     font-size: 14px;
     color: #666;
 }
@@ -207,7 +206,18 @@ footer p {
 }
 
 /* ----------------- ACCUEIL --------------------------*/
-
+.se-deconnecter{
+    font-family: 'Chau PhilomeneOne', sans-serif;
+    font-size: 15px;
+}
+.bonjour-user{
+    font-family: 'Chau PhilomeneOne', sans-serif;
+    font-size: 20px;
+    color: #3c4652;
+    margin-top: 20px;
+    text-align: center;
+    
+}
 .block_news{
     background-color: #ffffff;
     justify-content: center;
@@ -218,9 +228,9 @@ footer p {
     font-family: 'Chau PhilomeneOne', sans-serif;
     font-size: 1.8em;
     color: #3c4652;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 10px;
-    text-align: center; 
+    text-align: center;
 }
 
 .text_news {
@@ -297,6 +307,7 @@ footer p {
     margin-top: 2em;
     display:flex;
     justify-content: space-around;
+    margin-bottom: 50px;
  }
 
  .description_image{
@@ -535,6 +546,7 @@ input[type="submit"]:hover {
     color: #517aac;
     font-size: 36px;
     margin-bottom: 50px;
+    margin-left: 50px;
     margin-top: 1.5em;
 
 }
@@ -608,7 +620,7 @@ input[type="number"] {
 }
 
 .btn-refuser {
-    background-color: #dc3545; /* Rouge */
+    background-color: #b93114; /* Rouge */
     color: white;
     border: none;
     padding: 8px 12px;
@@ -653,7 +665,6 @@ input[type="number"] {
     padding: 10px 75px;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: -1;
 }
 
 .historic_fiche_paie {
@@ -664,7 +675,7 @@ input[type="number"] {
     top: 30%;
     left: 50%;
     transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 20px 250px 20px 250px;
+    padding: 20px 50px 20px 50px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style-type: none; /* Supprime les puces de la liste */
@@ -698,8 +709,7 @@ input[type="number"] {
     left: 50%;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    list-style-type: none; /* Supprime les puces de la liste */
-    z-index: -1;
+    list-style-type: none; /* Supprime les puces de la liste */ 
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -710,7 +720,6 @@ input[type="number"] {
    
     font-family: 'Chau PhilomeneOne';
     font-size: 27px;
-    background-color: #f0f2f5;
     background-size: 100vw;
     color: #517aac;
     margin-bottom: 20px;
@@ -964,7 +973,6 @@ input[type="text"]{
         width: auto;
         margin-left: 5px;
         margin-right: 5px;
-
     }
     .historic_fiche_paie{
         display:block;

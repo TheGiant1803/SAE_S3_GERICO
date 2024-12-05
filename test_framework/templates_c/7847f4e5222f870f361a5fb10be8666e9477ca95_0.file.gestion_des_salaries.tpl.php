@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 10:13:15
+/* Smarty version 4.2.1, created on 2024-12-05 10:04:37
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674993bb0099f4_45180998',
+  'unifunc' => 'content_67517ab54be591_88281666',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7847f4e5222f870f361a5fb10be8666e9477ca95' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732875193,
+      1 => 1733393066,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674993bb0099f4_45180998 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67517ab54be591_88281666 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -61,45 +61,47 @@ function content_674993bb0099f4_45180998 (Smarty_Internal_Template $_smarty_tpl)
 
 
         <div class="gestion-fiches">
-            <div class="gestion-text">
-                Gestion des salariés
-                <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
-            </div>
+            
             <ul class="ajout_fiche_paie">
+                <div class="gestion-text">
+                    Gestion des salariés
+                    <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+                </div>
                 <li>
                     <div class="list-item">
                         <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                        <span class="date"> MODIFIER | SUPPRIMER </span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
                     </div>
                 </li>
                 <li>
                     <div class="list-item">
                         <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                        <span class="date"> MODIFIER | SUPPRIMER</span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
                     </div>
                 </li>
                 <li>
                     <div class="list-item">
                         <span class="info">MARTIN Dominique - Matricule 009</span>
-                        <span class="date"> MODIFIER | SUPPRIMER </span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
                     </div>
                 </li>
                 <li>
                     <div class="list-item">
                         <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                        <span class="date">MODIFIER | SUPPRIMER </span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
                     </div>
                 </li>
                 <li>
                     <div class="list-item">
                         <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                        <span class="date">MODIFIER | SUPPRIMER</span>
+                        <span class="date"><a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
                     </div>
                 </li>
                 <li>
                     <div class="list-item">
                         <span class="info">GARNIER Alexandra - Matricule 013</span>
-                        <span class="date">MODIFIER | SUPPRIMER</span>
+                        <span class="date">
+                        <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
                     </div>
                 </li>
             </ul>

@@ -36,10 +36,10 @@
     </nav>
     </nav>
     
-    <div>
+    <div  class="gestion-fiches">
     <ul class="ajout_fiche_paie">
         <div class="gestion-text">
-            Gestion des payes <i class="fas fa-plus"></i>
+            Gestion des payes
         </div>             
         <li>
             <div class="list-item">
