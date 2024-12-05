@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-02 08:31:55
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 10:49:22
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674d707b8f2c54_22639682',
+  'unifunc' => 'content_675185324b38a4_25446169',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'df3fa0c6ecbe5af2c1d283fca1721ede60ac41ca' => 
+    '5f824f6dcbd5c27bc1c5f5f390d56fef4e215b9d' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733128262,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
+      1 => 1733395727,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674d707b8f2c54_22639682 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675185324b38a4_25446169 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -53,7 +53,7 @@ function content_674d707b8f2c54_22639682 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>

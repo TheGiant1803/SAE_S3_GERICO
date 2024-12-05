@@ -29,7 +29,7 @@
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
@@ -38,13 +38,14 @@
     
     <div class="accueil">
         <div class="block_news">
-            <h1 class="titre_news">
-        {if $user_name}
-        <p>Bonjour {$user_name} {$user_prenom} !</p>
-        {/if}
+            
+            <div class="bonjour-user">{if $user_name}
+            Bonjour {$user_name} {$user_prenom} !
+            {/if}
+            </div>
+            <br>
 
-
-            Actualités :</h1>
+            <h1 class="titre_news">Actualités :</h1>
             <ul>
                 <li class="text_news">Gérico célèbre ses 25 ans d'excellence dans le transport routier, <span class="blue-text">30 décembre 2024</span></li>
                 <li class="text_news">Mise en place d'un nouveau programme de formation pour les employés, <span class="blue-text">12 octobre 2024</span></li>

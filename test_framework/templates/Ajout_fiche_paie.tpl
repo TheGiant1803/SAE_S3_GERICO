@@ -18,11 +18,11 @@
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext active"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             {if $user_admin==1}
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             {/if}
         </ul>
         <div class="navbar-icons">
@@ -30,16 +30,16 @@
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
     
-    <div>
+    <div  class="gestion-fiches">
     <ul class="ajout_fiche_paie">
         <div class="gestion-text">
-            Gestion des payes <i class="fas fa-plus"></i>
+            Gestion des payes
         </div>             
         <li>
             <div class="list-item">

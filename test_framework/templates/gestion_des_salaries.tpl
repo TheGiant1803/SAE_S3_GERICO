@@ -22,7 +22,7 @@
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             {if $user_admin==1}
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             {/if}
         </ul>
         <div class="navbar-icons">
@@ -30,54 +30,62 @@
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
-        <li>
-            <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-    </ul>
+
+        <div class="gestion-fiches">
+            
+            <ul class="ajout_fiche_paie">
+                <div class="gestion-text">
+                    Gestion des salariés
+                    <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+                </div>
+                <li>
+                    <div class="list-item">
+                        <span class="info">CARPENTIER Bruno - Matricule 006</span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="list-item">
+                        <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="list-item">
+                        <span class="info">MARTIN Dominique - Matricule 009</span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="list-item">
+                        <span class="info">DUPONT STEPHANE - Matricule 010</span>
+                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                    </div>
+                </li>
+                <li>
+                    <div class="list-item">
+                        <span class="info">LEGOIX Jérémy - Matricule 011</span>
+                        <span class="date"><a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="list-item">
+                        <span class="info">GARNIER Alexandra - Matricule 013</span>
+                        <span class="date">
+                        <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        
+
     
     
     

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-02 08:36:46
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 10:45:09
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674d719e875508_40263526',
+  'unifunc' => 'content_67518435dbd922_89601978',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '000076ac02cdb894df22a5581dcdcfc1d3ba7558' => 
+    '29e7123d045c484ea18a4baaa994e704761a6bd0' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1733128436,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
+      1 => 1733395484,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674d719e875508_40263526 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67518435dbd922_89601978 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des fiches de paie</title>
+    <title>Administration</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -40,11 +40,11 @@ function content_674d719e875508_40263526 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
-            <li class="navtext active"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             <?php }?>
         </ul>
         <div class="navbar-icons">
@@ -52,35 +52,30 @@ function content_674d719e875508_40263526 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
-
-    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
-    <ul class="historic_fiche_paie">
-    <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['fiche_paie']->value, 'fiche');
-$_smarty_tpl->tpl_vars['fiche']->do_else = true;
-if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['fiche']->value) {
-$_smarty_tpl->tpl_vars['fiche']->do_else = false;
-?> 
-        <li>
-            <div class="list-item">
-                <span class="info">Période <?php echo $_smarty_tpl->tpl_vars['fiche']->value['periode'];?>
- - N° <?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
-</span>
-                <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
-</span>
-            </div>
-        </li>
-        <?php
-}
-$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-    </ul>
-    
-    
+    <main>
+        <div class="container_b">
+            <a href="gestion_des_salaries.html">
+                <div class="box">
+                    <button>Gestion des salariés</button>
+                </div>
+            </a>
+            <a href="admin_validation_congés.html">
+                <div class="box">
+                    <button>Validation des congés</button>
+                </div>
+            </a>
+            <a href="Ajout_fiche_paie.html">
+                <div class="box">
+                    <button>Ajouter des fiches de paie</button>
+                </div>
+            </a>
+        </div>
+    </main>
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
@@ -92,7 +87,5 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </footer>
     
 </body>
-</html>
-
-<?php }
+</html><?php }
 }

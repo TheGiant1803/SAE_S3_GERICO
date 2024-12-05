@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-02 08:28:54
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 10:49:47
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674d6fc63e8184_13985391',
+  'unifunc' => 'content_6751854b7e75f1_18640015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
+    '7847f4e5222f870f361a5fb10be8666e9477ca95' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1733128130,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
+      1 => 1733395718,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674d6fc63e8184_13985391 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751854b7e75f1_18640015 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -53,7 +53,7 @@ function content_674d6fc63e8184_13985391 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
@@ -61,11 +61,12 @@ function content_674d6fc63e8184_13985391 (Smarty_Internal_Template $_smarty_tpl)
 
 
         <div class="gestion-fiches">
-            <div class="gestion-text">
-                Gestion des salariés
-                <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
-            </div>
+            
             <ul class="ajout_fiche_paie">
+                <div class="gestion-text">
+                    Gestion des salariés
+                    <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+                </div>
                 <li>
                     <div class="list-item">
                         <span class="info">CARPENTIER Bruno - Matricule 006</span>
@@ -99,7 +100,8 @@ function content_674d6fc63e8184_13985391 (Smarty_Internal_Template $_smarty_tpl)
                 <li>
                     <div class="list-item">
                         <span class="info">GARNIER Alexandra - Matricule 013</span>
-                        <span class="date"><a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
+                        <span class="date">
+                        <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
                     </div>
                 </li>
             </ul>

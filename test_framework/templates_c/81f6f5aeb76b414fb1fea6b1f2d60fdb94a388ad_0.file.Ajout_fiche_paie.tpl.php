@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:24:55
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
+/* Smarty version 4.2.1, created on 2024-11-29 09:25:42
+  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\Ajout_fiche_paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674988675bf969_25501248',
+  'unifunc' => 'content_67498896f30611_28859015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'a037d656b97298688a5917a8d91e9d6b63b11eec' => 
+    '81f6f5aeb76b414fb1fea6b1f2d60fdb94a388ad' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1732872289,
+      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\Ajout_fiche_paie.tpl',
+      1 => 1732872341,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,15 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67498896f30611_28859015 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration</title>
+    <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -40,7 +41,7 @@ function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
@@ -57,25 +58,51 @@ function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </nav>
     </nav>
-    <main>
-        <div class="container_b">
-        <a href="gestion_des_salaries.html">
-            <div class="box">
-                <button>Gestion des salariés</button>
+    
+    <div>
+    <ul class="ajout_fiche_paie">
+        <div class="gestion-text">
+            Gestion des payes <i class="fas fa-plus"></i>
+        </div>             
+        <li>
+            <div class="list-item">
+                <span class="info">CARPENTIER Bruno - Matricule 006</span>
+                <span class="date">27/09/2024</span>
             </div>
-        </a>
-        <a href="admin_validation_congés.html">
-            <div class="box">
-                <button>Validation des congés</button>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
+                <span class="date">27/09/2024</span>
             </div>
-        </div>
-        </a>
-        <a href="Ajout_fiche_paie.html">
-            <div class="box">
-                <button>Ajouter des fiches de paie</button>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">MARTIN Dominique - Matricule 009</span>
+                <span class="date">27/09/2024</span>
             </div>
-        </a>
-    </main>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">DUPONT STEPHANE - Matricule 010</span>
+                <span class="date">27/09/2024</span>
+            </div>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">LEGOIX Jérémy - Matricule 011</span>
+                <span class="date">27/09/2024</span>
+            </div>
+        </li>
+        <li>
+            <div class="list-item">
+                <span class="info">GARNIER Alexandra - Matricule 013</span>
+                <span class="date">27/09/2024</span>
+            </div>
+        </li>
+    </ul>
+</div>
+    
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
@@ -87,5 +114,7 @@ function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl)
     </footer>
     
 </body>
-</html><?php }
+</html>
+
+<?php }
 }
