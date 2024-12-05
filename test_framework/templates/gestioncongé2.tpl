@@ -63,7 +63,7 @@
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
                     <td>
-                        {$demande.duree}
+                        {$demande.date_fin}
                     </td>  
                     <td>{$demande.motif}</td>
                     <td>{$demande.duree / 2} jour(s)</td>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 09:24:43
+/* Smarty version 4.2.1, created on 2024-12-05 12:46:17
   from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6751715bb83e46_21992643',
+  'unifunc' => 'content_6751a099133198_73082453',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb660ffefb3eb5b11d49fb042a4fea86f724289e' => 
     array (
       0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733390680,
+      1 => 1733402719,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6751715bb83e46_21992643 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751a099133198_73082453 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -93,7 +93,7 @@ $_smarty_tpl->tpl_vars['demande']->do_else = false;
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
 </td>
                     <td>
-                        <?php echo call_user_func_array( $_smarty_tpl->smarty->registered_plugins[Smarty::PLUGIN_FUNCTION]['ajouter_jours_ouvrables'][0], array( array('date'=>$_smarty_tpl->tpl_vars['demande']->value['date_dcp'],'duree'=>$_smarty_tpl->tpl_vars['demande']->value['duree']),$_smarty_tpl ) );?>
+                        <?php echo $_smarty_tpl->tpl_vars['demande']->value['date_fin'];?>
 
                     </td>  
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
