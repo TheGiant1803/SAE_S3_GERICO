@@ -48,16 +48,19 @@
           <div class="form-group">
             <label for="duration">Sélectionnez la durée :</label>
               <select class="form-select" id="duration" name="duration" required>
-                <option selected disabled>-</option>
-                <option value="matin">Matin</option>
+                <option  selected value="matin">Matin</option>
                 <option value="après_midi">Après-midi</option>
-                <option value="Journée">Journée complète</option>
               </select>
           </div>
           <div class="form-group">
-            <label for="motif">Motif du congé</label>
-            <input type="text" class="form-control motif" id="motif" name="motif" required>
+            <label for="duration">Sélectionnez le motif :</label>
+              <select class="form-select" id="motif" name="motif" required>
+                <option  selected value="RTT">RTT</option>
+                <option value="maladie">maladie</option>
+                <option value="maternité">maternité</option>
+              </select>
           </div>
+          <div class="form-group">
           <input type="submit" value ="Envoyer la demande">
         </form>
     </div>

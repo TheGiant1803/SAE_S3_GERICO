@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 14:18:47
+/* Smarty version 4.2.1, created on 2024-12-05 09:07:02
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67487bc70029d8_11102018',
+  'unifunc' => 'content_67516d36af2332_43901360',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8568bac4e5a399223cff34fa787ecda1dbf930' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1732803515,
+      1 => 1733389617,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67487bc70029d8_11102018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67516d36af2332_43901360 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -53,9 +53,9 @@ function content_67487bc70029d8_11102018 (Smarty_Internal_Template $_smarty_tpl)
           <a class="navbar-icons" href="#notifications">
               <img class="notif" src="../assets/notif.png" alt="image de notifications">
           </a>
-          <a class="navbar-icons" href="#profil">
-              <img class="profile" src="../assets/profile.png" alt="image du profile">
-          </a>
+            <a class="navbar-icons" href="#profil">
+                <a href="./logout"><p>Se déconnecter</p></a>
+            </a>
       </div>
   </nav>
   </nav>
@@ -71,16 +71,19 @@ function content_67487bc70029d8_11102018 (Smarty_Internal_Template $_smarty_tpl)
           <div class="form-group">
             <label for="duration">Sélectionnez la durée :</label>
               <select class="form-select" id="duration" name="duration" required>
-                <option selected disabled>-</option>
-                <option value="matin">Matin</option>
+                <option  selected value="matin">Matin</option>
                 <option value="après_midi">Après-midi</option>
-                <option value="Journée">Journée complète</option>
               </select>
           </div>
           <div class="form-group">
-            <label for="motif">Motif du congé</label>
-            <input type="text" class="form-control motif" id="motif" name="motif" required>
+            <label for="duration">Sélectionnez le motif :</label>
+              <select class="form-select" id="motif" name="motif" required>
+                <option  selected value="RTT">RTT</option>
+                <option value="maladie">maladie</option>
+                <option value="maternité">maternité</option>
+              </select>
           </div>
+          <div class="form-group">
           <input type="submit" value ="Envoyer la demande">
         </form>
     </div>
