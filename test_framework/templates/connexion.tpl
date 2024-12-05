@@ -29,7 +29,7 @@
 
                     <button type="submit">Connexion</button>
                 </form>
-                <a href="#">Vous avez oublié votre mot de passe ?</a>
+                <a href="./mot_de_passe.html">Vous avez oublié votre mot de passe ?</a>
             </div>
         </div>
         <footer class="foot_bar bar">
