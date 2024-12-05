@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:24:55
+/* Smarty version 4.2.1, created on 2024-12-05 13:17:05
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674988675bf969_25501248',
+  'unifunc' => 'content_6751a7d1d8eb50_99641689',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a037d656b97298688a5917a8d91e9d6b63b11eec' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1732872289,
+      1 => 1733404506,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751a7d1d8eb50_99641689 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,29 +52,29 @@ function content_674988675bf969_25501248 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
     <main>
         <div class="container_b">
-        <a href="gestion_des_salaries.html">
-            <div class="box">
-                <button>Gestion des salariés</button>
-            </div>
-        </a>
-        <a href="admin_validation_congés.html">
-            <div class="box">
-                <button>Validation des congés</button>
-            </div>
+            <a href="gestion_des_salaries.html">
+                <div class="box">
+                    <button>Gestion des salariés</button>
+                </div>
+            </a>
+            <a href="admin_validation_congés.html">
+                <div class="box">
+                    <button>Validation des congés</button>
+                </div>
+            </a>
+            <a href="Ajout_fiche_paie.html">
+                <div class="box">
+                    <button>Ajouter des fiches de paie</button>
+                </div>
+            </a>
         </div>
-        </a>
-        <a href="Ajout_fiche_paie.html">
-            <div class="box">
-                <button>Ajouter des fiches de paie</button>
-            </div>
-        </a>
     </main>
     
     <footer class="foot_bar bar">
