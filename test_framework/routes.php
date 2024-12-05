@@ -795,14 +795,12 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
-
-
-Flight::route('GET /ajoutSalarie.html', function(){
+function ajoutSalarie(){
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-    
+
         if(isset($_SESSION['user_id'])==false){
             Flight::redirect('/connexion.html');
         }
@@ -810,15 +808,12 @@ Flight::route('GET /ajoutSalarie.html', function(){
         // Préparer les données à passer au template
         $data = [
         // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-        Flight::render('./templates/ajoutSalarie.tpl', $data);
-});
-
-Flight::route('POST /ajoutSalarie.html',function(){
-
-    // Récupérer les données du formulaire que l'utilisateur a écrit
+        // Récupérer les données du formulaire que l'utilisateur a écrit
     $post = Flight::request()->data;
     // Initialisation d'un tableau pour les erreurs
     $errors = [];
@@ -915,7 +910,8 @@ Flight::route('POST /ajoutSalarie.html',function(){
         ]
     );
     }
-});
+};
+Flight::route('/ajoutSalarie.html', 'ajoutSalarie');
 
 
 
