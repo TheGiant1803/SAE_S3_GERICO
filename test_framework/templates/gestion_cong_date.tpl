@@ -37,14 +37,13 @@
   </nav>
   </nav>
 
-    <div class="container-cong">
+
+    <div id="container-cong">
         <h1>Demande de Congés :</h1>
-        
-        <form method="post" action="" class="form-cong">
+        <form action="#" method="post">
           <div class="form-group">
             <label for="date_cong">Date :</label>
-           <!-- min -> à gérer en php ou js--> 
-            <input type="date" class="form-control date_cong" min="" id="date_cong" name="date_cong" required>
+            <input type="date" class="form-control" id="date_cong" name="date_cong" required>
           </div>
           <div class="form-group">
             <label for="duration">Sélectionnez la durée :</label>
@@ -56,10 +55,10 @@
               </select>
           </div>
           <div class="form-group">
-            <label for="motif">Motif du congé :</label>
+            <label for="motif">Motif du congé</label>
             <input type="text" class="form-control motif" id="motif" name="motif" required>
           </div>
-          <input type="submit" value ="Envoyer la demande" class="submit">
+          <input type="submit" value ="Envoyer la demande">
         </form>
     </div>
 
@@ -72,4 +71,5 @@
       </ul>
   </footer>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

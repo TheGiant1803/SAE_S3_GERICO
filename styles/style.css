@@ -371,10 +371,6 @@ footer p {
       sans-serif;
   }
   
-  input,
-  label {
-    margin: 0.4rem 0;
-  }
 
   .container_modsal {
     width: 80%;
@@ -396,24 +392,22 @@ footer p {
 }
 .form-group {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     justify-content: left;
-    margin-left: 5em;
 }
 .form-group label {
     display: block;
-    margin-bottom: -5px;
+    margin-bottom: 10px;
     color: #333;
 }
 .form-group input {
+    margin-top:10px;
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.form-group input[type="text"] {
-    width: calc(50% - 10px);
-}
+
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -458,7 +452,6 @@ h2 {
 input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -577,7 +570,7 @@ td {
     margin-top: 20px;
 }
 
-button, input {
+button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px;
@@ -734,145 +727,94 @@ input[type="number"] {
     transform: translateY(-50%); /* Centre verticalement l'icône */
 }
 
-/*------------------------------------------------------------MODIFICATION CALENDAR-------------------------------------*/
-/*body {
-    font-family: 'Chau PhilomeneOne';
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
-    background-color: #FFFCFF;
-  }*/
-  .btn_calendar {
-    font-family: 'Chau PhilomeneOne';
-    width: 100px;
-    cursor: pointer;
-    box-shadow: 0px 0px 2px gray;
-    border: none;
-    outline: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-  }
+/*------------------------------------------------------------MODIFICATION FORMULAIRE CONGE-------------------------------------*/
 
-  #monthDisplay{
-    width: 100%;
-    display:flex;
-    justify-content: space-around;
-  }
-  
-  #header {
-    padding: 10px;
-    color: #d36c6c;
-    font-size: 26px;
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-  }
-  #header button {
-    background-color:#517aac;
-  }
-  #container {
-    margin:auto;
-    width: 770px;
-    margin:auto
-  }
-  #weekdays {
-    width: 100%;
-    display: flex;
-    display:flex;
-    justify-content:space-between;
-    color: #247BA0;
-  }
-  #weekdays div {
-    width: 100px;
-    padding: 10px;
-  }
-  #calendar {
-    width: 100%;
-    padding-bottom: 20px;
-
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .day {
-    width: 100px;
-    padding: 10px;
-    height: 100px;
-    cursor: pointer;
-    box-sizing: border-box;
-    background-color: white;
-    margin: 5px;
-    box-shadow: 0px 0px 3px #CBD4C2;
+.container-cong{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
-  .day:hover {
-    background-color: #e8faed;
-  }
-  
-  .day + #currentDay {
-    background-color:#e8f4fa;
-  }
-  .event {
-    font-size: 10px;
-    padding: 3px;
-    background-color: #58bae4;
-    color: white;
-    border-radius: 5px;
-    max-height: 55px;
-    overflow: hidden;
-  }
-  .padding {
-    cursor: default !important;
-    background-color: #FFFCFF !important;
-    box-shadow: none !important;
-  }
-  #newEventModal, #deleteEventModal {
-    display: none;
-    z-index: 20;
-    padding: 25px;
-    background-color: #e8f4fa;
-    box-shadow: 0px 0px 3px black;
-    border-radius: 5px;
-    width: 350px;
-    top: 100px;
-    left: calc(50% - 175px);
-    position: absolute;
-    font-family: sans-serif;
-  }
-  #eventTitleInput {
-    padding: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 25px;
-    border-radius: 3px;
-    outline: none;
-    border: none;
-    box-shadow: 0px 0px 3px gray;
-  }
-  #eventTitleInput.error {
-    border: 2px solid red;
-  }
-  #cancelButton, #deleteButton {
-    background-color: #d36c6c;
-  }
-  #saveButton, #closeButton {
-    background-color: #92a1d1;
-  }
-  #eventText {
-    font-size: 14px;
-  }
-  #modalBackDrop {
-    display: none;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    background-color: rgba(0,0,0,0.8);
-  }
+    justify-content:center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.box-cong {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    text-align: center;
+}
+
+.container-cong h1{
+    font-family: 'Chau philomeneOne';
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+label{
+    color: #333;
+    font-size: 20px;
+    font-family: 'Chau philomeneOne';
+    margin-bottom:10px;
+    
+}
+
+.submit1{
+    margin-top:5px;
+    font-family: 'Chau philomeneOne';
+}
+
+input[type="date"] {
+    border: 1px solid #ccc;
+    margin-top:10px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction: column;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+#motif{
+    display:flex;
+    flex-direction: column;
+    padding:8px;
+}
+
+#start{
+    display:flex;
+    flex-direction: column;
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+#date_cong{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.date_cong{
+    display:flex;
+    flex-direction: column;
+    padding:8px;
+    margin-top:10px;
+
+}
+
+#duration{
+    display:flex;
+    flex-direction: column;
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+.form-cong{
+    display:flex;
+    justify-content: center;
+}
+
 
 
   /*---------------------------*/
@@ -944,7 +886,29 @@ input[type="number"] {
 
     /*---------------------- Gestion congés calendrier ------------------*/
     
+    .box-cong {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
 
+    .container-cong h1{
+        font-family: 'Chau philomeneOne';
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label{
+        color: #333;
+        font-size: 15px;
+        font-family: 'Chau philomeneOne';
+        margin-bottom:8px;
+        
+    }
 
     /*----------------------------- histroique fiche de paie---------------*/
     .list-item{
@@ -1039,9 +1003,31 @@ input[type="number"] {
 
     /*---------------------- Gestion congés calendrier ------------------*/
     
+    .box-cong {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+    }
 
+    .container-cong h1{
+        font-family: 'Chau philomeneOne';
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
 
-    /*----------------------------- histroique fiche de paie---------------*/
+    label{
+        color: #333;
+        font-size: 15px;
+        font-family: 'Chau philomeneOne';
+        margin-bottom:8px;
+        
+    }
+
+    /*----------------------------- historique fiche de paie---------------*/
     .list-item{
         width: auto;
         margin-left: 5px;
