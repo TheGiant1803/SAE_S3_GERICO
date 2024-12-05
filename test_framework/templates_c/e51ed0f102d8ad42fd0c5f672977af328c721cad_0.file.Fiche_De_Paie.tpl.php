@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 09:18:40
+/* Smarty version 4.2.1, created on 2024-12-05 18:51:37
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674986f0e075a8_82933395',
+  'unifunc' => 'content_6751f639a69800_05299430',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1732871913,
+      1 => 1733424694,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674986f0e075a8_82933395 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751f639a69800_05299430 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,14 +52,14 @@ function content_674986f0e075a8_82933395 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
 
-    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
-    <ul class="historic_fiche_paie">
+    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</a></p>
+    <ul>
     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['fiche_paie']->value, 'fiche');
 $_smarty_tpl->tpl_vars['fiche']->do_else = true;
@@ -70,10 +70,15 @@ $_smarty_tpl->tpl_vars['fiche']->do_else = false;
             <div class="list-item">
                 <span class="info">Période <?php echo $_smarty_tpl->tpl_vars['fiche']->value['periode'];?>
  - N° <?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
-</span>
+ - PDF </span>
                 <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
-</span>
+</span> 
             </div>
+            <form action="#" method="post">
+                <input type="button" id="id_fiche "value="<?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
+">
+                <input type="submit" value="PDF">
+            </form>
         </li>
         <?php
 }
