@@ -265,7 +265,7 @@ function Fiche_De_Paie() {
 }
 Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
 
-function gestion_cong_date() {
+function gestion_cong_date_aff() {
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -284,24 +284,53 @@ function gestion_cong_date() {
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
 
-        $pdo = Flight::get('pdo');
+    Flight::render('./templates/gestion_cong_date.tpl', $data);
+}
+
+function gestion_cong_date_ajout()
+{
+
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+
+         $pdo = Flight::get('pdo');
 
         $post = Flight::request()->data;
         //Récupération des données envoyées dans une variable
         $date = $post->date_cong;
-        $durée = $post->duration;
+        $mom_deb = $post->duration;
         $motif = $post->motif;
+        $id = $_SESSION['user_id'];
 
+        if($mom_deb == 'matin')
+        {
+            $heure_deb = 0;
+        }
+        elseif($mom_deb == 'après_midi')
+        {
+            $heure_deb = 12;
+        }
         //Requête SQL INSERT
-        $sql_conge = "INSERT IGNORE INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date','$durée','','$motif',1,1);";
+        $sql_conge = "INSERT INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date',1,NULL,'$motif',$heure_deb,$id);";
 
         //Préaparation de la requête d'insertion
         $i_conge = $pdo->prepare($sql_conge);
 
         $i_conge->execute();
-    Flight::render('./templates/gestion_cong_date.tpl', $data);
+
+        Flight::redirect('./gestion_cong_date.html');
 }
-Flight::route('/gestion_cong_date.html', 'gestion_cong_date');
+Flight::route('GET /gestion_cong_date.html', 'gestion_cong_date_aff');
+Flight::route('POST /gestion_cong_date.html', 'gestion_cong_date_ajout');
+
+
 
 
 function gestion_des_salaries() {
