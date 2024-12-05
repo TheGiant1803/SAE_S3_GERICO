@@ -351,26 +351,19 @@ function gestioncongé2() {
         $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
         $stmt->execute([':matricule' => $_SESSION['user_id']]);
         $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
 
-        function calculerDateFin($dateDebut, $duree) {
+        function calculerDateFin($dateDebut, $duree, $heure_deb) {
             $date = new DateTime($dateDebut);
             $joursAjoutes = 0;
+            if ($heure_deb >= 12) {$duree--;}
+            while ($joursAjoutes < ($duree / 2)) {
+                // Ajouter un jour
+                $date->modify('+1 day');
         
-            while ($joursAjoutes < $duree) {
-                // Ajouter une demi-journée
-                $date->modify('+0.5 day');
-                
-                // Vérifier si c'est un week-end
-                $jourSemaine = $date->format('N'); // 6 pour samedi, 7 pour dimanche
-        
-                if ($jourSemaine < 6) { // Compter uniquement les jours ouvrés
-                    $joursAjoutes += 0.5; // Incrémenter par 0.5 jour ouvré
-                }
-        
-                // Si on tombe sur un week-end après incrémentation, avancer à lundi
-                if ($jourSemaine == 6) {
-                    $date->modify('+2 days'); // Sauter au lundi
+                // Vérifier si c'est un week-end (6 = samedi, 7 = dimanche)
+                $jourSemaine = $date->format('N');
+                if ($jourSemaine < 6) {
+                    $joursAjoutes++;
                 }
             }
         
@@ -380,7 +373,7 @@ function gestioncongé2() {
         // Ajouter date_fin à chaque demande
         foreach ($demande_cp as &$demande) {
             if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
-                $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree']);
+                $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
             } else {
                 $demande['date_fin'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
             }
