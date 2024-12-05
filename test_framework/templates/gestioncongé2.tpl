@@ -63,7 +63,7 @@
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
                     <td>
-                        {$demande.duree}
+                        {ajouter_jours_ouvrables date=$demande.date_dcp duree=$demande.duree}
                     </td>  
                     <td>{$demande.motif}</td>
                     <td>{$demande.duree / 2} jour(s)</td>
@@ -82,7 +82,6 @@
             </tbody>
         </table>
         </div>
-    
         <!-- Boutons -->
         <div class="buttons">
             <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
