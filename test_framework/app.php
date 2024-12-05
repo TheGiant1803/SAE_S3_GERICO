@@ -49,17 +49,6 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 Flight::set('pdo', $pdo);
 
 
-require_once 'gestionjourouvrable.php';
-
-// Assignation des variables
-$smarty->assign('demande', [
-    'date_dcp' => '2024-12-05',
-    'duree' => 5
-]);
-
-// Afficher le template
-$smarty->display('./templates/gestioncongé2.tpl');
-
 //
 //démarrer Flight (traite les requêtes et appelle la bonne fonction)
 //

@@ -63,7 +63,7 @@
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
                     <td>
-                        {ajouter_jours_ouvrables date=$demande.date_dcp duree=$demande.duree}
+                        {$demande.duree}
                     </td>  
                     <td>{$demande.motif}</td>
                     <td>{$demande.duree / 2} jour(s)</td>
