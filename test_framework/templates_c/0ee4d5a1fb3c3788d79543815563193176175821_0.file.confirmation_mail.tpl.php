@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 08:37:14
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 09:28:55
+  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\confirmation_mail.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6751663a14e095_71351811',
+  'unifunc' => 'content_675172577e4a12_27726888',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
+    '0ee4d5a1fb3c3788d79543815563193176175821' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1733387830,
+      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\confirmation_mail.tpl',
+      1 => 1733390908,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675172577e4a12_27726888 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Connexion</title>
+        <title>Confirmation un mail</title>
         <link
             rel="stylesheet"
             href="../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf">
@@ -39,20 +39,8 @@ function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div class="login-container">
             <div class="login-box">
-                <h1>Connexion</h1>
-                <p>Vous n'êtes pas encore inscrit ?
-                    <a href="./nouveau_compte.html">S'inscrire</a>
-                </p>
-                <form action="#" method="post">
-                    <label for="email">MATRICULE / EMAIL</label>
-                    <input type="text" id="email" name="email" required="required">
-
-                    <label for="password">MOT DE PASSE</label>
-                    <input type="password" id="password" name="password" required="required">
-
-                    <button type="submit">Connexion</button>
-                </form>
-                <a href="./mot_de_passe.html">Vous avez oublié votre mot de passe ?</a>
+                <p>Un mail vous a été envoyé avec les instructions à suivre</p>
+                <a href="./connexion.html">Retour à la connexion</a>
             </div>
         </div>
         <footer class="foot_bar bar">

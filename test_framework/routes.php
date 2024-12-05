@@ -515,6 +515,104 @@ Flight::route('POST /nouveau_compte.html',function(){
     }
 });
 
+
+Flight::route('GET /mot_de_passe.html', function(){
+    Flight::render('./templates/mot_de_passe.tpl', []);
+});
+
+Flight::route('POST /mot_de_passe.html',function(){
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Récupérer les données du formulaire que l'utilisateur a écrit
+    $post = Flight::request()->data;
+    // Initialisation d'un tableau pour les erreurs
+    $errors = [];
+
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Format d'email invalide";
+    }
+    // Si des erreurs existent
+    if (!empty($errors)) {
+        // Réafficher le formulaire avec les erreurs et les données précédemment saisies
+        Flight::render('./templates/mot_de_passe.tpl', [
+            'errors' => $errors,
+            'post' => $post
+        ]);
+        return;
+    }
+
+    try{
+        $pdo = Flight::get('pdo');
+
+        // Vérifier si l'email existe déjà
+        $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM employe WHERE employe.email = ?");
+        $checkStmt->execute([$post->email]);
+        if ($checkStmt->fetchColumn() == 0) {
+            $errors['email'] = "Cet email n'existe pas";
+            
+            // Réafficher le formulaire avec l'erreur
+            Flight::render('./templates/mot_de_passe.tpl', [
+                'errors' => $errors,
+                'post' => $post
+            ]);
+            return;
+        }
+     // Préparer l'email
+     $to = $post->email;
+     $subject = "Réinitialisation de votre mot de passe";
+     $message = "
+         Bonjour, 
+
+         Vous avez demandé à réinitialiser votre mot de passe. 
+         Cliquez sur le lien ci-dessous pour le faire :
+         
+         http://votre-site.com/reset-password?email=" . urlencode($post->email) . "
+
+         Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer cet email.
+
+         Cordialement,
+         L'équipe Gerico.
+     ";
+     $headers = [
+         'From' => 'no-reply@gerico.fr',
+         'Reply-To' => 'support@gerico.fr',
+         'Content-Type' => 'text/plain; charset=UTF-8',
+     ];
+
+     // Envoyer l'email
+     $success = mail($to, $subject, $message, implode("\r\n", $headers));
+
+     if ($success) {
+         // Afficher une page de confirmation
+         Flight::render('./templates/confirmation_mail.tpl', [
+             'message' => "Un email a été envoyé à votre adresse pour réinitialiser votre mot de passe."
+         ]);
+     } else {
+         $errors['general'] = "Erreur lors de l'envoi de l'email. Veuillez réessayer.";
+         Flight::render('./templates/mot_de_passe.tpl', [
+             'errors' => $errors,
+             'post' => $post
+         ]);
+     }
+
+    }catch (PDOException $e) {
+        //Erreur de base de données
+       $errors['general'] = "Erreur de base de données : " . $e->getMessage(); // Ajout pour débogage (à retirer en production)
+       Flight::render('./templates/nouveau_compte.tpl', [
+           'errors' => $errors,
+           'post' => $post
+       ]
+   );
+   }
+});
+Flight::route('/mot_de_passe.html', 'mot_de_passe');
+
+
 Flight::route('GET /logout', function() {
     // Démarrer la session si ce n'est pas déjà fait
     if (session_status() == PHP_SESSION_NONE) {
