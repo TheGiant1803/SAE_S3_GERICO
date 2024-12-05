@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 10:49:23
+/* Smarty version 4.2.1, created on 2024-12-05 14:36:15
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67518533cc3fe9_12147304',
+  'unifunc' => 'content_6751ba5fc8c8c6_65789891',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '995e48f8a972d85331a7668251ac5395d7def4b9' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1733395708,
+      1 => 1733404574,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67518533cc3fe9_12147304 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751ba5fc8c8c6_65789891 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -71,16 +71,19 @@ function content_67518533cc3fe9_12147304 (Smarty_Internal_Template $_smarty_tpl)
           <div class="form-group">
             <label for="duration">Sélectionnez la durée :</label>
               <select class="form-select" id="duration" name="duration" required>
-                <option selected disabled>-</option>
-                <option value="matin">Matin</option>
+                <option  selected value="matin">Matin</option>
                 <option value="après_midi">Après-midi</option>
-                <option value="Journée">Journée complète</option>
               </select>
           </div>
           <div class="form-group">
-            <label for="motif">Motif du congé</label>
-            <input type="text" class="form-control motif" id="motif" name="motif" required>
+            <label for="duration">Sélectionnez le motif :</label>
+              <select class="form-select" id="motif" name="motif" required>
+                <option  selected value="RTT">RTT</option>
+                <option value="maladie">maladie</option>
+                <option value="maternité">maternité</option>
+              </select>
           </div>
+          <div class="form-group">
           <input type="submit" value ="Envoyer la demande">
         </form>
     </div>
