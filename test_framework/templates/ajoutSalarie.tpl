@@ -38,7 +38,7 @@
         </div>
     </nav>
     
-    <form method="POST" action="/ajoutSalarie" class="container_modsal">
+    <form method="POST" action="#" class="container_modsal">
         <h2>
          Ajout d'un salarié
         </h2>
@@ -47,19 +47,19 @@
           <label for="nom" class="modsallabel">
            Nom
           </label>
-          <input id="nom" name="nom" type="text" size="40" required/>
+          <input id="nom" name="nom" type="text" size="40" required>
          </div>
          <div>
           <label for="prenom" class="modsallabel">
            Prénom
           </label>
-          <input id="prenom" name="prenom" type="text" size="40" required/>
+          <input id="prenom" name="prenom" type="text" size="40" required>
          </div>
          <div>
             <label for="matricule" class="modsallabel">
              Matricule
             </label>
-            <input id="matricule" name="matricule" type="text" size="40" required/>
+            <input id="matricule" name="matricule" type="text" size="40" required>
            </div>
         </div>
         <div class="form-group">
@@ -67,19 +67,19 @@
           <label for="datenaissance" class="modsallabel">
            Date Naissance (YYYY-MM-DD)
           </label>
-          <input id="datenaissance" name="datenaissance" type="text" size="40" required/>
+          <input id="datenaissance" name="datenaissance" type="text" size="40" required>
          </div>
          <div>
           <label for="dateembauche" class="modsallabel">
            Date Embauche (YYYY-MM-DD)
           </label>
-          <input id="dateembauche" name="dateembauche" type="text" size="40" required/>
+          <input id="dateembauche" name="dateembauche" type="text" size="40" required>
          </div>
          <div>
             <label for="salaire" class="modsallabel">
              Salaire
             </label>
-            <input id="salaire" name="salaire" type="text" size="40" required/>
+            <input id="salaire" name="salaire" type="text" size="40" required>
            </div>
         </div>
         <div class="form-group">
@@ -87,29 +87,27 @@
           <label for="email" class="modsallabel">
            Email
           </label>
-          <input id="email" name="email" type="text" size="40" required/>
+          <input id="email" name="email" type="text" size="40" required>
          </div>
         <div class="form-group">
          <div>
           <label for="mdp" class="modsallabel">
            Mot de Passe Provisoire
           </label>
-          <input id="mdp" name="mdp" type="text" size="40" required/>
+          <input id="mdp" name="mdp" type="text" size="40" required>
          </div>
          <div>
           <label for="tel" class="modsallabel">
            Tél
           </label>
-          <input id="tel" name="tel" type="text" size="40" required/>
+          <input id="tel" name="tel" type="text" size="40" required>
          </div>
         </div>
         <div class="form-actions">
          <button class="reset">
           Réinitialiser
          </button>
-         <button>
-          Valider
-         </button>
+          <input type="submit" value="Valider">
        </div>
        </form>
 

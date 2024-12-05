@@ -795,6 +795,8 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
+
+
 Flight::route('GET /ajoutSalarie.html', function(){
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
@@ -815,6 +817,7 @@ Flight::route('GET /ajoutSalarie.html', function(){
 });
 
 Flight::route('POST /ajoutSalarie.html',function(){
+
     // Récupérer les données du formulaire que l'utilisateur a écrit
     $post = Flight::request()->data;
     // Initialisation d'un tableau pour les erreurs
@@ -902,7 +905,7 @@ Flight::route('POST /ajoutSalarie.html',function(){
         ]);
 
         // Redirection
-        Flight::redirect('/gestion_des_salaries.html');
+        Flight::redirect('./gestion_des_salaries.html');
     } catch (PDOException $e) {
         //Erreur de base de données
         $errors['general'] = "Erreur de base de données : " . $e->getMessage();
@@ -912,9 +915,8 @@ Flight::route('POST /ajoutSalarie.html',function(){
         ]
     );
     }
-
 });
-Flight::route('/ajoutSalarie.html', 'ajoutSalarie');
+
 
 
 
