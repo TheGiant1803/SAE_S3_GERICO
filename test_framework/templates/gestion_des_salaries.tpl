@@ -44,46 +44,33 @@
                     Gestion des salariés
                     <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
                 </div>
+                {if !empty($employes)}
+                    {foreach from=$employes item=employe}
+                    <li>
+                        <div class="list-item">
+                            <span class="info">{$employe.nom} {$employe.prenom} - Matricule {$employe.id_emp}</span>
+                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                        </div>
+                    </li>
+                    {/foreach}
+                {else}
                 <li>
-                    <div class="list-item">
-                        <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
-                    </div>
+                    <span class="info">Aucun employé trouvé.</span>
                 </li>
-                <li>
-                    <div class="list-item">
-                        <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <span class="info">MARTIN Dominique - Matricule 009</span>
-                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                        <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                        <span class="date"><a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="list-item">
-                        <span class="info">GARNIER Alexandra - Matricule 013</span>
-                        <span class="date">
-                        <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER</span>
-                    </div>
-                </li>
+                {/if}
             </ul>
         </div>
         
+        <!-- Navigation de la pagination -->
+        <div>
+        {if $page > 1}
+            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+        {/if}
+        
+        {if $page < $total_pages}
+            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+        {/if}
+        </div>
         
 
     

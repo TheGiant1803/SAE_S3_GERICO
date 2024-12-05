@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 12:44:27
+/* Smarty version 4.2.1, created on 2024-12-05 12:47:27
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674865abf00a79_35510103',
+  'unifunc' => 'content_6751a0df7bef13_32790231',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a1915eb93e8518a712afac5fd94ea68d5166f4f0' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1732797675,
+      1 => 1733402844,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674865abf00a79_35510103 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751a0df7bef13_32790231 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -44,61 +44,70 @@ function content_674865abf00a79_35510103 (Smarty_Internal_Template $_smarty_tpl)
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <img class="profile" src="../assets/profile.png" alt="image du profile">
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
-        <li>
-            <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-    </ul>
+
+        <div class="gestion-fiches">
+            
+            <ul class="ajout_fiche_paie">
+                <div class="gestion-text">
+                    Gestion des salariés
+                    <a href="./ajoutSalarie.html"><p>Ajouter</p></a>
+                </div>
+                <?php if (!empty($_smarty_tpl->tpl_vars['employes']->value)) {?>
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['employes']->value, 'employe');
+$_smarty_tpl->tpl_vars['employe']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['employe']->value) {
+$_smarty_tpl->tpl_vars['employe']->do_else = false;
+?>
+                    <li>
+                        <div class="list-item">
+                            <span class="info"><?php echo $_smarty_tpl->tpl_vars['employe']->value['nom'];?>
+ <?php echo $_smarty_tpl->tpl_vars['employe']->value['prenom'];?>
+ - Matricule <?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+</span>
+                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                        </div>
+                    </li>
+                    <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                <?php } else { ?>
+                <li>
+                    <span class="info">Aucun employé trouvé.</span>
+                </li>
+                <?php }?>
+            </ul>
+        </div>
+        
+        <!-- Navigation de la pagination -->
+        <div>
+        <?php if ($_smarty_tpl->tpl_vars['page']->value > 1) {?>
+            <a href="./gestion_des_salaries.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value-1;?>
+">Précédent</a>
+        <?php }?>
+        
+        <?php if ($_smarty_tpl->tpl_vars['page']->value < $_smarty_tpl->tpl_vars['total_pages']->value) {?>
+            <a href="./gestion_des_salaries.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value+1;?>
+">Suivant</a>
+        <?php }?>
+        </div>
+        
+
     
     
     
