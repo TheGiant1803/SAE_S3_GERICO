@@ -36,50 +36,45 @@
     </nav>
     </nav>
 
-    
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des salariés<i class="fas fa-plus"></i>
-        </div>             
-        <li>
-            <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date"> MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date"> MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">MODIFIER | SUPPRIMER </span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">MODIFIER | SUPPRIMER</span>
-            </div>
-        </li>
-    </ul>
-    
-    
+    <h1>Gestion des salariés</h1>
+    <p>Liste des employés :</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Vérification si des employés sont présents -->
+            <!-- Utilisation d'une boucle pour afficher les données -->
+            {if !empty($employes)}
+                {foreach from=$employes item=employe}
+                <tr>
+                    <td>{$employe.id_emp|escape}</td>
+                    <td>{$employe.nom|escape}</td>
+                    <td>{$employe.prenom|escape}</td>
+                </tr>
+                {/foreach}
+            {else}
+                <tr>
+                    <td colspan="3">Aucun employé trouvé.</td>
+                </tr>
+            {/if}
+        </tbody>
+    </table>
+
+    <!-- Navigation de la pagination -->
+    <div>
+        {if $page > 1}
+            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+        {/if}
+        
+        {if $page < $total_pages}
+            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+        {/if}
+    </div>
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>

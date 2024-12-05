@@ -146,8 +146,6 @@ function conges1() {
 }
 Flight::route('/congé1.html', 'conges1');
 
-
-
 Flight::route('GET /connexion.html', function() {
     Flight::render('./templates/connexion.tpl',[]);
 });
@@ -305,25 +303,59 @@ Flight::route('/gestion_cong_date.html', 'gestion_cong_date');
 
 
 function gestion_des_salaries() {
-        // Démarrer la session si ce n'est pas déjà fait
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-        if(isset($_SESSION['user_id'])==false){
-            Flight::redirect('/connexion.html');
-        }
-        
-        // Préparer les données à passer au template
-        $data = [
-        // Si l'utilisateur est connecté, passez son nom
-        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
-        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
-        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
-        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
-        ];
-    // Récupérer l'instance PDO via Flight
+    // Redirection vers la page de connexion si l'utilisateur n'est pas connecté
+    if (!isset($_SESSION['user_id'])) {
+        Flight::redirect('/connexion.html');
+        return;
+    }
+
+    // Récupérer les informations utilisateur pour les passer au template
+    $data = [
+        'user_name' => $_SESSION['user_name'] ?? null,
+        'user_prenom' => $_SESSION['user_prenom'] ?? null,
+        'user_admin' => $_SESSION['user_admin'] ?? null,
+        'user_id' => $_SESSION['user_id'] ?? null
+    ];
+
+    // Connexion à la base de données via Flight
     $pdo = Flight::get('pdo');
+
+    // Nombre d'employés par page
+    $limit = 5;
+
+    // Récupérer la page actuelle à partir du paramètre 'page' dans l'URL (défaut à 1)
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    try {
+        // Récupérer les employés de la table 'employe' avec pagination, triés par ID
+        $stmt = $pdo->prepare('SELECT id_emp, nom, prenom FROM employe ORDER BY id_emp ASC LIMIT :limit OFFSET :offset');
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        $employes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Récupérer le nombre total d'employés pour calculer le nombre total de pages
+        $stmt = $pdo->query('SELECT COUNT(id_emp) FROM employe');
+        $total_employes = $stmt->fetchColumn();
+        $total_pages = ceil($total_employes / $limit);
+
+        // Ajouter les données à passer au template
+        $data['employes'] = $employes;
+        $data['page'] = $page;
+        $data['total_pages'] = $total_pages;
+    } catch (PDOException $e) {
+        // Gestion des erreurs de base de données
+        $data['employes'] = [];
+        $data['error'] = 'Erreur lors de la récupération des données : ' . $e->getMessage();
+    }
+
+    // Passer les données au template
     Flight::render('./templates/gestion_des_salaries.tpl', $data);
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
