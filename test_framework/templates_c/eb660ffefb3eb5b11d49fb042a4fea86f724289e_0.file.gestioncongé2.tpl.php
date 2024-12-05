@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-02 08:51:40
+/* Smarty version 4.2.1, created on 2024-12-05 09:14:23
   from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674d751cd82371_39387176',
+  'unifunc' => 'content_67516eefb019d1_81827492',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eb660ffefb3eb5b11d49fb042a4fea86f724289e' => 
     array (
       0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733129492,
+      1 => 1733390059,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674d751cd82371_39387176 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67516eefb019d1_81827492 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -74,7 +74,7 @@ function content_674d751cd82371_39387176 (Smarty_Internal_Template $_smarty_tpl)
                 <tr>
                     <th>N°</th>
                     <th>Date début</th>
-                    <th>L'heure du début</th>
+                    <th>Date fin</th>
                     <th>Cause</th>
                     <th>Durée</th>
                     <th>Statut</th>
@@ -92,17 +92,28 @@ $_smarty_tpl->tpl_vars['demande']->do_else = false;
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['heure_deb'];?>
- H</td>  
+                    <td>
+                        <?php echo $_smarty_tpl->tpl_vars['demande']->value['duree'];?>
+
+                    </td>  
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
 </td>
-                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['duree'];?>
- Heure(s)</td>
-                    <td>Terminé</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['duree']/2;?>
+ jour(s)</td>
+                    <td>            
+                        <?php if ($_smarty_tpl->tpl_vars['demande']->value['valid'] == null) {?>
+                            En attente
+                        <?php } elseif ($_smarty_tpl->tpl_vars['demande']->value['valid'] == 0) {?>
+                            Refusé
+                        <?php } elseif ($_smarty_tpl->tpl_vars['demande']->value['valid'] == 1) {?>
+                            Accepté
+                        <?php }?>
+                    </td>
                 </tr>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                
             </tbody>
         </table>
         </div>
@@ -161,6 +172,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
+
         <?php echo '</script'; ?>
 >
     

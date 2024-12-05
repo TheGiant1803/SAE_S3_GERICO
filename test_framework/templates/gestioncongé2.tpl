@@ -51,7 +51,7 @@
                 <tr>
                     <th>N°</th>
                     <th>Date début</th>
-                    <th>L'heure du début</th>
+                    <th>Date fin</th>
                     <th>Cause</th>
                     <th>Durée</th>
                     <th>Statut</th>
@@ -62,12 +62,23 @@
                 <tr>
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
-                    <td>{$demande.heure_deb} H</td>  
+                    <td>
+                        {$demande.duree}
+                    </td>  
                     <td>{$demande.motif}</td>
-                    <td>{$demande.duree} Heure(s)</td>
-                    <td>Terminé</td>
+                    <td>{$demande.duree / 2} jour(s)</td>
+                    <td>            
+                        {if $demande.valid == null}
+                            En attente
+                        {elseif $demande.valid == 0}
+                            Refusé
+                        {elseif $demande.valid == 1}
+                            Accepté
+                        {/if}
+                    </td>
                 </tr>
                 {/foreach}
+                
             </tbody>
         </table>
         </div>
@@ -125,6 +136,7 @@
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
+
         </script>
     
     </main>
