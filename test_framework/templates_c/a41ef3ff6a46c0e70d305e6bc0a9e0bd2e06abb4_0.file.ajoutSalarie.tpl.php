@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 10:10:11
+/* Smarty version 4.2.1, created on 2024-12-05 10:46:27
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\ajoutSalarie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67499303e992e6_22719669',
+  'unifunc' => 'content_675184839eddc1_47015330',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a41ef3ff6a46c0e70d305e6bc0a9e0bd2e06abb4' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\ajoutSalarie.tpl',
-      1 => 1732874169,
+      1 => 1733395550,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67499303e992e6_22719669 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675184839eddc1_47015330 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -56,7 +56,7 @@ function content_67499303e992e6_22719669 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-01 17:31:39
+/* Smarty version 4.2.1, created on 2024-12-05 10:49:22
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_674c9d7b19efb4_38326014',
+  'unifunc' => 'content_675185324b38a4_25446169',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5f824f6dcbd5c27bc1c5f5f390d56fef4e215b9d' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1732869838,
+      1 => 1733395727,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_674c9d7b19efb4_38326014 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675185324b38a4_25446169 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -53,7 +53,7 @@ function content_674c9d7b19efb4_38326014 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
@@ -65,7 +65,7 @@ function content_674c9d7b19efb4_38326014 (Smarty_Internal_Template $_smarty_tpl)
             <label for="nb-elements">Afficher </label>
             <input type="number" id="nb-elements" value="5" min="1" />
             <label for="nb-elements">éléments</label>
-            <button class="btn-classique" onclick="afficherElements()">Afficher</button>
+            <button class="btn-classique">Afficher</button>
         </div>
         
         <div class="table-container">
@@ -81,15 +81,26 @@ function content_674c9d7b19efb4_38326014 (Smarty_Internal_Template $_smarty_tpl)
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemple de ligne par défaut -->
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['demande_cp']->value, 'demande');
+$_smarty_tpl->tpl_vars['demande']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['demande']->value) {
+$_smarty_tpl->tpl_vars['demande']->do_else = false;
+?> 
                 <tr>
-                    <td>1</td>
-                    <td>2024-01-01</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['id_dcp'];?>
+</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
+</td>
                     <td>2024-01-03</td>
-                    <td>Maintenance</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
+</td>
                     <td>48h</td>
                     <td>Terminé</td>
                 </tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
         </div>

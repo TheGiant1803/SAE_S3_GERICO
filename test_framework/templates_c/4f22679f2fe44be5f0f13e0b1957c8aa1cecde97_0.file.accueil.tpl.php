@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 10:27:28
+/* Smarty version 4.2.1, created on 2024-12-05 10:46:18
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_675180106c1918_05533468',
+  'unifunc' => 'content_6751847a8d17c4_54315929',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4f22679f2fe44be5f0f13e0b1957c8aa1cecde97' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\accueil.tpl',
-      1 => 1733394410,
+      1 => 1733395540,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_675180106c1918_05533468 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751847a8d17c4_54315929 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
