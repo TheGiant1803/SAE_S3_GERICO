@@ -30,9 +30,9 @@
           <a class="navbar-icons" href="#notifications">
               <img class="notif" src="../assets/notif.png" alt="image de notifications">
           </a>
-          <a class="navbar-icons" href="#profil">
-              <img class="profile" src="../assets/profile.png" alt="image du profile">
-          </a>
+            <a class="navbar-icons" href="#profil">
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
+            </a>
       </div>
   </nav>
   </nav>
@@ -46,18 +46,25 @@
             <input type="date" class="form-control" id="date_cong" name="date_cong" required>
           </div>
           <div class="form-group">
-            <label for="duration">Sélectionnez la durée :</label>
+            <label for="duration">Sélectionnez le début :</label>
               <select class="form-select" id="duration" name="duration" required>
-                <option selected disabled>-</option>
-                <option value="matin">Matin</option>
+                <option  selected value="matin">Matin</option>
                 <option value="après_midi">Après-midi</option>
-                <option value="Journée">Journée complète</option>
               </select>
           </div>
           <div class="form-group">
-            <label for="motif">Motif du congé</label>
-            <input type="text" class="form-control motif" id="motif" name="motif" required>
+            <label for="nb_jour">Nombre de demi-journée :</label>
+              <input type="text" class="form-control" id="nb_jour" name="nb_jour" required>
           </div>
+          <div class="form-group">
+            <label for="duration">Sélectionnez le motif :</label>
+              <select class="form-select" id="motif" name="motif" required>
+                <option  selected value="RTT">RTT</option>
+                <option value="maladie">maladie</option>
+                <option value="maternité">maternité</option>
+              </select>
+          </div>
+          <div class="form-group">
           <input type="submit" value ="Envoyer la demande">
         </form>
     </div>

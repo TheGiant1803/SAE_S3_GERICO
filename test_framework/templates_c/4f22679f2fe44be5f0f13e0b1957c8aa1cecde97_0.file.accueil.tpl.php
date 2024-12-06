@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-28 14:07:28
-  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\accueil.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 10:46:18
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\accueil.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6748792011f185_03333868',
+  'unifunc' => 'content_6751847a8d17c4_54315929',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '916f59e641b1712be5db11db405e7b594930fffc' => 
+    '4f22679f2fe44be5f0f13e0b1957c8aa1cecde97' => 
     array (
-      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\accueil.tpl',
-      1 => 1732801341,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\accueil.tpl',
+      1 => 1733395540,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6748792011f185_03333868 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6751847a8d17c4_54315929 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,7 +52,7 @@ function content_6748792011f185_03333868 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
@@ -61,15 +61,16 @@ function content_6748792011f185_03333868 (Smarty_Internal_Template $_smarty_tpl)
     
     <div class="accueil">
         <div class="block_news">
-            <h1 class="titre_news">
-        <?php if ($_smarty_tpl->tpl_vars['user_name']->value) {?>
-        <p>Bonjour <?php echo $_smarty_tpl->tpl_vars['user_name']->value;?>
+            
+            <div class="bonjour-user"><?php if ($_smarty_tpl->tpl_vars['user_name']->value) {?>
+            Bonjour <?php echo $_smarty_tpl->tpl_vars['user_name']->value;?>
  <?php echo $_smarty_tpl->tpl_vars['user_prenom']->value;?>
- !</p>
-        <?php }?>
+ !
+            <?php }?>
+            </div>
+            <br>
 
-
-            Actualités :</h1>
+            <h1 class="titre_news">Actualités :</h1>
             <ul>
                 <li class="text_news">Gérico célèbre ses 25 ans d'excellence dans le transport routier, <span class="blue-text">30 décembre 2024</span></li>
                 <li class="text_news">Mise en place d'un nouveau programme de formation pour les employés, <span class="blue-text">12 octobre 2024</span></li>

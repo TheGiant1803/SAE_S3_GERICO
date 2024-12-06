@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 08:37:14
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-01 17:31:13
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6751663a14e095_71351811',
+  'unifunc' => 'content_674c9d615629c1_80334980',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
+    '4076f99ff612857b2ce98583de245667f2d66f10' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1733387830,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
+      1 => 1732874119,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl) {
+function content_674c9d615629c1_80334980 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -52,7 +52,7 @@ function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl)
 
                     <button type="submit">Connexion</button>
                 </form>
-                <a href="./mot_de_passe.html">Vous avez oublié votre mot de passe ?</a>
+                <a href="#">Vous avez oublié votre mot de passe ?</a>
             </div>
         </div>
         <footer class="foot_bar bar">

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-11-29 08:26:00
-  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\conges1.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-05 10:45:09
+  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67497a98de8847_16914014',
+  'unifunc' => 'content_67518435dbd922_89601978',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'b0d2893acad73f607510a2467bf6d41dd6382c1c' => 
+    '29e7123d045c484ea18a4baaa994e704761a6bd0' => 
     array (
-      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\conges1.tpl',
-      1 => 1732868733,
+      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
+      1 => 1733395484,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67497a98de8847_16914014 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67518435dbd922_89601978 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes demandes de congés</title>
+    <title>Administration</title>
     <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -40,11 +40,11 @@ function content_67497a98de8847_16914014 (Smarty_Internal_Template $_smarty_tpl)
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
-            <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
+            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
-            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
             <?php }?>
         </ul>
         <div class="navbar-icons">
@@ -52,23 +52,27 @@ function content_67497a98de8847_16914014 (Smarty_Internal_Template $_smarty_tpl)
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
     </nav>
     <main>
         <div class="container_b">
-            <a class="navtext_cong" href="gestioncongé2.html">
-            <div class="box">
-                <button>Historique de mes congés</button>
-            </div>
+            <a href="gestion_des_salaries.html">
+                <div class="box">
+                    <button>Gestion des salariés</button>
+                </div>
             </a>
-    
-            <a class="navtext_cong" href="gestion_cong_date.html">
-            <div class="box">
-                <button>Demander un congé</button>
-            </div>
+            <a href="admin_validation_congés.html">
+                <div class="box">
+                    <button>Validation des congés</button>
+                </div>
+            </a>
+            <a href="Ajout_fiche_paie.html">
+                <div class="box">
+                    <button>Ajouter des fiches de paie</button>
+                </div>
             </a>
         </div>
     </main>

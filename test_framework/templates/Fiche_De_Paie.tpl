@@ -29,7 +29,7 @@
                 <img class="notif" src="../assets/notif.png" alt="image de notifications">
             </a>
             <a class="navbar-icons" href="#profil">
-                <img class="profile" src="../assets/profile.png" alt="image du profile">
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
         </div>
     </nav>
@@ -37,48 +37,14 @@
 
     <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
     <ul class="historic_fiche_paie">
+    {foreach $fiche_paie as $fiche} 
         <li>
             <div class="list-item">
-                <span class="info">Période 09/2024 - Matricule 0222</span>
-                <span class="date">27/09/2024</span>
+                <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp}</span>
+                <span class="date">{$fiche.date}</span>
             </div>
         </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 08/2024 - Matricule 0222</span>
-                <span class="date">27/08/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 07/2024 - Matricule 0222</span>
-                <span class="date">27/07/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 06/2024 - Matricule 0222</span>
-                <span class="date">27/06/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 05/2024 - Matricule 0222</span>
-                <span class="date">27/05/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 04/2024 - Matricule 0222</span>
-                <span class="date">27/04/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">Période 03/2024 - Matricule 0222</span>
-                <span class="date">27/03/2024</span>
-            </div>
-        </li>
+        {/foreach}
     </ul>
     
     

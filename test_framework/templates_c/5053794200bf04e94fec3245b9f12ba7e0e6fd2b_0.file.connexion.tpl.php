@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 08:37:14
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
+/* Smarty version 4.2.1, created on 2024-11-29 10:03:01
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6751663a14e095_71351811',
+  'unifunc' => 'content_67499155783607_53616179',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
+    '5053794200bf04e94fec3245b9f12ba7e0e6fd2b' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1733387830,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
+      1 => 1732874056,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67499155783607_53616179 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -52,7 +52,7 @@ function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl)
 
                     <button type="submit">Connexion</button>
                 </form>
-                <a href="./mot_de_passe.html">Vous avez oublié votre mot de passe ?</a>
+                <a href="#">Vous avez oublié votre mot de passe ?</a>
             </div>
         </div>
         <footer class="foot_bar bar">

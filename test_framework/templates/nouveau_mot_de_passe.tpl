@@ -1,32 +1,9 @@
-<?php
-/* Smarty version 4.2.1, created on 2024-12-05 08:37:14
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\connexion.tpl' */
-
-/* @var Smarty_Internal_Template $_smarty_tpl */
-if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
-  'version' => '4.2.1',
-  'unifunc' => 'content_6751663a14e095_71351811',
-  'has_nocache_code' => false,
-  'file_dependency' => 
-  array (
-    '154ada715e2c489f903d969e43ac6ad2190bf1d1' => 
-    array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\connexion.tpl',
-      1 => 1733387830,
-      2 => 'file',
-    ),
-  ),
-  'includes' => 
-  array (
-  ),
-),false)) {
-function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl) {
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Connexion</title>
+        <title>Nouveau Mot de Passe</title>
         <link
             rel="stylesheet"
             href="../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf">
@@ -39,20 +16,20 @@ function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl)
         </div>
         <div class="login-container">
             <div class="login-box">
-                <h1>Connexion</h1>
-                <p>Vous n'êtes pas encore inscrit ?
-                    <a href="./nouveau_compte.html">S'inscrire</a>
-                </p>
+                <h1>Changement de mot de passe </h1>
                 <form action="#" method="post">
-                    <label for="email">MATRICULE / EMAIL</label>
+                    <label for="email">EMAIL</label>
                     <input type="text" id="email" name="email" required="required">
 
                     <label for="password">MOT DE PASSE</label>
                     <input type="password" id="password" name="password" required="required">
 
-                    <button type="submit">Connexion</button>
+
+                    <label for="password">CONFIRMATION DU MOT DE PASSE</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required="required">
+
+                    <button type="submit">Changer de mot de passe</button>
                 </form>
-                <a href="./mot_de_passe.html">Vous avez oublié votre mot de passe ?</a>
             </div>
         </div>
         <footer class="foot_bar bar">
@@ -65,5 +42,3 @@ function content_6751663a14e095_71351811 (Smarty_Internal_Template $_smarty_tpl)
         </footer>
     </body>
 </html>
-<?php }
-}
