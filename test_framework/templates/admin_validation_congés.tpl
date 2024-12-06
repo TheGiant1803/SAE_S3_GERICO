@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validation de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -59,12 +58,15 @@
                     <td>{$conge.prenom|escape}</td>
                     <td>{$conge.motif|escape}</td>
                     <td>{$conge.duree|escape}</td>
-                    {if conge.valid == NULL}
                     <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                        {if $conge.valid == NULL}
+                            <button class="btn-accepter" onclick="console.log('Bouton accepter cliqué')">Accepter</button>
+                            <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                        {else}
+                            <span class="statut">{if $conge.valid == 'accepté'}Accepté{elseif $conge.valid == 'refusé'}Refusé{/if}</span>
+                        {/if}
                     </td>
-                    {/if}
+
                 </tr>
                 {/foreach}
             {else}
@@ -74,6 +76,38 @@
             {/if}
         </tbody>
     </table>
+
+    {literal}
+    <script>
+        function changerStatut(button, action) {
+            const row = button.closest('tr');
+            const id_dcp = row.querySelector('td:first-child').innerText; // Récupère l'ID du congé
+
+            console.log('Bouton cliqué');
+            console.log('ID:', id_dcp, 'Action:', action);
+
+            fetch('./admin_validation_congés.html', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'id_dcp=' + id_dcp + '&action=' + action
+            })
+            .then(response => {
+                console.log('Réponse:', response);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Données reçues:', data);
+                if (data.success) {
+                    const statutCell = row.querySelector('td:last-child');
+                    statutCell.innerHTML = '<span class="statut">' + action.charAt(0).toUpperCase() + action.slice(1) + '</span>';
+                } else {
+                    alert('Erreur lors de la mise à jour.');
+                }
+            })
+            .catch(error => console.error('Erreur AJAX:', error));
+        }
+    </script>
+    {/literal}
 
     <div>
         {if $page > 1}

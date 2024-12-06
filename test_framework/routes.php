@@ -61,48 +61,61 @@ function admin_validation_congés() {
         Flight::redirect('/connexion.html');
     }
 
+    // Connexion à la base de données via Flight::get('pdo')
+    $pdo = Flight::get('pdo');
+
+    // Vérifier si une action a été envoyée (via AJAX ou un formulaire POST)
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && isset($_POST['id_dcp'])) {
+        $id_dcp = (int)$_POST['id_dcp'];
+        $action = $_POST['action']; // 'accepté' ou 'refusé'
+
+        // Mettre à jour le statut du congé dans la base de données
+        $stmt = $pdo->prepare('UPDATE demande_cp SET valid = :valid WHERE id_dcp = :id_dcp');
+        $stmt->execute([':valid' => $action, ':id_dcp' => $id_dcp]);
+
+        // Répondre avec une confirmation
+        echo json_encode(['success' => true, 'message' => 'Statut mis à jour']);
+        exit; // Arrêter l'exécution pour éviter de rendre le template
+    }
+
+    // Pagination
+    $limit = 5; // Nombre de congés par page
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    // Récupérer les données des congés
+    $stmt = $pdo->prepare('
+        SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree, d.valid 
+        FROM demande_cp d 
+        JOIN employe e ON d.id_emp = e.id_emp 
+        ORDER BY d.id_dcp ASC 
+        LIMIT :limit OFFSET :offset
+    ');
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $conges = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Récupérer le nombre total de congés pour la pagination
+    $stmt = $pdo->query('SELECT COUNT(id_dcp) FROM demande_cp');
+    $total_conges = $stmt->fetchColumn();
+    $total_pages = ceil($total_conges / $limit);
+
+    // Ajouter les données à passer au template
     $data = [
         'user_name' => $_SESSION['user_name'] ?? null,
         'user_prenom' => $_SESSION['user_prenom'] ?? null,
         'user_admin' => $_SESSION['user_admin'] ?? null,
-        'user_id' => $_SESSION['user_id'] ?? null
-        ];
+        'user_id' => $_SESSION['user_id'] ?? null,
+        'conges' => $conges,
+        'page' => $page,
+        'total_pages' => $total_pages
+    ];
 
-    // Connexion à la base de données via Flight::get('pdo')
-    $pdo = Flight::get('pdo');
-
-    // Nombre d'employés par page
-    $limit = 5;
-
-    // Récupérer la page actuelle à partir du paramètre 'page' dans l'url
-    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    $offset = ($page - 1) * $limit;
-
-    //try {
-        $stmt = $pdo->prepare('SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree, d.valid FROM demande_cp d JOIN employe e ON d.id_emp = e.id_emp ORDER BY d.id_dcp ASC LIMIT :limit OFFSET :offset');
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-        $conges = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $stmt = $pdo->query('SELECT COUNT(id_dcp) FROM demande_cp');
-        $total_conges = $stmt->fetchColumn();
-        $total_pages = ceil($total_conges / $limit);
-
-        // Ajouter les données à passer au template
-        $data['conges'] = $conges;
-        $data['page'] = $page;
-        $data['total_pages'] = $total_pages;
-    /*} catch (PDOException $e) {
-        // Gestion des erreurs de base de données
-        $data['conges'] = [];
-        $data['error'] = 'Erreur lors de la récupération des données : ' . $e->getMessage();
-    }*/
-
-    // Passer les données au template
+    // Rendre le template
     Flight::render('./templates/admin_validation_congés.tpl', $data);
-
 }
+
 Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
 
 function admin() {
