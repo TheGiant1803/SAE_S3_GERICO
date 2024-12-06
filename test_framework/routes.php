@@ -402,59 +402,59 @@ Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
 
 function gestioncongé2() {
-        // Démarrer la session si ce n'est pas déjà fait
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
-        if(isset($_SESSION['user_id'])==false){
-            Flight::redirect('/connexion.html');
-        }
-        
-        // Préparer les données à passer au template
-        $data = [
-        // Si l'utilisateur est connecté, passez son nom
-        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
-        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
-        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
-        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
-        ];
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+    // Préparer les données à passer au template
+    $data = [
+    // Si l'utilisateur est connecté, passez son nom
+    'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+    'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+    'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+    'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+    ];
 
-        $pdo = Flight::get('pdo');
-        $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
-        $stmt->execute([':matricule' => $_SESSION['user_id']]);
-        $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $pdo = Flight::get('pdo');
+    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+    $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        function calculerDateFin($dateDebut, $duree, $heure_deb) {
-            $date = new DateTime($dateDebut);
-            $joursAjoutes = 0;
-            if ($heure_deb >= 12) {$duree--;}
-            while ($joursAjoutes < ($duree / 2)) {
-                // Ajouter un jour
-                $date->modify('+1 day');
-        
-                // Vérifier si c'est un week-end (6 = samedi, 7 = dimanche)
-                $jourSemaine = $date->format('N');
-                if ($jourSemaine < 6) {
-                    $joursAjoutes++;
-                }
-            }
-        
-            return $date->format('Y-m-d');
-        }
-        
-        // Ajouter date_fin à chaque demande
-        foreach ($demande_cp as &$demande) {
-            if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
-                $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
-            } else {
-                $demande['date_fin'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
+    function calculerDateFin($dateDebut, $duree, $heure_deb) {
+        $date = new DateTime($dateDebut);
+        $joursAjoutes = 0;
+        if ($heure_deb >= 12) {$duree--;}
+        while ($joursAjoutes < ($duree / 2)) {
+            // Ajouter un jour
+            $date->modify('+1 day');
+    
+            // Vérifier si c'est un week-end (6 = samedi, 7 = dimanche)
+            $jourSemaine = $date->format('N');
+            if ($jourSemaine < 6) {
+                $joursAjoutes++;
             }
         }
+    
+        return $date->format('Y-m-d');
+    }
+    
+    // Ajouter date_fin à chaque demande
+    foreach ($demande_cp as &$demande) {
+        if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
+            $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
+        } else {
+            $demande['date_fin'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
+        }
+    }
 
-        $data['demande_cp'] = $demande_cp;
+    $data['demande_cp'] = $demande_cp;
 
-    Flight::render('./templates/gestioncongé2.tpl', $data);
+Flight::render('./templates/gestioncongé2.tpl', $data);
 }
 
 Flight::route('/gestioncongé2.html', 'gestioncongé2');

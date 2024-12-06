@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 09:10:01
+/* Smarty version 4.2.1, created on 2024-12-06 09:21:23
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752bf69a68e66_74156301',
+  'unifunc' => 'content_6752c2131e1a80_10300214',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733472930,
+      1 => 1733476604,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752bf69a68e66_74156301 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6752c2131e1a80_10300214 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -92,19 +92,31 @@ $_smarty_tpl->tpl_vars['demande']->do_else = false;
 </td>
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
 </td>
-                    <td>2024-01-03</td>
+                    <td>
+                        <?php echo $_smarty_tpl->tpl_vars['demande']->value['date_fin'];?>
+
+                    </td>  
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
 </td>
-                    <td>48h</td>
-                    <td>Terminé</td>
+                    <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['duree']/2;?>
+ jour(s)</td>
+                    <td>            
+                        <?php if ($_smarty_tpl->tpl_vars['demande']->value['valid'] == null) {?>
+                            En attente
+                        <?php } elseif ($_smarty_tpl->tpl_vars['demande']->value['valid'] == 0) {?>
+                            Refusé
+                        <?php } elseif ($_smarty_tpl->tpl_vars['demande']->value['valid'] == 1) {?>
+                            Accepté
+                        <?php }?>
+                    </td>
                 </tr>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                
             </tbody>
         </table>
         </div>
-    
         <!-- Boutons -->
         <div class="buttons">
             <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
@@ -159,6 +171,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
+
         <?php echo '</script'; ?>
 >
     
