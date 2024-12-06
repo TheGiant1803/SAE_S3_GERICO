@@ -865,6 +865,19 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
+Flight::route('/suppression-@id_emp.html',function($id_emp){
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $pdo = Flight::get('pdo');
+    if($_SESSION['user_admin']==1){
+        $Stmt = $pdo->prepare("DELETE FROM employe where id_emp=$id_emp");
+        $Stmt->execute();
+        Flight::redirect("/gestion_des_salaries.html");
+    }
+
+});
+
 function ajoutSalarieAffichage(){
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
