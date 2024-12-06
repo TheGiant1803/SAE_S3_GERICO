@@ -47,7 +47,7 @@
           <label for="nom" class="modsallabel">
            Nom
           </label>
-          <input id="nom" name="nom" type="text" size="40" required>
+          <input id="nom" name="nom" type="text" size="40"  required>
          </div>
          <div>
           <label for="prenom" class="modsallabel">
@@ -103,12 +103,7 @@
           <input id="tel" name="tel" type="text" size="40" required>
          </div>
         </div>
-        <div class="form-actions">
-         <button class="reset">
-          Réinitialiser
-         </button>
           <input type="submit" value="Valider">
-       </div>
        </form>
 
     

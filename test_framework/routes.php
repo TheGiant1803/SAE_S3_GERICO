@@ -795,7 +795,7 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
-function ajoutSalarie(){
+function ajoutSalarieAffichage(){
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -811,9 +811,12 @@ function ajoutSalarie(){
         'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
-        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
         ];
-        // Récupérer les données du formulaire que l'utilisateur a écrit
+        Flight::render('./templates/ajoutSalarie.tpl',$data);
+}
+
+function ajoutSalarie(){
     $post = Flight::request()->data;
     // Initialisation d'un tableau pour les erreurs
     $errors = [];
@@ -872,16 +875,13 @@ function ajoutSalarie(){
         return;
     }
 
-    // Hasher le mot de passe
-    $hashedPassword = password_hash($post->mdp, PASSWORD_DEFAULT);
 
     $pdo = Flight::get('pdo');
-
-    try {
+    //try {
         // Préparer la requête d'insertion
         $stmt = $pdo->prepare("
-            INSERT INTO employe (email, nom, prenom, matricule, datenaissance, dateembauche, salaire, tel, admin, cong, mdp)
-            VALUES (:email, :nom, :prenom, :id_emp, :date_nais, :date_emb, :salaire, :tel, :admin, :cong, :pwd)
+            INSERT INTO employe (email, nom, prenom, id_emp, date_nais, date_emb, salaire, tel, admin, cong, pwd)
+            VALUES (:email, :nom, :prenom, :id_emp, :date_nais, :dateembauche, :salaire, :tel, :admin, :cong, :mdp)
         ");
 
         // Exécuter la requête avec les données du formulaire
@@ -889,30 +889,27 @@ function ajoutSalarie(){
             ':email' => $post->email,
             ':nom' => $post->nom,
             ':prenom' => $post->prenom,
-            ':matricule' => $post->matricule,
-            ':datenaissance' => $post->datenaissance,
+            ':id_emp' => $post->matricule,
+            ':date_nais' => $post->datenaissance,
             ':dateembauche' => $post->dateembauche,
             ':salaire' => $post->salaire,
             ':tel' => $post->tel,
             ':admin'=>0,
             ':cong'=>0,
-            ':pwd'=>$hashedPassword,
+            ':mdp'=>$post->mdp
         ]);
 
         // Redirection
-        Flight::redirect('./gestion_des_salaries.html');
-    } catch (PDOException $e) {
+        Flight::redirect('/gestion_des_salaries.html');
+        exit();
+    /*} catch (PDOException $e) {
         //Erreur de base de données
         $errors['general'] = "Erreur de base de données : " . $e->getMessage();
-        Flight::render('./templates/ajoutSalarie.tpl', [
-            'errors' => $errors,
-            'post' => $post
-        ]
-    );
-    }
+        Flight::redirect('./ajoutSalarie.html');
+    }*/
 };
-Flight::route('/ajoutSalarie.html', 'ajoutSalarie');
-
+Flight::route('GET /ajoutSalarie.html', 'ajoutSalarieAffichage');
+Flight::route ('POST /ajoutSalarie.html', 'ajoutSalarie');
 
 
 

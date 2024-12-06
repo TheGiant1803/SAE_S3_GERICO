@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 09:48:09
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\ajoutSalarie.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-06 08:31:40
+  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\modificationSalarie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752c859727364_29873597',
+  'unifunc' => 'content_6752b66c34e5c1_44031025',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '8860caa21ee2e46144268d7eb6b2493a96fd1c52' => 
+    'c964ce0ba86c36e15fe3d2523acf65854108dab0' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\ajoutSalarie.tpl',
-      1 => 1733476727,
+      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\modificationSalarie.tpl',
+      1 => 1733404506,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752c859727364_29873597 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6752b66c34e5c1_44031025 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un salarié</title>
+    <title>Modification salarié</title>
     <link rel="stylesheet" href="../styles/style.css">
     <style>     
         
@@ -61,48 +61,48 @@ function content_6752c859727364_29873597 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </nav>
     
-    <form method="POST" action="#" class="container_modsal">
+    <div class="container_modsal">
         <h2>
-         Ajout d'un salarié
+         Modification du salarié
         </h2>
         <div class="form-group">
          <div>
           <label for="nom" class="modsallabel">
            Nom
           </label>
-          <input id="nom" name="nom" type="text" size="40"  required>
+          <input id="nom" type="text" size="40"/>
          </div>
          <div>
           <label for="prenom" class="modsallabel">
            Prénom
           </label>
-          <input id="prenom" name="prenom" type="text" size="40" required>
+          <input id="prenom" type="text" size="40"/>
          </div>
          <div>
             <label for="matricule" class="modsallabel">
              Matricule
             </label>
-            <input id="matricule" name="matricule" type="text" size="40" required>
+            <input id="matricule" type="text" size="40"/>
            </div>
         </div>
         <div class="form-group">
          <div>
-          <label for="datenaissance" class="modsallabel">
-           Date Naissance (YYYY-MM-DD)
+          <label for="date-naissance" class="modsallabel">
+           Date Naissance
           </label>
-          <input id="datenaissance" name="datenaissance" type="text" size="40" required>
+          <input id="date-naissance" type="text" size="40"/>
          </div>
          <div>
-          <label for="dateembauche" class="modsallabel">
-           Date Embauche (YYYY-MM-DD)
+          <label for="date-embauche" class="modsallabel">
+           Date Embauche
           </label>
-          <input id="dateembauche" name="dateembauche" type="text" size="40" required>
+          <input id="date-embauche" type="text" size="40"/>
          </div>
          <div>
             <label for="salaire" class="modsallabel">
              Salaire
             </label>
-            <input id="salaire" name="salaire" type="text" size="40" required>
+            <input id="salaire" type="text" size="40"/>
            </div>
         </div>
         <div class="form-group">
@@ -110,24 +110,24 @@ function content_6752c859727364_29873597 (Smarty_Internal_Template $_smarty_tpl)
           <label for="email" class="modsallabel">
            Email
           </label>
-          <input id="email" name="email" type="text" size="40" required>
-         </div>
-        <div class="form-group">
-         <div>
-          <label for="mdp" class="modsallabel">
-           Mot de Passe Provisoire
-          </label>
-          <input id="mdp" name="mdp" type="text" size="40" required>
+          <input id="email" type="text" size="40"/>
          </div>
          <div>
           <label for="tel" class="modsallabel">
            Tél
           </label>
-          <input id="tel" name="tel" type="text" size="40" required>
+          <input id="telep" type="text" size="40"/>
          </div>
         </div>
-          <input type="submit" value="Valider">
-       </form>
+        <div class="form-actions">
+         <button class="reset">
+          Réinitialiser
+         </button>
+         <button>
+          Valider
+         </button>
+        </div>
+       </div>
 
     
     <footer class="foot_bar bar">
