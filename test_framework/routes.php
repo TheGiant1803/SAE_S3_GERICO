@@ -424,11 +424,39 @@ function gestioncongé2() {
         $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
         $stmt->execute([':matricule' => $_SESSION['user_id']]);
         $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $data['demande_cp'] = $demande_cp;
+
+        function calculerDateFin($dateDebut, $duree, $heure_deb) {
+            $date = new DateTime($dateDebut);
+            $joursAjoutes = 0;
+            if ($heure_deb >= 12) {$duree--;}
+            while ($joursAjoutes < ($duree / 2)) {
+                // Ajouter un jour
+                $date->modify('+1 day');
         
+                // Vérifier si c'est un week-end (6 = samedi, 7 = dimanche)
+                $jourSemaine = $date->format('N');
+                if ($jourSemaine < 6) {
+                    $joursAjoutes++;
+                }
+            }
+        
+            return $date->format('Y-m-d');
+        }
+        
+        // Ajouter date_fin à chaque demande
+        foreach ($demande_cp as &$demande) {
+            if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
+                $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
+            } else {
+                $demande['date_fin'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
+            }
+        }
+
+        $data['demande_cp'] = $demande_cp;
 
     Flight::render('./templates/gestioncongé2.tpl', $data);
 }
+
 Flight::route('/gestioncongé2.html', 'gestioncongé2');
 
 function modificationSalarie() {
