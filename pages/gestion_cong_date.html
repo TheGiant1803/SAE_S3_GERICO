@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion date de congés</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="../styles/style.css">
   </head>
   <body>
 
     <nav>
-      <nav class="bar"></nav> <!-- C'est la ligne bleu foncé touten haut-->
+      <nav class="bar"></nav> <!-- C'est la ligne bleu foncée tout en haut-->
   
   <nav class="navbar">
       <div class="logo-container">
@@ -35,28 +35,37 @@
   </nav>
 
     <div class="container-cong">
+      <div class="box-cong">
         <h1>Demande de Congés :</h1>
         
         <form method="post" action="" class="form-cong">
           <div class="form-group">
-            <label for="date_cong">Date :</label>
-            <input type="date" class="form-control" id="date_cong" name="date_cong" required>
+            <label for="date_cong" min="">Date :</label>
+            <input type="date" class="form-control date_cong" id="date_cong" name="date_cong" required>
+          </div>
+          <div class="form-group">
+            <label for="start">Heure de début :</label>
+              <select class="form-select" id="start" name="start" required>
+                <option selected disabled>-</option>
+                <option value="00:00">Minuit</option>
+                <option value="12:00">Midi</option>
+              </select>
           </div>
           <div class="form-group">
             <label for="duration">Sélectionnez la durée :</label>
               <select class="form-select" id="duration" name="duration" required>
                 <option selected disabled>-</option>
-                <option value="matin">Matin</option>
-                <option value="après_midi">Après-midi</option>
-                <option value="Journée">Journée complète</option>
+                <option value="12">Demie-journée</option>
+                <option value="24">Journée complète</option>
               </select>
           </div>
-          <div class="form-group">
+          <div class="form-group motif1">
             <label for="motif">Motif du congé :</label>
-            <input type="text" class="form-control motif" id="motif" name="motif" required>
+            <textarea class="form-control motif" id="motif" name="motif" placeholder="Ex : Rendez-vous médical, etc..." required></textarea>
           </div>
-          <input type="submit" value ="Envoyer la demande">
+          <input type="submit" value ="Envoyer la demande" class="submit submit1">
         </form>
+      </div>
     </div>
 
     <footer class="foot_bar bar">
@@ -67,6 +76,5 @@
           <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
       </ul>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
