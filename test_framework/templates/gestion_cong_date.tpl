@@ -50,7 +50,7 @@
             <label for="start">Heure de début :</label>
               <select class="form-select" id="start" name="start" required>
                 <option selected value="matin">Matin</option>
-                <option value="après-midi">Après-midi</option>
+                <option value="après_midi">Après-midi</option>
               </select>
           </div>
           <div class="form-group">

@@ -446,9 +446,9 @@ function gestioncongé2() {
     // Ajouter date_fin à chaque demande
     foreach ($demande_cp as &$demande) {
         if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
-            $demande['date_fin'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
+            $demande['date_retour'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
         } else {
-            $demande['date_fin'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
+            $demande['date_retour'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
         }
     }
 

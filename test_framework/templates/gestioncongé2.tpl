@@ -51,7 +51,7 @@
                 <tr>
                     <th>N°</th>
                     <th>Date début</th>
-                    <th>Date fin</th>
+                    <th>Date retour</th>
                     <th>Cause</th>
                     <th>Durée</th>
                     <th>Statut</th>
@@ -63,7 +63,7 @@
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
                     <td>
-                        {$demande.date_fin}
+                        {$demande.date_retour}
                     </td>  
                     <td>{$demande.motif}</td>
                     <td>{$demande.duree / 2} jour(s)</td>

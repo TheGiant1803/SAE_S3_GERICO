@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 09:21:23
-  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-06 09:44:13
+  from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752c2131e1a80_10300214',
+  'unifunc' => 'content_6752c76d589364_76683038',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
+    'eb660ffefb3eb5b11d49fb042a4fea86f724289e' => 
     array (
-      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733476604,
+      0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
+      1 => 1733478217,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752c2131e1a80_10300214 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6752c76d589364_76683038 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -74,7 +74,7 @@ function content_6752c2131e1a80_10300214 (Smarty_Internal_Template $_smarty_tpl)
                 <tr>
                     <th>N°</th>
                     <th>Date début</th>
-                    <th>Date fin</th>
+                    <th>Date retour</th>
                     <th>Cause</th>
                     <th>Durée</th>
                     <th>Statut</th>
@@ -93,7 +93,7 @@ $_smarty_tpl->tpl_vars['demande']->do_else = false;
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['date_dcp'];?>
 </td>
                     <td>
-                        <?php echo $_smarty_tpl->tpl_vars['demande']->value['date_fin'];?>
+                        <?php echo $_smarty_tpl->tpl_vars['demande']->value['date_retour'];?>
 
                     </td>  
                     <td><?php echo $_smarty_tpl->tpl_vars['demande']->value['motif'];?>
