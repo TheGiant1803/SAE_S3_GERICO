@@ -263,7 +263,40 @@ function Fiche_De_Paie() {
 
     Flight::render('./templates/Fiche_De_Paie.tpl', $data);
 }
-Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
+Flight::route('GET /Fiche_De_Paie.html', 'Fiche_De_Paie');
+
+
+function aff_fiche_paie(){
+
+    $pdo = Flight::get('pdo');
+
+    $post = Flight::request()->data;
+
+    $idToFetch = $post->id;
+    // Assume you want to display the PDF for fiche with ID 1
+    $idToFetch = 1; // Change this to the correct ID
+
+    // Prepare the SQL statement to select the PDF data
+    $stmt = $pdo->prepare("SELECT fp FROM fiche_paie WHERE id_fp = :id");
+    $stmt->execute(array(':id' => $idToFetch));
+
+    // Fetch the result
+    $pdfData = $stmt->fetchColumn();
+
+    if ($pdfData) {
+        // Set headers to display PDF in the browser
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="fiche_paie.pdf"');
+        header('Content-Length: ' . strlen($pdfData));
+        
+        // Output the PDF data
+        echo $pdfData;
+    } else {
+        echo "Pas de pdf trouvé pour cette fiche";
+    }
+}
+Flight::route('POST /Fiche_De_Paie.html', 'aff_fiche_paie');
+
 
 function gestion_cong_date_aff() {
         // Démarrer la session si ce n'est pas déjà fait

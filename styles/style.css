@@ -474,18 +474,12 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 input[type="submit"] {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
+    background: none;
+    color: #534f4fc6;
     cursor: pointer;
     font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #444;
+    margin: 0px;
+    padding: 0px 10px 0px 5px;
 }
 
 /*a partir d'ici gestion congé*/
@@ -656,47 +650,40 @@ input[type="number"] {
 /* ------------------------ MODIFICATION DE TANGUY historique fiche------------------------------------ */
 
 .consult_paie{
+    display: flex;
+    justify-content: center;
     font-weight: bold;
     font-family: sans-serif;
+    max-width: 800px;
     background-color: white;
-    position: absolute;
     color: #000;
-    top: 20%; /* Place l'élément en haut */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
     padding: 10px 75px;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.historic_fiche_paie {
-    font-family: sans-serif;
-    background-color: white;
-    position: absolute;
-    color: #000;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 20px 50px 20px 50px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    list-style-type: none; /* Supprime les puces de la liste */
-    z-index: -1;
+.centrer-titre-fiche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .list-item {
     display: flex; /* Utilise flexbox pour l'alignement */
     justify-content: space-between; /* Espace entre les éléments */
-    padding: 5px 0; /* Espacement entre les éléments */
+    padding: 5px 5px 5px 5px; /* Espacement entre les éléments */
+    
     border: solid;
     width: 900px;
     border-width: 1px;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
-
+.apparance-bouton-pdf{
+    background: none;
+}
 .info {
     text-align: left;
+    display: flex;
 }
 
 .date {
@@ -1017,7 +1004,13 @@ input[type="text"]{
         position: relative;
         padding: 0px 5px 0px 5px;
     }
-    
+    .consult_paie{
+        margin: 30px 0px 0px 0px;
+    }
+    .gestion-fiches{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     /*----------------------Admin gestion salariés ----------------*/
     .ajout_fiche_paie{
         transform: none;
