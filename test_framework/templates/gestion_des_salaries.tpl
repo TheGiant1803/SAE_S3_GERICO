@@ -49,7 +49,7 @@
                     <li>
                         <div class="list-item">
                             <span class="info">{$employe.nom} {$employe.prenom} - Matricule {$employe.id_emp}</span>
-                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                            <span class="date"> <a href="./modification-{$employe.id_emp}.html">MODIFIER</a> | SUPPRIMER </span>
                         </div>
                     </li>
                     {/foreach}

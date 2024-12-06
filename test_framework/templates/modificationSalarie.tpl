@@ -44,55 +44,35 @@
         </h2>
         <div class="form-group">
          <div>
-          <label for="nom" class="modsallabel">
-           Nom
-          </label>
-          <input id="nom" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="prenom" class="modsallabel">
-           Prénom
-          </label>
-          <input id="prenom" type="text" size="40"/>
-         </div>
-         <div>
-            <label for="matricule" class="modsallabel">
-             Matricule
-            </label>
-            <input id="matricule" type="text" size="40"/>
-           </div>
-        </div>
-        <div class="form-group">
-         <div>
-          <label for="date-naissance" class="modsallabel">
-           Date Naissance
-          </label>
-          <input id="date-naissance" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="date-embauche" class="modsallabel">
-           Date Embauche
-          </label>
-          <input id="date-embauche" type="text" size="40"/>
-         </div>
-         <div>
-            <label for="salaire" class="modsallabel">
-             Salaire
-            </label>
-            <input id="salaire" type="text" size="40"/>
-           </div>
-        </div>
-        <div class="form-group">
-         <div>
-          <label for="email" class="modsallabel">
-           Email
-          </label>
-          <input id="email" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="tel" class="modsallabel">
-           Tél
-          </label>
+<form method="post" action="./routes.php">
+
+    <label>Nom :</label>
+    <input type="text" name="nom" value="{$emp.nom}" required>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" name="prenom" value="{$emp.prenom}" required> 
+
+    <label>Matricule :</label>
+    <input type="text" name="matricule_affichage" value="{{ salarie.id_emp }}" disabled>
+
+    <label>Date de Naissance :</label>
+    <input type="date" name="datenaissance" value="{{ salarie.date_nais }}" required>
+
+    <label>Date d'Embauche :</label>
+    <input type="date" name="dateembauche" value="{{ salarie.date_emb }}" required>
+
+    <label>Salaire :</label>
+    <input type="text" name="salaire" value="{{ salarie.salaire }}" required>
+
+    <label>Email :</label>
+    <input type="email" name="email" value="{{ salarie.email }}" required>
+
+    <label>Téléphone :</label>
+    <input type="text" name="tel" value="{{ salarie.tel }}" required>
+
+    <button type="submit">Enregistrer les modifications</button>
+</form>
+
           <input id="telep" type="text" size="40"/>
          </div>
         </div>
