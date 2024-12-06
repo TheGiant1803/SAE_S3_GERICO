@@ -905,10 +905,7 @@ function ajoutSalarie(){
     }
 
     if (!empty($errors)) {
-        Flight::render('./templates/ajoutSalarie.tpl', [
-            'errors' => $errors,
-            'post' => $post
-        ]);
+        Flight::redirect('/ajoutSalarie.html');
         return;
     }
 
@@ -938,7 +935,6 @@ function ajoutSalarie(){
 
         // Redirection
         Flight::redirect('/gestion_des_salaries.html');
-        exit();
     /*} catch (PDOException $e) {
         //Erreur de base de données
         $errors['general'] = "Erreur de base de données : " . $e->getMessage();
