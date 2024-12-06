@@ -477,7 +477,7 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 16px;
     margin: 0px;
-    padding: 0px;
+    padding: 0px 10px 0px 5px;
 }
 
 /*a partir d'ici gestion congé*/
@@ -650,7 +650,6 @@ input[type="number"] {
 .consult_paie{
     display: flex;
     justify-content: center;
-    margin-top: 50px;
     font-weight: bold;
     font-family: sans-serif;
     max-width: 800px;
@@ -682,6 +681,7 @@ input[type="number"] {
 }
 .info {
     text-align: left;
+    display: flex;
 }
 
 .date {
@@ -876,7 +876,13 @@ input[type="text"]{
         position: relative;
         padding: 0px 5px 0px 5px;
     }
-    
+    .consult_paie{
+        margin: 30px 0px 0px 0px;
+    }
+    .gestion-fiches{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     /*----------------------Admin gestion salariés ----------------*/
     .ajout_fiche_paie{
         transform: none;
