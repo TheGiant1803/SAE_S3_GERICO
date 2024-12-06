@@ -40,13 +40,15 @@
     {foreach $fiche_paie as $fiche} 
         <li>
             <div class="list-item">
-                <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp} - PDF </span>
+                <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp} - 
+                    <form action="#" method="post">
+                        <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche.id_fp}">
+                        <input type="submit" value="PDF">
+                    </form> 
+                </span>
                 <span class="date">{$fiche.date}</span> 
             </div>
-            <form action="#" method="post">
-                <input type="button" id="id_fiche "value="{$fiche.id_fp}">
-                <input type="submit" value="PDF">
-            </form>
+            
         </li>
         {/foreach}
     </ul>
