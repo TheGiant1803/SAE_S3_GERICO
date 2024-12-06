@@ -36,8 +36,8 @@
     </nav>
     </nav>
 
-
-        <div class="gestion-fiches">
+    <div class="centrer-suivant-preced">
+         <div class="gestion-fiches">
             
             <ul class="ajout_fiche_paie">
                 <div class="gestion-text">
@@ -62,15 +62,17 @@
         </div>
         
         <!-- Navigation de la pagination -->
-        <div>
-        {if $page > 1}
-            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
-        {/if}
-        
-        {if $page < $total_pages}
-            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
-        {/if}
+        <div class="separation-des-boutons">
+            {if $page > 1}
+                <a class="apparance-des-liens" href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+            {/if}
+            
+            {if $page < $total_pages}
+                <a class="apparance-des-liens" href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+            {/if}
         </div>
+    </div>
+       
         
 
     
