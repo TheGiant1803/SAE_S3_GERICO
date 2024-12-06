@@ -52,13 +52,19 @@
         </thead>
         <tbody>
             {if !empty($conges)}
-                {foreach from=$conges item=conges}
+                {foreach from=$conges item=conge}
                 <tr>
-                    <td>{$conges.id_dcp|escape}</td>
-                    <td>{$conges.nom|escape}</td>
-                    <td>{$conges.prenom|escape}</td>
-                    <td>{$conges.motif|escape}</td>
-                    <td>{$conges.duree|escape}</td>
+                    <td>{$conge.id_dcp|escape}</td>
+                    <td>{$conge.nom|escape}</td>
+                    <td>{$conge.prenom|escape}</td>
+                    <td>{$conge.motif|escape}</td>
+                    <td>{$conge.duree|escape}</td>
+                    {if conge.valid == NULL}
+                    <td>
+                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
+                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                    </td>
+                    {/if}
                 </tr>
                 {/foreach}
             {else}
@@ -71,11 +77,11 @@
 
     <div>
         {if $page > 1}
-            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+            <a href="./admin_validation_congés.html?page={$page-1}">Précédent</a>
         {/if}
         
         {if $page < $total_pages}
-            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+            <a href="./admin_validation_congés.html?page={$page+1}">Suivant</a>
         {/if}
     </div>
     

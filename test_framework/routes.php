@@ -78,8 +78,8 @@ function admin_validation_congés() {
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     $offset = ($page - 1) * $limit;
 
-    try {
-        $stmt = $pdo->prepare('SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree FROM demande_cp d JOIN employe e ON d.id_emp = e.id_emp ORDER BY d.id_dcp ASC LIMIT :limit OFFSET :offset');
+    //try {
+        $stmt = $pdo->prepare('SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree, d.valid FROM demande_cp d JOIN employe e ON d.id_emp = e.id_emp ORDER BY d.id_dcp ASC LIMIT :limit OFFSET :offset');
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
         $stmt->execute();
@@ -93,14 +93,14 @@ function admin_validation_congés() {
         $data['conges'] = $conges;
         $data['page'] = $page;
         $data['total_pages'] = $total_pages;
-    } catch (PDOException $e) {
+    /*} catch (PDOException $e) {
         // Gestion des erreurs de base de données
         $data['conges'] = [];
         $data['error'] = 'Erreur lors de la récupération des données : ' . $e->getMessage();
-    }
+    }*/
 
     // Passer les données au template
-    Flight::render('./templates/admin_validation_congés.html', $data);
+    Flight::render('./templates/admin_validation_congés.tpl', $data);
 
 }
 Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
