@@ -35,38 +35,39 @@
             </a>
       </div>
   </nav>
-  </nav>
 
 
-    <div id="container-cong">
+    <div class="container-cong">
+      <div class="box-cong">
         <h1>Demande de Congés :</h1>
-        <form action="#" method="post">
+
+        <form method="post" action="" class="form-cong">
           <div class="form-group">
-            <label for="date_cong">Date :</label>
-            <input type="date" class="form-control" id="date_cong" name="date_cong" required>
+            <label for="date_cong" min="">Date :</label>
+            <input type="date" class="form-control date_cong" id="date_cong" name="date_cong" required>
           </div>
           <div class="form-group">
-            <label for="duration">Sélectionnez le début :</label>
-              <select class="form-select" id="duration" name="duration" required>
-                <option  selected value="matin">Matin</option>
-                <option value="après_midi">Après-midi</option>
+            <label for="start">Heure de début :</label>
+              <select class="form-select" id="start" name="start" required>
+                <option selected value="matin">Matin</option>
+                <option value="après-midi">Après-midi</option>
               </select>
           </div>
           <div class="form-group">
             <label for="nb_jour">Nombre de demi-journée :</label>
-              <input type="text" class="form-control" id="nb_jour" name="nb_jour" required>
+              <input type="number" class="form-control" id="nb_jour" name="nb_jour" required>
           </div>
-          <div class="form-group">
-            <label for="duration">Sélectionnez le motif :</label>
-              <select class="form-select" id="motif" name="motif" required>
-                <option  selected value="RTT">RTT</option>
+          <div class="form-group motif1">
+            <label for="motif">Motif du congé :</label>
+            <select class="form-select" id="motif" name="motif" required>
+                <option selected value="RTT">RTT</option>
                 <option value="maladie">maladie</option>
                 <option value="maternité">maternité</option>
-              </select>
+            </select>
           </div>
-          <div class="form-group">
-          <input type="submit" value ="Envoyer la demande">
+          <input type="submit" value ="Envoyer la demande" class="submit submit1">
         </form>
+      </div>
     </div>
 
     <footer class="foot_bar bar">

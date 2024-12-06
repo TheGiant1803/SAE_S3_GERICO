@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-05 09:07:02
+/* Smarty version 4.2.1, created on 2024-12-06 09:01:02
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67516d36af2332_43901360',
+  'unifunc' => 'content_6752bd4e44e795_64474495',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8568bac4e5a399223cff34fa787ecda1dbf930' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1733389617,
+      1 => 1733475659,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67516d36af2332_43901360 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6752bd4e44e795_64474495 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -54,38 +54,43 @@ function content_67516d36af2332_43901360 (Smarty_Internal_Template $_smarty_tpl)
               <img class="notif" src="../assets/notif.png" alt="image de notifications">
           </a>
             <a class="navbar-icons" href="#profil">
-                <a href="./logout"><p>Se déconnecter</p></a>
+                <a href="./logout"><p class="se-deconnecter">Se déconnecter</p></a>
             </a>
       </div>
   </nav>
-  </nav>
 
 
-    <div id="container-cong">
+    <div class="container-cong">
+      <div class="box-cong">
         <h1>Demande de Congés :</h1>
-        <form action="#" method="post">
+
+        <form method="post" action="" class="form-cong">
           <div class="form-group">
-            <label for="date_cong">Date :</label>
-            <input type="date" class="form-control" id="date_cong" name="date_cong" required>
+            <label for="date_cong" min="">Date :</label>
+            <input type="date" class="form-control date_cong" id="date_cong" name="date_cong" required>
           </div>
           <div class="form-group">
-            <label for="duration">Sélectionnez la durée :</label>
-              <select class="form-select" id="duration" name="duration" required>
-                <option  selected value="matin">Matin</option>
-                <option value="après_midi">Après-midi</option>
+            <label for="start">Heure de début :</label>
+              <select class="form-select" id="start" name="start" required>
+                <option selected value="matin">Matin</option>
+                <option value="après-midi">Après-midi</option>
               </select>
           </div>
           <div class="form-group">
-            <label for="duration">Sélectionnez le motif :</label>
-              <select class="form-select" id="motif" name="motif" required>
-                <option  selected value="RTT">RTT</option>
+            <label for="nb_jour">Nombre de demi-journée :</label>
+              <input type="number" class="form-control" id="nb_jour" name="nb_jour" required>
+          </div>
+          <div class="form-group motif1">
+            <label for="motif">Motif du congé :</label>
+            <select class="form-select" id="motif" name="motif" required>
+                <option selected value="RTT">RTT</option>
                 <option value="maladie">maladie</option>
                 <option value="maternité">maternité</option>
-              </select>
+            </select>
           </div>
-          <div class="form-group">
-          <input type="submit" value ="Envoyer la demande">
+          <input type="submit" value ="Envoyer la demande" class="submit submit1">
         </form>
+      </div>
     </div>
 
     <footer class="foot_bar bar">

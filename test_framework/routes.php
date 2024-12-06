@@ -305,8 +305,9 @@ function gestion_cong_date_ajout()
         $post = Flight::request()->data;
         //Récupération des données envoyées dans une variable
         $date = $post->date_cong;
-        $mom_deb = $post->duration;
+        $mom_deb = $post->start;
         $motif = $post->motif;
+        $nombre_jour = $post->nb_jour;
         $id = $_SESSION['user_id'];
 
         if($mom_deb == 'matin')
@@ -317,14 +318,22 @@ function gestion_cong_date_ajout()
         {
             $heure_deb = 12;
         }
-        //Requête SQL INSERT
-        $sql_conge = "INSERT INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date',1,NULL,'$motif',$heure_deb,$id);";
 
-        //Préaparation de la requête d'insertion
-        $i_conge = $pdo->prepare($sql_conge);
+        $nbcong = $pdo->query("select cong from employe where id_emp = $id")->fetchColumn();
+        if($nombre_jour <= $nbcong)
+        {
+            $sql_conge = "INSERT INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date',$nombre_jour,NULL,'$motif',$heure_deb,$id);";
+            //Préaparation de la requête d'insertion
+            $i_conge = $pdo->prepare($sql_conge);
+            $i_conge->execute();
 
-        $i_conge->execute();
-
+            $conge = $nbcong - $nombre_jour;
+            $sql_conge_minus = "UPDATE employe SET cong = $conge where id_emp = $id";
+            $i_conge_minus = $pdo->prepare($sql_conge_minus);
+            $i_conge_minus->execute();
+        }
+        
+        
         Flight::redirect('./gestion_cong_date.html');
 }
 Flight::route('GET /gestion_cong_date.html', 'gestion_cong_date_aff');
