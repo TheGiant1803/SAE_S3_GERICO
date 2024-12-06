@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 13:38:43
+/* Smarty version 4.2.1, created on 2024-12-06 14:38:15
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752fe6392bef1_03732480',
+  'unifunc' => 'content_67530c5710f628_37307901',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1733492321,
+      1 => 1733495887,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752fe6392bef1_03732480 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67530c5710f628_37307901 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -81,8 +81,20 @@ $_smarty_tpl->tpl_vars['employe']->do_else = false;
  - Matricule <?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
 </span>
                             <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | <a href="./suppression-<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
-.html"> SUPPRIMER </a></span>
+.html" onclick="return confirmSuppression(event)">SUPPRIMER</a></span>
                         </div>
+                        <?php echo '<script'; ?>
+>
+                            function confirmSuppression(event) {
+                                const message = "Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.";
+                                if (!confirm(message)) {
+                                    event.preventDefault();
+                                    return false;
+                                }
+                                return true;
+                            }
+                        <?php echo '</script'; ?>
+>
                     </li>
                     <?php
 }
@@ -122,7 +134,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>
-    
+
 </body>
 </html>
 

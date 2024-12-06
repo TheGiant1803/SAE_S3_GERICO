@@ -49,8 +49,18 @@
                     <li>
                         <div class="list-item">
                             <span class="info">{$employe.nom} {$employe.prenom} - Matricule {$employe.id_emp}</span>
-                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | <a href="./suppression-{$employe.id_emp}.html"> SUPPRIMER </a></span>
+                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | <a href="./suppression-{$employe.id_emp}.html" onclick="return confirmSuppression(event)">SUPPRIMER</a></span>
                         </div>
+                        <script>
+                            function confirmSuppression(event) {
+                                const message = "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.";
+                                if (!confirm(message)) {
+                                    event.preventDefault();
+                                    return false;
+                                }
+                                return true;
+                            }
+                        </script>
                     </li>
                     {/foreach}
                 {else}
@@ -86,7 +96,7 @@
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>
-    
+
 </body>
 </html>
 
