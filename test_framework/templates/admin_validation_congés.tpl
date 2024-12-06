@@ -36,133 +36,48 @@
     </nav>
     </nav>
 
-    <main class="main_valcong">
-        <h1 class="titre">Validation de congés</h1>
+    <h1>Gestion des salariés</h1>
 
-        <div class="buttons">
-            <label for="nb-elements">Afficher </label>
-            <input type="number" id="nb-elements" value="5" min="1" />
-            <label for="nb-elements">éléments</label>
-            <button class="btn-classique" onclick="afficherElements()">Afficher</button>
-        </div>
+    <p>Liste des employés :</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Cause</th>
+                <th>Durée</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {if !empty($conges)}
+                {foreach from=$conges item=conges}
+                <tr>
+                    <td>{$conges.id_dcp|escape}</td>
+                    <td>{$conges.nom|escape}</td>
+                    <td>{$conges.prenom|escape}</td>
+                    <td>{$conges.motif|escape}</td>
+                    <td>{$conges.duree|escape}</td>
+                </tr>
+                {/foreach}
+            {else}
+                <tr>
+                    <td colspan="5">Aucun employé trouvé.</td>
+                </tr>
+            {/if}
+        </tbody>
+    </table>
+
+    <div>
+        {if $page > 1}
+            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+        {/if}
         
-        <div class="table-container">
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date début</th>
-                    <th>Date fin</th>
-                    <th>Cause</th>
-                    <th>Durée</th>
-                    <th>Statut</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Exemple de ligne par défaut -->
-                <tr>
-                    <td>1</td>
-                    <td>Carpentier</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Saguez</td>
-                    <td>Paul</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
-                <tr></tr>
-                    <td>1</td>
-                    <td>Jusselme</td>
-                    <td>Bruno</td>
-                    <td>2024-01-01</td>
-                    <td>2024-01-03</td>
-                    <td>Maintenance</td>
-                    <td>48h</td>
-                    <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-    
-        <!-- Boutons -->
-        <div class="buttons">
-            <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
-        </div>
-    
-        <script>
-            // Fonction pour exporter le tableau en CSV
-            function exporterCSV() {
-                let table = document.getElementById("table");
-                let rows = table.rows;
-                let csvContent = "";
-    
-                for (let i = 0; i < rows.length; i++) {
-                    let cols = rows[i].querySelectorAll("td, th");
-                    let rowContent = [];
-                    cols.forEach(function(col) {
-                        rowContent.push(col.textContent);
-                    });
-                    csvContent += rowContent.join(",") + "\n";
-                }
-    
-                // Télécharger le fichier CSV
-                let blob = new Blob([csvContent], { type: "text/csv" });
-                let link = document.createElement("a");
-                link.href = URL.createObjectURL(blob);
-                link.download = "tableau.csv";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-
-            // Fonction pour changer le statut avec les boutons "Accepter" et "Refuser"
-            function changerStatut(button, statut) {
-                let cellule = button.parentElement;
-                cellule.innerHTML = statut.charAt(0).toUpperCase() + statut.slice(1);  // Remplace les boutons par le statut (Accepté ou Refusé)
-                // Enregistrer le statut dans le tableau
-                let row = button.closest('tr');
-                let rowIndex = row.rowIndex - 1; // Enlever l'en-tête
-                statuts[rowIndex] = statut; // Enregistre le statut correspondant à la ligne
-            }
-            
-            // Fonction pour changer le statut
-            function changerStatut(button, statut) {
-                let cell = button.parentNode; // Cellule parent du bouton
-                let statusText = statut.charAt(0).toUpperCase() + statut.slice(1); // Formate le texte (Accepté ou Refusé)
-                // Remplace le contenu de la cellule par le statut et ajoute le bouton "Reset"
-                cell.innerHTML = statusText + `<button class="btn-reset" onclick="resetStatut(this)">Reset</button>`;
-            }
-
-            // Fonction pour réinitialiser le statut
-            function resetStatut(button) {
-                let cell = button.parentNode; // Cellule parent du bouton Reset
-                // Remet les boutons "Accepter" et "Refuser"
-                cell.innerHTML = `<button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button><button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>`;
-            }
-        </script>
-    
-    </main>
+        {if $page < $total_pages}
+            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+        {/if}
+    </div>
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
