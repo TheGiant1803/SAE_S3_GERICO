@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 14:38:15
-  from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-07 09:28:05
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67530c5710f628_37307901',
+  'unifunc' => 'content_675415254d20a2_44941072',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
+    'a1915eb93e8518a712afac5fd94ea68d5166f4f0' => 
     array (
-      0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1733495887,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
+      1 => 1733563616,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67530c5710f628_37307901 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675415254d20a2_44941072 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -86,7 +86,7 @@ $_smarty_tpl->tpl_vars['employe']->do_else = false;
                         <?php echo '<script'; ?>
 >
                             function confirmSuppression(event) {
-                                const message = "Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est irréversible.";
+                                const message = "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.";
                                 if (!confirm(message)) {
                                     event.preventDefault();
                                     return false;
