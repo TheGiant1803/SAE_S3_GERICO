@@ -76,8 +76,6 @@ function admin_validation_congés_valid(){
 
     Flight::redirect("/admin_validation_congés.html?page=$post->page");
 
-<<<<<<< HEAD
-=======
         if(isset($_SESSION['user_id'])==false){
             Flight::redirect('/connexion.html');
         }
@@ -92,7 +90,6 @@ function admin_validation_congés_valid(){
         ];
     if($_SESSION['user_admin']==1){Flight::render('./templates/admin_validation_congés.tpl', $data);}
     
->>>>>>> main
 }
 
 function admin_validation_congés_aff() {
