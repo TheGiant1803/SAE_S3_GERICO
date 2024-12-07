@@ -38,11 +38,17 @@
   </nav>
 
 
+<<<<<<< HEAD
+    <div id="container-cong">
+        <h1>Demande de Congés :</h1>
+        <form action="" method="post">
+=======
     <div class="container-cong">
       <div class="box-cong">
         <div class="gestion-text">Demande de Congés :</div>
 
         <form method="post" action="" class="form-cong">
+>>>>>>> main
           <div class="form-group">
             <label for="date_cong" min="">Date :</label>
             <input type="date" class="form-control date_cong" id="date_cong" name="date_cong" required>

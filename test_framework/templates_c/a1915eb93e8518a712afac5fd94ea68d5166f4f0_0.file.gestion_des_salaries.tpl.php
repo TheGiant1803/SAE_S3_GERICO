@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 13:10:55
-  from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-07 13:18:50
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752f7df4ad527_20500775',
+  'unifunc' => 'content_67544b3acbcce5_43739549',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '7847f4e5222f870f361a5fb10be8666e9477ca95' => 
+    'a1915eb93e8518a712afac5fd94ea68d5166f4f0' => 
     array (
-      0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1733490641,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
+      1 => 1733577360,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752f7df4ad527_20500775 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67544b3acbcce5_43739549 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -80,8 +80,21 @@ $_smarty_tpl->tpl_vars['employe']->do_else = false;
  <?php echo $_smarty_tpl->tpl_vars['employe']->value['prenom'];?>
  - Matricule <?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
 </span>
-                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                            <span class="date"> <a href="./modification-<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+.html">MODIFIER</a> | SUPPRIMER </span>
                         </div>
+                        <?php echo '<script'; ?>
+>
+                            function confirmSuppression(event) {
+                                const message = "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.";
+                                if (!confirm(message)) {
+                                    event.preventDefault();
+                                    return false;
+                                }
+                                return true;
+                            }
+                        <?php echo '</script'; ?>
+>
                     </li>
                     <?php
 }
@@ -121,7 +134,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>
-    
+
 </body>
 </html>
 
