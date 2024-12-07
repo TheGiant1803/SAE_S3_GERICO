@@ -71,8 +71,8 @@ function admin_validation_congés() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
+    if($_SESSION['user_admin']==1){Flight::render('./templates/admin_validation_congés.tpl', $data);}
     
-    Flight::render('./templates/admin_validation_congés.tpl', $data);
 }
 
 // Route associée à la fonction
@@ -98,7 +98,9 @@ function admin() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/admin.tpl',$data);
+    if($_SESSION['user_admin']==1)
+    {Flight::render('./templates/admin.tpl',$data);}
+    
 }
 Flight::route('/admin.html', 'admin');
 
@@ -120,7 +122,8 @@ function Ajout_fiche_paie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/Ajout_fiche_paie.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
+    
 }
 Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
 
@@ -429,7 +432,8 @@ function gestion_des_salaries() {
     }
 
     // Passer les données au template
-    Flight::render('./templates/gestion_des_salaries.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/gestion_des_salaries.tpl', $data);}
+    
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
@@ -510,7 +514,10 @@ function modificationSalarie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/modificationSalarie.tpl', $data);
+    if($_SESSION['user_admin']==1){
+        Flight::render('./templates/modificationSalarie.tpl', $data);
+    }
+    
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
 
@@ -896,7 +903,8 @@ function ajoutSalarieAffichage(){
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
         ];
-        Flight::render('./templates/ajoutSalarie.tpl',$data);
+        if($_SESSION['user_admin']==1){Flight::render('./templates/ajoutSalarie.tpl',$data);}
+        
 }
 
 function ajoutSalarie(){
