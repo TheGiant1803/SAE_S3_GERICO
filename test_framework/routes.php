@@ -50,7 +50,35 @@ function accueil() {
 };
 Flight::route('/', 'accueil');
 
-function admin_validation_congés() {
+function admin_validation_congés_valid(){
+    $pdo = Flight::get('pdo');
+    $post = Flight::request()->data;
+    // Récupérer l'identifiant de la demande
+    $id_dcp = $post->id_dcp;
+
+    // Construire dynamiquement le nom du paramètre du statut
+    $statut_key = "demande{$id_dcp}";
+
+    // Vérifier si le paramètre existe
+    if ($post->$statut_key == "accepte") {
+        $action = 1;
+    }
+    elseif($post->$statut_key == "refuse")
+    {
+        $action = 0;
+    }
+    else
+    {
+        $action = NULL;
+    }
+    $stmt = $pdo->prepare('UPDATE demande_cp SET valid = :valid WHERE id_dcp = :id_dcp');
+    $stmt->execute([':valid'=>$action, ':id_dcp'=>$id_dcp]);
+
+    Flight::redirect("/admin_validation_congés.html?page=$post->page");
+
+}
+
+function admin_validation_congés_aff() {
     // Démarrer la session si ce n'est pas déjà fait
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -64,19 +92,6 @@ function admin_validation_congés() {
     // Connexion à la base de données via Flight::get('pdo')
     $pdo = Flight::get('pdo');
 
-    // Vérifier si une action a été envoyée (via AJAX ou un formulaire POST)
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && isset($_POST['id_dcp'])) {
-        $id_dcp = (int)$_POST['id_dcp'];
-        $action = $_POST['action']; // 'accepté' ou 'refusé'
-
-        // Mettre à jour le statut du congé dans la base de données
-        $stmt = $pdo->prepare('UPDATE demande_cp SET valid = :valid WHERE id_dcp = :id_dcp');
-        $stmt->execute([':valid' => $action, ':id_dcp' => $id_dcp]);
-
-        // Répondre avec une confirmation
-        echo json_encode(['success' => true, 'message' => 'Statut mis à jour']);
-        exit; // Arrêter l'exécution pour éviter de rendre le template
-    }
 
     // Pagination
     $limit = 5; // Nombre de congés par page
@@ -115,8 +130,9 @@ function admin_validation_congés() {
     // Rendre le template
     Flight::render('./templates/admin_validation_congés.tpl', $data);
 }
+Flight::route('GET /admin_validation_congés.html', 'admin_validation_congés_aff');
 
-Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
+Flight::route('POST /admin_validation_congés.html', 'admin_validation_congés_valid');
 
 function admin() {
         // Démarrer la session si ce n'est pas déjà fait

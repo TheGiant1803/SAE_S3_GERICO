@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 13:16:47
+/* Smarty version 4.2.1, created on 2024-12-07 13:15:02
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\admin_validation_congés.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752f93f54f297_00432830',
+  'unifunc' => 'content_67544a56e7f860_23145715',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe615ce658436181daa2a7662be26e6272b2e481' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\admin_validation_congés.tpl',
-      1 => 1733491002,
+      1 => 1733577300,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752f93f54f297_00432830 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67544a56e7f860_23145715 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,7 +28,6 @@ function content_6752f93f54f297_00432830 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Validation de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one" rel="stylesheet">
 </head>
 <body>
     <nav>
@@ -59,9 +58,9 @@ function content_6752f93f54f297_00432830 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
 
-    <h1>Gestion des salariés</h1>
+    <h1>Gestion des congés</h1>
 
-    <p>Liste des employés :</p>
+    <p>Liste des demandes de congés :</p>
     <table border="1">
         <thead>
             <tr>
@@ -93,9 +92,31 @@ $_smarty_tpl->tpl_vars['conge']->do_else = false;
                     <td><?php echo htmlspecialchars((string)$_smarty_tpl->tpl_vars['conge']->value['duree'], ENT_QUOTES, 'UTF-8', true);?>
 </td>
                     <td>
-                        <button class="btn-accepter" onclick="changerStatut(this, 'accepté')">Accepter</button>
-                        <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                        <?php if ($_smarty_tpl->tpl_vars['conge']->value['valid'] === NULL) {?>
+                            <form action="" method="post">
+                            <div>
+                                <input type="hidden" id="id_dcp" name="id_dcp" value="<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
+">
+                                <input type="hidden" id="page" name="page" value="<?php echo $_smarty_tpl->tpl_vars['page']->value;?>
+">
+                                <label for="accepte">Acceptée</label>
+                                <input type="radio" id="accepte" name="demande<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
+" value="accepte">
+                                <label for="accepte">Refusée</label>
+                                <input type="radio" id="refuse" name="demande<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
+" value="refuse">
+                            </div>
+                                <input type="submit" name="submit_demande<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
+" value ="Confirmer">
+                            </form>
+                        <?php } else { ?>
+                            <span class="statut">
+                                <?php if ($_smarty_tpl->tpl_vars['conge']->value['valid'] === 1) {?>Accepté
+                                <?php } elseif ($_smarty_tpl->tpl_vars['conge']->value['valid'] === 0) {?>Refusé<?php }?>
+                                </span>
+                        <?php }?>
                     </td>
+
                 </tr>
                 <?php
 }

@@ -35,9 +35,9 @@
     </nav>
     </nav>
 
-    <h1>Gestion des salariés</h1>
+    <h1>Gestion des congés</h1>
 
-    <p>Liste des employés :</p>
+    <p>Liste des demandes de congés :</p>
     <table border="1">
         <thead>
             <tr>
@@ -59,11 +59,23 @@
                     <td>{$conge.motif|escape}</td>
                     <td>{$conge.duree|escape}</td>
                     <td>
-                        {if $conge.valid == NULL}
-                            <button class="btn-accepter" onclick="console.log('Bouton accepter cliqué')">Accepter</button>
-                            <button class="btn-refuser" onclick="changerStatut(this, 'refusé')">Refuser</button>
+                        {if $conge.valid === NULL}
+                            <form action="" method="post">
+                            <div>
+                                <input type="hidden" id="id_dcp" name="id_dcp" value="{$conge.id_dcp}">
+                                <input type="hidden" id="page" name="page" value="{$page}">
+                                <label for="accepte">Acceptée</label>
+                                <input type="radio" id="accepte" name="demande{$conge.id_dcp}" value="accepte">
+                                <label for="accepte">Refusée</label>
+                                <input type="radio" id="refuse" name="demande{$conge.id_dcp}" value="refuse">
+                            </div>
+                                <input type="submit" name="submit_demande{$conge.id_dcp}" value ="Confirmer">
+                            </form>
                         {else}
-                            <span class="statut">{if $conge.valid == 'accepté'}Accepté{elseif $conge.valid == 'refusé'}Refusé{/if}</span>
+                            <span class="statut">
+                                {if $conge.valid === 1}Accepté
+                                {elseif $conge.valid === 0}Refusé{/if}
+                                </span>
                         {/if}
                     </td>
 
@@ -76,38 +88,6 @@
             {/if}
         </tbody>
     </table>
-
-    {literal}
-    <script>
-        function changerStatut(button, action) {
-            const row = button.closest('tr');
-            const id_dcp = row.querySelector('td:first-child').innerText; // Récupère l'ID du congé
-
-            console.log('Bouton cliqué');
-            console.log('ID:', id_dcp, 'Action:', action);
-
-            fetch('./admin_validation_congés.html', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: 'id_dcp=' + id_dcp + '&action=' + action
-            })
-            .then(response => {
-                console.log('Réponse:', response);
-                return response.json();
-            })
-            .then(data => {
-                console.log('Données reçues:', data);
-                if (data.success) {
-                    const statutCell = row.querySelector('td:last-child');
-                    statutCell.innerHTML = '<span class="statut">' + action.charAt(0).toUpperCase() + action.slice(1) + '</span>';
-                } else {
-                    alert('Erreur lors de la mise à jour.');
-                }
-            })
-            .catch(error => console.error('Erreur AJAX:', error));
-        }
-    </script>
-    {/literal}
 
     <div>
         {if $page > 1}
