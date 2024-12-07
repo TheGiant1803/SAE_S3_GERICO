@@ -1003,6 +1003,148 @@ Flight::route ('POST /ajoutSalarie.html', 'ajoutSalarie');
 
 
 
+/*function modifierSalarieAffichage() {
+    $matricule = Flight::request()->query['matricule']; // Récupération du matricule depuis l'URL
+
+    if (empty($matricule)) {
+        Flight::redirect('/gestion_des_salaries.html');
+        return;
+    }
+
+    $pdo = Flight::get('pdo');
+
+    // Récupérer les informations du salarié dans la base de données
+    $stmt = $pdo->prepare("SELECT * FROM employe WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $matricule]);
+
+    $salarie = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$salarie) {
+        Flight::redirect('/gestion_des_salaries.html'); // Redirection si le salarié n'existe pas
+        return;
+    }
+
+    // Transmettre les données au formulaire
+    Flight::render('modifSalarieForm.html', ['salarie' => $salarie]);
+}*/
+
+Flight::route('GET /modification-@id_empl.html',function($id_empl){
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+    // Préparer les données à passer au template
+    $data = [
+    // Si l'utilisateur est connecté, passez son nom
+    'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+    'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+    'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+    'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+    ];
+     
+    $pdo = Flight::get('pdo');
+
+    $stmt = $pdo->prepare("SELECT * FROM employe where id_emp= :id_empl");
+    $stmt->execute([':id_empl' => $id_empl]);
+    $var = $stmt->fetch(PDO::FETCH_ASSOC);
+    $data['emp']=$var;
+    Flight::render('./templates/modificationSalarie.tpl', $data);
+});
+
+function modifSalarie($id_empl) {
+    $post = Flight::request()->data;
+    // Initialisation d'un tableau pour les erreurs
+    $errors = [];
+
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Format d'email invalide";
+    }
+    if (empty($post->nom)) {
+        $errors['nom'] = "Le nom est requis";
+    }
+    if (empty($post->prenom)) {
+        $errors['prenom'] = "Le prénom est requis";
+    }
+    if (empty($post->matricule)) {
+        $errors['matricule'] = "Le matricule est requis";
+    } elseif (!ctype_digit($post->matricule)) {
+        $errors['matricule'] = "Le matricule doit être une série de chiffres";
+    }
+    /*if (empty($post->datenaissance)) {
+        $errors['datenaissance'] = "La date de naissance est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->datenaissance);
+        if (!$date || $date->format('Y-m-d') !== $post->datenaissance) {
+            $errors['datenaissance'] = "La date de naissance doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->dateembauche)) {
+        $errors['dateembauche'] = "La date d'embauche est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->dateembauche);
+        if (!$date || $date->format('Y-m-d') !== $post->dateembauche) {
+            $errors['dateembauche'] = "La date d'embauche doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->salaire)) {
+        $errors['salaire'] = "Le salaire est requis";
+    } elseif (!is_numeric($post->salaire)) {
+        $errors['salaire'] = "Le salaire doit être une série de chiffres";
+    }*/
+    if (empty($post->tel)) {
+        $errors['tel'] = "Le téléphone est requis";
+    } elseif (!ctype_digit($post->tel)) {
+        $errors['tel'] = "Le téléphone doit être une série de chiffres";
+    }
+
+    if (!empty($errors)) {
+        // Gestion des erreurs
+        Flight::redirect('/');
+    }
+
+    $pdo = Flight::get('pdo');
+    //try {
+        // Préparer la requête de mise à jour
+        $stmt = $pdo->prepare("UPDATE employe SET 
+            email = :email,
+            nom = :nom,
+            prenom = :prenom,
+            date_nais = :date_nais,
+            date_emb = :dateembauche,
+            salaire = :salaire,
+            tel = :tel
+            WHERE id_emp = :id_emp");
+
+        // Exécuter la requête avec les données du formulaire
+        $stmt->execute([
+            ':email' => $post->email,
+            ':nom' => $post->nom,
+            ':prenom' => $post->prenom,
+            ':date_nais' => $post->datenaissance,
+            ':dateembauche' => $post->dateembauche,
+            ':salaire' => $post->salaire,
+            ':tel' => $post->tel,
+            ':id_emp' => $id_empl
+        ]);
+
+        // Redirection après modification
+        Flight::redirect('/gestion_des_salaries.html');
+    /*} catch (PDOException $e) {
+        // Gestion des erreurs de base de données
+        $errors['general'] = "Erreur de base de données : " . $e->getMessage();
+        Flight::redirect('/modifSalarie.html');
+    }*/
+}
+Flight::route ('POST /modification-@id_empl.html', 'modifSalarie');
+
+
 //
 // personnalise la page 404
 //
