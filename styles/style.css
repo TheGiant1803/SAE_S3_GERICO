@@ -382,15 +382,20 @@ footer p {
   label {
     margin: 0.4rem 0;
   }
-
+.centrer-les-inputs{
+    align-items: center;
+}
   .container_modsal {
-    width: 80%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px auto;
-    margin-top: 5em;
+    margin-top: 5em;    
     background-color: #fff;
-    padding: 20px;
+    padding: 60px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 .container_b h2 {
     color: #3a6ea5;
@@ -403,24 +408,22 @@ footer p {
 }
 .form-group {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     justify-content: left;
-    margin-left: 5em;
 }
 .form-group label {
     display: block;
-    margin-bottom: -5px;
+    margin-bottom: 10px;
     color: #333;
 }
 .form-group input {
+    margin-top:10px;
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-.form-group input[type="text"] {
-    width: calc(50% - 10px);
-}
+
 .form-actions {
     display: flex;
     justify-content: flex-end;
@@ -465,25 +468,19 @@ h2 {
 input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
 input[type="submit"] {
-    background-color: black;
-    color: white;
-    padding: 10px;
     border: none;
-    border-radius: 5px;
-    width: 100%;
+    background: none;
+    color: #534f4fc6;
     cursor: pointer;
     font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #444;
+    margin: 0px;
+    padding: 0px 10px 0px 5px;
 }
 
 /*a partir d'ici gestion congé*/
@@ -585,7 +582,7 @@ td {
     margin-top: 20px;
 }
 
-button, input {
+button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 10px;
@@ -654,47 +651,40 @@ input[type="number"] {
 /* ------------------------ MODIFICATION DE TANGUY historique fiche------------------------------------ */
 
 .consult_paie{
+    display: flex;
+    justify-content: center;
     font-weight: bold;
     font-family: sans-serif;
+    max-width: 800px;
     background-color: white;
-    position: absolute;
     color: #000;
-    top: 20%; /* Place l'élément en haut */
-    left: 50%; /* Centre horizontalement */
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
     padding: 10px 75px;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.historic_fiche_paie {
-    font-family: sans-serif;
-    background-color: white;
-    position: absolute;
-    color: #000;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%); /* Ajuste pour centrer parfaitement */
-    padding: 20px 50px 20px 50px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    list-style-type: none; /* Supprime les puces de la liste */
-    z-index: -1;
+.centrer-titre-fiche{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .list-item {
     display: flex; /* Utilise flexbox pour l'alignement */
     justify-content: space-between; /* Espace entre les éléments */
-    padding: 5px 0; /* Espacement entre les éléments */
+    padding: 5px 5px 5px 5px; /* Espacement entre les éléments */
+    
     border: solid;
     width: 900px;
     border-width: 1px;
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
-
+.apparance-bouton-pdf{
+    background: none;
+}
 .info {
     text-align: left;
+    display: flex;
 }
 
 .date {
@@ -740,19 +730,126 @@ input[type="number"] {
     transform: translateY(-50%); /* Centre verticalement l'icône */
     
 }
-.gestion-fiches{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-/*------------------------------------------------------------MODIFICATION CALENDAR-------------------------------------*/
+
+/*------------------------------------------------------------MODIFICATION FORMULAIRE CONGE-------------------------------------*/
 
 .container-cong{
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
+    flex-grow: 1;
+}
+
+.box-cong {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    text-align: center;
+}
+
+.container-cong h1{
+    font-family: 'Chau philomeneOne';
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+label{
+    color: #333;
+    font-size: 20px;
+    font-family: 'Chau philomeneOne';
+    margin-bottom:10px;
+    
+}
+
+.submit1{
+    margin-top:5px;
+    font-family: 'Chau philomeneOne';
+}
+
+input[type="date"] {
+    border: 1px solid #ccc;
+    margin-top:10px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction: column;
+    margin-bottom:10px;
+    margin-top:10px;
+}
+
+#motif{
+    display:flex;
+    flex-direction: column;
+    padding:8px;
+}
+
+#start{
+    display:flex;
+    flex-direction: column;
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+#date_cong{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+.date_cong{
+    display:flex;
+    flex-direction: column;
+    padding:8px;
+    margin-top:10px;
+
+}
+
+#duration{
+    display:flex;
+    flex-direction: column;
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+.form-cong{
+    display:flex;
+    justify-content: center;
+}
+
+.gestion-fiches{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.centrer-suivant-preced{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.separation-des-boutons{
+    display: flex;
+    margin:10px;
+}
+.apparance-des-liens{
+    font-family: 'Chau PhilomeneOne';
+    color: #517aac;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+/*------------------------------------------------------------MODIFICATION CALENDAR-------------------------------------*/
+
+input[type="submit-button"] {
+    background-color: #517aac;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 .container-cong h1{
@@ -803,7 +900,41 @@ input[type="text"]{
     display:flex;
     justify-content: center;
 }
-
+/*-----------------------------------------------COOKIES--------------------------------------------*/
+.cookies-en-general{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+.cookies-espace-block{
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+.espace-entre-p{
+    margin-bottom: 10px;
+}
+.titre-cookies{
+    font-family: 'Chau PhilomeneOne';
+    color: #517aac;
+    font-size: 45px;
+    text-align: center; /* Центрирование текста */
+    margin-bottom: 20px;
+}
+.info-cookies-general{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание текста внутри контейнера */
+    justify-content: center;
+}
+.list-cookies{
+    margin-top: 20px;
+    padding-left: 20px; 
+    margin-bottom: 20px;
+}
   /*---------------------------*/
   /*----------------------Responsive TELEPHONE ------------------*/
 
@@ -873,7 +1004,29 @@ input[type="text"]{
 
     /*---------------------- Gestion congés calendrier ------------------*/
     
+    .box-cong {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+    }
 
+    .container-cong h1{
+        font-family: 'Chau philomeneOne';
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label{
+        color: #333;
+        font-size: 15px;
+        font-family: 'Chau philomeneOne';
+        margin-bottom:8px;
+        
+    }
 
     /*----------------------------- histroique fiche de paie---------------*/
     .list-item{
@@ -889,7 +1042,13 @@ input[type="text"]{
         position: relative;
         padding: 0px 5px 0px 5px;
     }
-    
+    .consult_paie{
+        margin: 30px 0px 0px 0px;
+    }
+    .gestion-fiches{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
     /*----------------------Admin gestion salariés ----------------*/
     .ajout_fiche_paie{
         transform: none;
@@ -968,7 +1127,31 @@ input[type="text"]{
 
     /*---------------------- Gestion congés calendrier ------------------*/
     
-    /*----------------------------- histroique fiche de paie---------------*/
+    .box-cong {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+    }
+
+    .container-cong h1{
+        font-family: 'Chau philomeneOne';
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    label{
+        color: #333;
+        font-size: 15px;
+        font-family: 'Chau philomeneOne';
+        margin-bottom:8px;
+        
+    }
+
+    /*----------------------------- historique fiche de paie---------------*/
     .list-item{
         width: auto;
         margin-left: 5px;

@@ -76,6 +76,23 @@ function admin_validation_congés_valid(){
 
     Flight::redirect("/admin_validation_congés.html?page=$post->page");
 
+<<<<<<< HEAD
+=======
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    if($_SESSION['user_admin']==1){Flight::render('./templates/admin_validation_congés.tpl', $data);}
+    
+>>>>>>> main
 }
 
 function admin_validation_congés_aff() {
@@ -152,7 +169,9 @@ function admin() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/admin.tpl',$data);
+    if($_SESSION['user_admin']==1)
+    {Flight::render('./templates/admin.tpl',$data);}
+    
 }
 Flight::route('/admin.html', 'admin');
 
@@ -174,7 +193,8 @@ function Ajout_fiche_paie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/Ajout_fiche_paie.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
+    
 }
 Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
 
@@ -288,6 +308,29 @@ Flight::route('POST /connexion.html', function(){
 );
 
 
+function cookies(){
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+    // Préparer les données à passer au template
+    $data = [
+    // Si l'utilisateur est connecté, passez son nom
+    'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+    'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+    'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+    'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+    ];
+
+    Flight::render('./templates/cookies.tpl', $data);
+}
+Flight::route('GET /cookies.html', 'cookies');
+
 
 function Fiche_De_Paie() {
         // Démarrer la session si ce n'est pas déjà fait
@@ -317,7 +360,40 @@ function Fiche_De_Paie() {
 
     Flight::render('./templates/Fiche_De_Paie.tpl', $data);
 }
-Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
+Flight::route('GET /Fiche_De_Paie.html', 'Fiche_De_Paie');
+
+
+function aff_fiche_paie(){
+
+    $pdo = Flight::get('pdo');
+
+    $post = Flight::request()->data;
+
+    $idToFetch = $post->id;
+    // Assume you want to display the PDF for fiche with ID 1
+    $idToFetch = 1; // Change this to the correct ID
+
+    // Prepare the SQL statement to select the PDF data
+    $stmt = $pdo->prepare("SELECT fp FROM fiche_paie WHERE id_fp = :id");
+    $stmt->execute(array(':id' => $idToFetch));
+
+    // Fetch the result
+    $pdfData = $stmt->fetchColumn();
+
+    if ($pdfData) {
+        // Set headers to display PDF in the browser
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="fiche_paie.pdf"');
+        header('Content-Length: ' . strlen($pdfData));
+        
+        // Output the PDF data
+        echo $pdfData;
+    } else {
+        echo "Pas de pdf trouvé pour cette fiche";
+    }
+}
+Flight::route('POST /Fiche_De_Paie.html', 'aff_fiche_paie');
+
 
 function gestion_cong_date_aff() {
         // Démarrer la session si ce n'est pas déjà fait
@@ -359,8 +435,9 @@ function gestion_cong_date_ajout()
         $post = Flight::request()->data;
         //Récupération des données envoyées dans une variable
         $date = $post->date_cong;
-        $mom_deb = $post->duration;
+        $mom_deb = $post->start;
         $motif = $post->motif;
+        $nombre_jour = $post->nb_jour;
         $id = $_SESSION['user_id'];
 
         if($mom_deb == 'matin')
@@ -371,14 +448,22 @@ function gestion_cong_date_ajout()
         {
             $heure_deb = 12;
         }
-        //Requête SQL INSERT
-        $sql_conge = "INSERT INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date',1,NULL,'$motif',$heure_deb,$id);";
 
-        //Préaparation de la requête d'insertion
-        $i_conge = $pdo->prepare($sql_conge);
+        $nbcong = $pdo->query("select cong from employe where id_emp = $id")->fetchColumn();
+        if($nombre_jour <= $nbcong)
+        {
+            $sql_conge = "INSERT INTO demande_cp(date_dcp,duree,valid,motif,heure_deb,id_emp) VALUES('$date',$nombre_jour,NULL,'$motif',$heure_deb,$id);";
+            //Préaparation de la requête d'insertion
+            $i_conge = $pdo->prepare($sql_conge);
+            $i_conge->execute();
 
-        $i_conge->execute();
-
+            $conge = $nbcong - $nombre_jour;
+            $sql_conge_minus = "UPDATE employe SET cong = $conge where id_emp = $id";
+            $i_conge_minus = $pdo->prepare($sql_conge_minus);
+            $i_conge_minus->execute();
+        }
+        
+        
         Flight::redirect('./gestion_cong_date.html');
 }
 Flight::route('GET /gestion_cong_date.html', 'gestion_cong_date_aff');
@@ -441,39 +526,68 @@ function gestion_des_salaries() {
     }
 
     // Passer les données au template
-    Flight::render('./templates/gestion_des_salaries.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/gestion_des_salaries.tpl', $data);}
+    
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
 
 function gestioncongé2() {
-        // Démarrer la session si ce n'est pas déjà fait
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+    // Préparer les données à passer au template
+    $data = [
+    // Si l'utilisateur est connecté, passez son nom
+    'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+    'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+    'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+    'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+    ];
+
+    $pdo = Flight::get('pdo');
+    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+    $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    function calculerDateFin($dateDebut, $duree, $heure_deb) {
+        $date = new DateTime($dateDebut);
+        $joursAjoutes = 0;
+        if ($heure_deb >= 12) {$duree--;}
+        while ($joursAjoutes < ($duree / 2)) {
+            // Ajouter un jour
+            $date->modify('+1 day');
+    
+            // Vérifier si c'est un week-end (6 = samedi, 7 = dimanche)
+            $jourSemaine = $date->format('N');
+            if ($jourSemaine < 6) {
+                $joursAjoutes++;
+            }
         }
-
-        if(isset($_SESSION['user_id'])==false){
-            Flight::redirect('/connexion.html');
+    
+        return $date->format('Y-m-d');
+    }
+    
+    // Ajouter date_fin à chaque demande
+    foreach ($demande_cp as &$demande) {
+        if (!empty($demande['date_dcp']) && !empty($demande['duree'])) {
+            $demande['date_retour'] = calculerDateFin($demande['date_dcp'], $demande['duree'], $demande['heure_deb']);
+        } else {
+            $demande['date_retour'] = 'Non défini'; // Par défaut si date_dcp ou durée sont manquantes
         }
-        
-        // Préparer les données à passer au template
-        $data = [
-        // Si l'utilisateur est connecté, passez son nom
-        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
-        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
-        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
-        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
-        ];
+    }
 
-        $pdo = Flight::get('pdo');
-        $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
-        $stmt->execute([':matricule' => $_SESSION['user_id']]);
-        $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $data['demande_cp'] = $demande_cp;
-        
+    $data['demande_cp'] = $demande_cp;
 
-    Flight::render('./templates/gestioncongé2.tpl', $data);
+Flight::render('./templates/gestioncongé2.tpl', $data);
 }
+
 Flight::route('/gestioncongé2.html', 'gestioncongé2');
 
 function modificationSalarie() {
@@ -494,7 +608,10 @@ function modificationSalarie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/modificationSalarie.tpl', $data);
+    if($_SESSION['user_admin']==1){
+        Flight::render('./templates/modificationSalarie.tpl', $data);
+    }
+    
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
 
@@ -849,8 +966,164 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
-function ajoutSalarie() {
-    // Démarrer la session si ce n'est pas déjà fait
+Flight::route('/suppression-@id_emp.html',function($id_emp){
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $pdo = Flight::get('pdo');
+    if($_SESSION['user_admin']==1){
+        $Stmt = $pdo->prepare("DELETE FROM employe where id_emp=$id_emp");
+        $Stmt->execute();
+        Flight::redirect("/gestion_des_salaries.html");
+    }
+    else{
+        Flight::redirect("/");
+    }
+
+});
+
+function ajoutSalarieAffichage(){
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
+        ];
+        if($_SESSION['user_admin']==1){Flight::render('./templates/ajoutSalarie.tpl',$data);}
+        
+}
+
+function ajoutSalarie(){
+    $post = Flight::request()->data;
+    // Initialisation d'un tableau pour les erreurs
+    $errors = [];
+
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Format d'email invalide";
+    }
+    if (empty($post->nom)) {
+        $errors['nom'] = "Le nom est requis";
+    }
+    if (empty($post->prenom)) {
+        $errors['prenom'] = "Le prenom est requis";
+    }
+    if (empty($post->mdp)) {
+        $errors['mdp'] = "Le mot de passe provisoire est requis";
+    }
+    if (empty($post->matricule)) {
+        $errors['matricule'] = "Le matricule est requis";
+    } elseif (!ctype_digit($post->matricule)) {
+        $errors['matricule'] = "Le matricule doit être une série de chiffres";
+    }
+    if (empty($post->datenaissance)) {
+        $errors['datenaissance'] = "La date de naissance est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->datenaissance);
+        if (!$date || $date->format('Y-m-d') !== $post->datenaissance) {
+            $errors['datenaissance'] = "La date de naissance doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->dateembauche)) {
+        $errors['dateembauche'] = "La date d'embauche est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->dateembauche);
+        if (!$date || $date->format('Y-m-d') !== $post->dateembauche) {
+            $errors['dateembauche'] = "La date d'embauche doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->salaire)) {
+        $errors['salaire'] = "Le salaire est requis";
+    } elseif (!is_numeric($post->salaire)) {
+        $errors['salaire'] = "Le salaire doit être une série de chiffres";
+    }
+    if (empty($post->tel)) {
+        $errors['tel'] = "Le téléphone est requis";
+    } elseif (!ctype_digit($post->tel)) {
+        $errors['tel'] = "Le téléphone doit être une série de chiffres";
+    }
+
+    if (!empty($errors)) {
+        Flight::redirect('/ajoutSalarie.html');
+        return;
+    }
+
+
+    $pdo = Flight::get('pdo');
+    //try {
+        // Préparer la requête d'insertion
+        $stmt = $pdo->prepare("
+            INSERT INTO employe (email, nom, prenom, id_emp, date_nais, date_emb, salaire, tel, admin, cong, pwd)
+            VALUES (:email, :nom, :prenom, :id_emp, :date_nais, :dateembauche, :salaire, :tel, :admin, :cong, :mdp)
+        ");
+
+        // Exécuter la requête avec les données du formulaire
+        $stmt->execute([
+            ':email' => $post->email,
+            ':nom' => $post->nom,
+            ':prenom' => $post->prenom,
+            ':id_emp' => $post->matricule,
+            ':date_nais' => $post->datenaissance,
+            ':dateembauche' => $post->dateembauche,
+            ':salaire' => $post->salaire,
+            ':tel' => $post->tel,
+            ':admin'=>0,
+            ':cong'=>0,
+            ':mdp'=>$post->mdp
+        ]);
+
+        // Redirection
+        Flight::redirect('/gestion_des_salaries.html');
+    /*} catch (PDOException $e) {
+        //Erreur de base de données
+        $errors['general'] = "Erreur de base de données : " . $e->getMessage();
+        Flight::redirect('./ajoutSalarie.html');
+    }*/
+};
+Flight::route('GET /ajoutSalarie.html', 'ajoutSalarieAffichage');
+Flight::route ('POST /ajoutSalarie.html', 'ajoutSalarie');
+
+
+
+/*function modifierSalarieAffichage() {
+    $matricule = Flight::request()->query['matricule']; // Récupération du matricule depuis l'URL
+
+    if (empty($matricule)) {
+        Flight::redirect('/gestion_des_salaries.html');
+        return;
+    }
+
+    $pdo = Flight::get('pdo');
+
+    // Récupérer les informations du salarié dans la base de données
+    $stmt = $pdo->prepare("SELECT * FROM employe WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $matricule]);
+
+    $salarie = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$salarie) {
+        Flight::redirect('/gestion_des_salaries.html'); // Redirection si le salarié n'existe pas
+        return;
+    }
+
+    // Transmettre les données au formulaire
+    Flight::render('modifSalarieForm.html', ['salarie' => $salarie]);
+}*/
+
+Flight::route('GET /modification-@id_empl.html',function($id_empl){
+
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -867,10 +1140,103 @@ function ajoutSalarie() {
     'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
     'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
     ];
-Flight::render('./templates/ajoutSalarie.tpl', $data);
-}
-Flight::route('/ajoutSalarie.html', 'ajoutSalarie');
+     
+    $pdo = Flight::get('pdo');
 
+    $stmt = $pdo->prepare("SELECT * FROM employe where id_emp= :id_empl");
+    $stmt->execute([':id_empl' => $id_empl]);
+    $var = $stmt->fetch(PDO::FETCH_ASSOC);
+    $data['emp']=$var;
+    Flight::render('./templates/modificationSalarie.tpl', $data);
+});
+
+function modifSalarie($id_empl) {
+    $post = Flight::request()->data;
+    // Initialisation d'un tableau pour les erreurs
+    $errors = [];
+
+    if (empty($post->email)) {
+        $errors['email'] = "L'email est requis";
+    } elseif (!filter_var($post->email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Format d'email invalide";
+    }
+    if (empty($post->nom)) {
+        $errors['nom'] = "Le nom est requis";
+    }
+    if (empty($post->prenom)) {
+        $errors['prenom'] = "Le prénom est requis";
+    }
+    if (empty($post->matricule)) {
+        $errors['matricule'] = "Le matricule est requis";
+    } elseif (!ctype_digit($post->matricule)) {
+        $errors['matricule'] = "Le matricule doit être une série de chiffres";
+    }
+    /*if (empty($post->datenaissance)) {
+        $errors['datenaissance'] = "La date de naissance est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->datenaissance);
+        if (!$date || $date->format('Y-m-d') !== $post->datenaissance) {
+            $errors['datenaissance'] = "La date de naissance doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->dateembauche)) {
+        $errors['dateembauche'] = "La date d'embauche est requise";
+    } else {
+        $date = DateTime::createFromFormat('Y-m-d', $post->dateembauche);
+        if (!$date || $date->format('Y-m-d') !== $post->dateembauche) {
+            $errors['dateembauche'] = "La date d'embauche doit être une date valide au format YYYY-MM-DD";
+        }
+    }
+    if (empty($post->salaire)) {
+        $errors['salaire'] = "Le salaire est requis";
+    } elseif (!is_numeric($post->salaire)) {
+        $errors['salaire'] = "Le salaire doit être une série de chiffres";
+    }*/
+    if (empty($post->tel)) {
+        $errors['tel'] = "Le téléphone est requis";
+    } elseif (!ctype_digit($post->tel)) {
+        $errors['tel'] = "Le téléphone doit être une série de chiffres";
+    }
+
+    if (!empty($errors)) {
+        // Gestion des erreurs
+        Flight::redirect('/');
+    }
+
+    $pdo = Flight::get('pdo');
+    //try {
+        // Préparer la requête de mise à jour
+        $stmt = $pdo->prepare("UPDATE employe SET 
+            email = :email,
+            nom = :nom,
+            prenom = :prenom,
+            date_nais = :date_nais,
+            date_emb = :dateembauche,
+            salaire = :salaire,
+            tel = :tel
+            WHERE id_emp = :id_emp");
+
+        // Exécuter la requête avec les données du formulaire
+        $stmt->execute([
+            ':email' => $post->email,
+            ':nom' => $post->nom,
+            ':prenom' => $post->prenom,
+            ':date_nais' => $post->datenaissance,
+            ':dateembauche' => $post->dateembauche,
+            ':salaire' => $post->salaire,
+            ':tel' => $post->tel,
+            ':id_emp' => $id_empl
+        ]);
+
+        // Redirection après modification
+        Flight::redirect('/gestion_des_salaries.html');
+    /*} catch (PDOException $e) {
+        // Gestion des erreurs de base de données
+        $errors['general'] = "Erreur de base de données : " . $e->getMessage();
+        Flight::redirect('/modifSalarie.html');
+    }*/
+}
+Flight::route ('POST /modification-@id_empl.html', 'modifSalarie');
 
 
 //

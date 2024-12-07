@@ -36,7 +36,7 @@
     </nav>
     </nav>
     <main>
-        <h1 class="titre">Mes demandes de congés</h1>
+        <h1 class="gestion-text">Mes demandes de congés</h1>
 
         <div class="buttons">
             <label for="nb-elements">Afficher </label>
@@ -51,7 +51,7 @@
                 <tr>
                     <th>N°</th>
                     <th>Date début</th>
-                    <th>Date fin</th>
+                    <th>Date retour</th>
                     <th>Cause</th>
                     <th>Durée</th>
                     <th>Statut</th>
@@ -62,16 +62,26 @@
                 <tr>
                     <td>{$demande.id_dcp}</td>
                     <td>{$demande.date_dcp}</td>
-                    <td>2024-01-03</td>
+                    <td>
+                        {$demande.date_retour}
+                    </td>  
                     <td>{$demande.motif}</td>
-                    <td>48h</td>
-                    <td>Terminé</td>
+                    <td>{$demande.duree / 2} jour(s)</td>
+                    <td>            
+                        {if $demande.valid == null}
+                            En attente
+                        {elseif $demande.valid == 0}
+                            Refusé
+                        {elseif $demande.valid == 1}
+                            Accepté
+                        {/if}
+                    </td>
                 </tr>
                 {/foreach}
+                
             </tbody>
         </table>
         </div>
-    
         <!-- Boutons -->
         <div class="buttons">
             <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
@@ -125,6 +135,7 @@
                 cell5.textContent = "24h";
                 cell6.textContent = "En cours";
             }
+
         </script>
     
     </main>
@@ -133,7 +144,7 @@
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
             <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
-            <li class="foot_text"><a class="foot_text" href="#cookies">Gestion des cookies</a></li>
+            <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>

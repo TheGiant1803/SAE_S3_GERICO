@@ -36,8 +36,8 @@
     </nav>
     </nav>
 
-
-        <div class="gestion-fiches">
+    <div class="centrer-suivant-preced">
+         <div class="gestion-fiches">
             
             <ul class="ajout_fiche_paie">
                 <div class="gestion-text">
@@ -49,8 +49,18 @@
                     <li>
                         <div class="list-item">
                             <span class="info">{$employe.nom} {$employe.prenom} - Matricule {$employe.id_emp}</span>
-                            <span class="date"> <a href="./modificationSalarie.html">MODIFIER</a> | SUPPRIMER </span>
+                            <span class="date"> <a href="./modification-{$employe.id_emp}.html">MODIFIER</a> | SUPPRIMER </span>
                         </div>
+                        <script>
+                            function confirmSuppression(event) {
+                                const message = "Êtes-vous sûr de vouloir supprimer ? Cette action est irréversible.";
+                                if (!confirm(message)) {
+                                    event.preventDefault();
+                                    return false;
+                                }
+                                return true;
+                            }
+                        </script>
                     </li>
                     {/foreach}
                 {else}
@@ -62,15 +72,17 @@
         </div>
         
         <!-- Navigation de la pagination -->
-        <div>
-        {if $page > 1}
-            <a href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
-        {/if}
-        
-        {if $page < $total_pages}
-            <a href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
-        {/if}
+        <div class="separation-des-boutons">
+            {if $page > 1}
+                <a class="apparance-des-liens" href="./gestion_des_salaries.html?page={$page-1}">Précédent</a>
+            {/if}
+            
+            {if $page < $total_pages}
+                <a class="apparance-des-liens" href="./gestion_des_salaries.html?page={$page+1}">Suivant</a>
+            {/if}
         </div>
+    </div>
+       
         
 
     
@@ -80,11 +92,11 @@
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
             <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
-            <li class="foot_text"><a class="foot_text" href="#cookies">Gestion des cookies</a></li>
+            <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>
-    
+
 </body>
 </html>
 

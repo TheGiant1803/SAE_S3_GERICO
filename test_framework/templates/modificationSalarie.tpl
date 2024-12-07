@@ -44,56 +44,34 @@
         </h2>
         <div class="form-group">
          <div>
-          <label for="nom" class="modsallabel">
-           Nom
-          </label>
-          <input id="nom" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="prenom" class="modsallabel">
-           Prénom
-          </label>
-          <input id="prenom" type="text" size="40"/>
-         </div>
-         <div>
-            <label for="matricule" class="modsallabel">
-             Matricule
-            </label>
-            <input id="matricule" type="text" size="40"/>
-           </div>
-        </div>
-        <div class="form-group">
-         <div>
-          <label for="date-naissance" class="modsallabel">
-           Date Naissance
-          </label>
-          <input id="date-naissance" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="date-embauche" class="modsallabel">
-           Date Embauche
-          </label>
-          <input id="date-embauche" type="text" size="40"/>
-         </div>
-         <div>
-            <label for="salaire" class="modsallabel">
-             Salaire
-            </label>
-            <input id="salaire" type="text" size="40"/>
-           </div>
-        </div>
-        <div class="form-group">
-         <div>
-          <label for="email" class="modsallabel">
-           Email
-          </label>
-          <input id="email" type="text" size="40"/>
-         </div>
-         <div>
-          <label for="tel" class="modsallabel">
-           Tél
-          </label>
-          <input id="telep" type="text" size="40"/>
+<form actions="" method="post">
+
+    <label>Nom :</label>
+    <input type="text" name="nom" id="nom" value="{$emp.nom}" required>
+
+    <label for="prenom">Prénom :</label>
+    <input type="text" name="prenom" id="prenom" value="{$emp.prenom}" required> 
+
+    <label>Matricule :</label>
+    <input type="text" name="matricule_affichage" id="matricule" value="{$emp.id_emp}" disabled>
+
+    <label>Date de Naissance :</label>
+    <input type="date" name="datenaissance" id="datenaissance" value="{$emp.date_nais}" required>
+
+    <label>Date d'Embauche :</label>
+    <input type="date" name="dateembauche" value="{$emp.date_emb}" required>
+
+    <label>Salaire :</label>
+    <input type="text" name="salaire"  id="salaire" value="{$emp.salaire}" required>
+
+    <label>Email :</label>
+    <input type="email" name="email" id="email" value="{$emp.email}" required>
+
+    <label>Téléphone :</label>
+    <input type="text" name="tel" id="tel" value="{$emp.tel}" required>
+
+    <button type="submit">Enregistrer les modifications</button>
+</form>
          </div>
         </div>
         <div class="form-actions">
@@ -111,7 +89,7 @@
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
             <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
-            <li class="foot_text"><a class="foot_text" href="#cookies">Gestion des cookies</a></li>
+            <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>

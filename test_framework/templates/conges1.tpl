@@ -54,7 +54,7 @@
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
             <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
-            <li class="foot_text"><a class="foot_text" href="#cookies">Gestion des cookies</a></li>
+            <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>
     </footer>
