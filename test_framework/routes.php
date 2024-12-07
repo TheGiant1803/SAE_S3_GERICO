@@ -53,30 +53,89 @@ function accueil() {
 
 Flight::route('/', 'accueil');
 
-function admin_validation_congés() {
-        // Démarrer la session si ce n'est pas déjà fait
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+function admin_validation_congés_valid(){
+    $pdo = Flight::get('pdo');
+    $post = Flight::request()->data;
+    // Récupérer l'identifiant de la demande
+    $id_dcp = $post->id_dcp;
 
-        if(isset($_SESSION['user_id'])==false){
-            Flight::redirect('/connexion.html');
-        }
-        
-        // Préparer les données à passer au template
-        $data = [
-        // Si l'utilisateur est connecté, passez son nom
-        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
-        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
-        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
-        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
-        ];
-    if($_SESSION['user_admin']==1){Flight::render('./templates/admin_validation_congés.tpl', $data);}
-    
+    // Construire dynamiquement le nom du paramètre du statut
+    $statut_key = "demande{$id_dcp}";
+
+    // Vérifier si le paramètre existe
+    if ($post->$statut_key == "accepte") {
+        $action = 1;
+    }
+    elseif($post->$statut_key == "refuse")
+    {
+        $action = 0;
+    }
+    else
+    {
+        $action = NULL;
+    }
+    $stmt = $pdo->prepare('UPDATE demande_cp SET valid = :valid WHERE id_dcp = :id_dcp');
+    $stmt->execute([':valid'=>$action, ':id_dcp'=>$id_dcp]);
+
+    Flight::redirect("/admin_validation_congés.html?page=$post->page");
+
 }
 
-// Route associée à la fonction
-Flight::route('/admin_validation_congés.html', 'admin_validation_congés');
+function admin_validation_congés_aff() {
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // Vérifier si l'utilisateur est connecté
+    if (isset($_SESSION['user_id']) == false) {
+        Flight::redirect('/connexion.html');
+    }
+
+    // Connexion à la base de données via Flight::get('pdo')
+    $pdo = Flight::get('pdo');
+
+
+    // Pagination
+    $limit = 5; // Nombre de congés par page
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    // Récupérer les données des congés
+    $stmt = $pdo->prepare('
+        SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree, d.valid 
+        FROM demande_cp d 
+        JOIN employe e ON d.id_emp = e.id_emp 
+        ORDER BY d.id_dcp ASC 
+        LIMIT :limit OFFSET :offset
+    ');
+    $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
+    $conges = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Récupérer le nombre total de congés pour la pagination
+    $stmt = $pdo->query('SELECT COUNT(id_dcp) FROM demande_cp');
+    $total_conges = $stmt->fetchColumn();
+    $total_pages = ceil($total_conges / $limit);
+
+    // Ajouter les données à passer au template
+    $data = [
+        'user_name' => $_SESSION['user_name'] ?? null,
+        'user_prenom' => $_SESSION['user_prenom'] ?? null,
+        'user_admin' => $_SESSION['user_admin'] ?? null,
+        'user_id' => $_SESSION['user_id'] ?? null,
+        'conges' => $conges,
+        'page' => $page,
+        'total_pages' => $total_pages
+    ];
+
+    // Rendre le template
+    Flight::render('./templates/admin_validation_congés.tpl', $data);
+}
+Flight::route('GET /admin_validation_congés.html', 'admin_validation_congés_aff');
+
+Flight::route('POST /admin_validation_congés.html', 'admin_validation_congés_valid');
 
 
 
