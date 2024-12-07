@@ -35,17 +35,28 @@
     </nav>
     </nav>
 
-    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
-    <ul class="historic_fiche_paie">
-    {foreach $fiche_paie as $fiche} 
-        <li>
-            <div class="list-item">
-                <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp}</span>
-                <span class="date">{$fiche.date}</span>
-            </div>
-        </li>
-        {/foreach}
-    </ul>
+    <div class="centrer-titre-fiche">
+        <a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</a>
+    </div>
+    <div class="gestion-fiches">
+        <ul class="ajout_fiche_paie">
+            {foreach $fiche_paie as $fiche} 
+            <li>
+                <div class="list-item">
+                    <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp} - 
+                        <form action="#" method="post">
+                            <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche.id_fp}">
+                            <input type="submit" value="PDF" class="apparance-bouton-pdf">
+                        </form> 
+                    </span>
+                    <span class="date">{$fiche.date}</span> 
+                </div>
+            
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+    
     
     
     

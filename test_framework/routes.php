@@ -71,8 +71,8 @@ function admin_validation_congés() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
+    if($_SESSION['user_admin']==1){Flight::render('./templates/admin_validation_congés.tpl', $data);}
     
-    Flight::render('./templates/admin_validation_congés.tpl', $data);
 }
 
 // Route associée à la fonction
@@ -98,7 +98,9 @@ function admin() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/admin.tpl',$data);
+    if($_SESSION['user_admin']==1)
+    {Flight::render('./templates/admin.tpl',$data);}
+    
 }
 Flight::route('/admin.html', 'admin');
 
@@ -120,7 +122,8 @@ function Ajout_fiche_paie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/Ajout_fiche_paie.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
+    
 }
 Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
 
@@ -263,7 +266,40 @@ function Fiche_De_Paie() {
 
     Flight::render('./templates/Fiche_De_Paie.tpl', $data);
 }
-Flight::route('/Fiche_De_Paie.html', 'Fiche_De_Paie');
+Flight::route('GET /Fiche_De_Paie.html', 'Fiche_De_Paie');
+
+
+function aff_fiche_paie(){
+
+    $pdo = Flight::get('pdo');
+
+    $post = Flight::request()->data;
+
+    $idToFetch = $post->id;
+    // Assume you want to display the PDF for fiche with ID 1
+    $idToFetch = 1; // Change this to the correct ID
+
+    // Prepare the SQL statement to select the PDF data
+    $stmt = $pdo->prepare("SELECT fp FROM fiche_paie WHERE id_fp = :id");
+    $stmt->execute(array(':id' => $idToFetch));
+
+    // Fetch the result
+    $pdfData = $stmt->fetchColumn();
+
+    if ($pdfData) {
+        // Set headers to display PDF in the browser
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="fiche_paie.pdf"');
+        header('Content-Length: ' . strlen($pdfData));
+        
+        // Output the PDF data
+        echo $pdfData;
+    } else {
+        echo "Pas de pdf trouvé pour cette fiche";
+    }
+}
+Flight::route('POST /Fiche_De_Paie.html', 'aff_fiche_paie');
+
 
 function gestion_cong_date_aff() {
         // Démarrer la session si ce n'est pas déjà fait
@@ -396,7 +432,8 @@ function gestion_des_salaries() {
     }
 
     // Passer les données au template
-    Flight::render('./templates/gestion_des_salaries.tpl', $data);
+    if($_SESSION['user_admin']==1){Flight::render('./templates/gestion_des_salaries.tpl', $data);}
+    
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
 
@@ -477,7 +514,10 @@ function modificationSalarie() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    Flight::render('./templates/modificationSalarie.tpl', $data);
+    if($_SESSION['user_admin']==1){
+        Flight::render('./templates/modificationSalarie.tpl', $data);
+    }
+    
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
 
@@ -832,6 +872,22 @@ Flight::route('GET /logout', function() {
     exit();
 });
 
+Flight::route('/suppression-@id_emp.html',function($id_emp){
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+    $pdo = Flight::get('pdo');
+    if($_SESSION['user_admin']==1){
+        $Stmt = $pdo->prepare("DELETE FROM employe where id_emp=$id_emp");
+        $Stmt->execute();
+        Flight::redirect("/gestion_des_salaries.html");
+    }
+    else{
+        Flight::redirect("/");
+    }
+
+});
+
 function ajoutSalarieAffichage(){
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
@@ -850,7 +906,8 @@ function ajoutSalarieAffichage(){
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
         ];
-        Flight::render('./templates/ajoutSalarie.tpl',$data);
+        if($_SESSION['user_admin']==1){Flight::render('./templates/ajoutSalarie.tpl',$data);}
+        
 }
 
 function ajoutSalarie(){
