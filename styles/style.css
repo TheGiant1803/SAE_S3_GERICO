@@ -474,6 +474,7 @@ input[type="text"], input[type="email"], input[type="password"] {
 }
 
 input[type="submit"] {
+    border: none;
     background: none;
     color: #534f4fc6;
     cursor: pointer;
@@ -841,11 +842,14 @@ input[type="date"] {
 }
 /*------------------------------------------------------------MODIFICATION CALENDAR-------------------------------------*/
 
-.container-cong{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
+input[type="submit-button"] {
+    background-color: #517aac;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 .container-cong h1{
@@ -896,7 +900,41 @@ input[type="text"]{
     display:flex;
     justify-content: center;
 }
-
+/*-----------------------------------------------COOKIES--------------------------------------------*/
+.cookies-en-general{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+.cookies-espace-block{
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+}
+.espace-entre-p{
+    margin-bottom: 10px;
+}
+.titre-cookies{
+    font-family: 'Chau PhilomeneOne';
+    color: #517aac;
+    font-size: 45px;
+    text-align: center; /* Центрирование текста */
+    margin-bottom: 20px;
+}
+.info-cookies-general{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Выравнивание текста внутри контейнера */
+    justify-content: center;
+}
+.list-cookies{
+    margin-top: 20px;
+    padding-left: 20px; 
+    margin-bottom: 20px;
+}
   /*---------------------------*/
   /*----------------------Responsive TELEPHONE ------------------*/
 
