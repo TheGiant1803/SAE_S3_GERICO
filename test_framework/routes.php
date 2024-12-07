@@ -946,7 +946,7 @@ Flight::route ('POST /ajoutSalarie.html', 'ajoutSalarie');
 
 
 
-function modifierSalarieAffichage() {
+/*function modifierSalarieAffichage() {
     $matricule = Flight::request()->query['matricule']; // Récupération du matricule depuis l'URL
 
     if (empty($matricule)) {
@@ -969,9 +969,9 @@ function modifierSalarieAffichage() {
 
     // Transmettre les données au formulaire
     Flight::render('modifSalarieForm.html', ['salarie' => $salarie]);
-}
+}*/
 
-Flight::route('/modification-@id_emp.html',function($id_emp){
+Flight::route('GET /modification-@id_empl.html',function($id_empl){
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -992,14 +992,14 @@ Flight::route('/modification-@id_emp.html',function($id_emp){
      
     $pdo = Flight::get('pdo');
 
-    $Stmt = $pdo->prepare("SELECT * FROM employe where id_emp=$id_emp");
-    $Stmt->execute();
-    $var = $Stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare("SELECT * FROM employe where id_emp= :id_empl");
+    $stmt->execute([':id_empl' => $id_empl]);
+    $var = $stmt->fetch(PDO::FETCH_ASSOC);
     $data['emp']=$var;
-    Flight::render($id_emp, $data);
+    Flight::render('./templates/modificationSalarie.tpl', $data);
 });
 
-function modifSalarie() {
+function modifSalarie($id_empl) {
     $post = Flight::request()->data;
     // Initialisation d'un tableau pour les erreurs
     $errors = [];
@@ -1020,7 +1020,7 @@ function modifSalarie() {
     } elseif (!ctype_digit($post->matricule)) {
         $errors['matricule'] = "Le matricule doit être une série de chiffres";
     }
-    if (empty($post->datenaissance)) {
+    /*if (empty($post->datenaissance)) {
         $errors['datenaissance'] = "La date de naissance est requise";
     } else {
         $date = DateTime::createFromFormat('Y-m-d', $post->datenaissance);
@@ -1040,7 +1040,7 @@ function modifSalarie() {
         $errors['salaire'] = "Le salaire est requis";
     } elseif (!is_numeric($post->salaire)) {
         $errors['salaire'] = "Le salaire doit être une série de chiffres";
-    }
+    }*/
     if (empty($post->tel)) {
         $errors['tel'] = "Le téléphone est requis";
     } elseif (!ctype_digit($post->tel)) {
@@ -1049,12 +1049,11 @@ function modifSalarie() {
 
     if (!empty($errors)) {
         // Gestion des erreurs
-        Flight::redirect('/modificationSalarie.html');
-        return;
+        Flight::redirect('/');
     }
 
     $pdo = Flight::get('pdo');
-    try {
+    //try {
         // Préparer la requête de mise à jour
         $stmt = $pdo->prepare("UPDATE employe SET 
             email = :email,
@@ -1075,19 +1074,18 @@ function modifSalarie() {
             ':dateembauche' => $post->dateembauche,
             ':salaire' => $post->salaire,
             ':tel' => $post->tel,
-            ':id_emp' => $post->matricule
+            ':id_emp' => $id_empl
         ]);
 
         // Redirection après modification
         Flight::redirect('/gestion_des_salaries.html');
-    } catch (PDOException $e) {
+    /*} catch (PDOException $e) {
         // Gestion des erreurs de base de données
         $errors['general'] = "Erreur de base de données : " . $e->getMessage();
         Flight::redirect('/modifSalarie.html');
-    }
+    }*/
 }
-Flight::route('GET /modificationSalarie.html', 'modifSalarieAffichage');
-Flight::route ('POST /modificationSalarie.html', 'modifSalarie');
+Flight::route ('POST /modification-@id_empl.html', 'modifSalarie');
 
 
 //

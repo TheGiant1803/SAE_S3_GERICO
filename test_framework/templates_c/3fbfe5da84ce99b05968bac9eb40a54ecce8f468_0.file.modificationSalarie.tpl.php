@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 14:17:52
-  from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\modificationSalarie.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-07 09:21:00
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\modificationSalarie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67530790996d55_79239659',
+  'unifunc' => 'content_6754137c3ca748_12618288',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '6e356873bce253a1991df0e5566aec8353a9ae7f' => 
+    '3fbfe5da84ce99b05968bac9eb40a54ecce8f468' => 
     array (
-      0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\modificationSalarie.tpl',
-      1 => 1733494656,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\modificationSalarie.tpl',
+      1 => 1733563256,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67530790996d55_79239659 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6754137c3ca748_12618288 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -67,38 +67,42 @@ function content_67530790996d55_79239659 (Smarty_Internal_Template $_smarty_tpl)
         </h2>
         <div class="form-group">
          <div>
-<form method="post" action="./routes.php">
+<form actions="" method="post">
 
     <label>Nom :</label>
-    <input type="text" name="nom" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['nom'];?>
+    <input type="text" name="nom" id="nom" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['nom'];?>
 " required>
 
     <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['prenom'];?>
+    <input type="text" name="prenom" id="prenom" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['prenom'];?>
 " required> 
 
     <label>Matricule :</label>
-    <input type="text" name="matricule_affichage" value="{{ salarie.id_emp }}" disabled>
+    <input type="text" name="matricule_affichage" id="matricule" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['id_emp'];?>
+" disabled>
 
     <label>Date de Naissance :</label>
-    <input type="date" name="datenaissance" value="{{ salarie.date_nais }}" required>
+    <input type="date" name="datenaissance" id="datenaissance" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['date_nais'];?>
+" required>
 
     <label>Date d'Embauche :</label>
-    <input type="date" name="dateembauche" value="{{ salarie.date_emb }}" required>
+    <input type="date" name="dateembauche" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['date_emb'];?>
+" required>
 
     <label>Salaire :</label>
-    <input type="text" name="salaire" value="{{ salarie.salaire }}" required>
+    <input type="text" name="salaire"  id="salaire" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['salaire'];?>
+" required>
 
     <label>Email :</label>
-    <input type="email" name="email" value="{{ salarie.email }}" required>
+    <input type="email" name="email" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['email'];?>
+" required>
 
     <label>Téléphone :</label>
-    <input type="text" name="tel" value="{{ salarie.tel }}" required>
+    <input type="text" name="tel" value="<?php echo $_smarty_tpl->tpl_vars['emp']->value['tel'];?>
+" required>
 
     <button type="submit">Enregistrer les modifications</button>
 </form>
-
-          <input id="telep" type="text" size="40"/>
          </div>
         </div>
         <div class="form-actions">

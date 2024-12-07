@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-06 12:33:49
-  from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\Ajout_fiche_paie.tpl' */
+/* Smarty version 4.2.1, created on 2024-12-06 15:16:49
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6752ef2dbb8cd7_44959357',
+  'unifunc' => 'content_675315618e3c10_10932226',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '6087872f1bd743005ebedcde3bb0605926886e69' => 
+    'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
-      0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\Ajout_fiche_paie.tpl',
-      1 => 1733406101,
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
+      1 => 1733490061,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6752ef2dbb8cd7_44959357 (Smarty_Internal_Template $_smarty_tpl) {
+function content_675315618e3c10_10932226 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,7 +28,6 @@ function content_6752ef2dbb8cd7_44959357 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -43,9 +42,9 @@ function content_6752ef2dbb8cd7_44959357 (Smarty_Internal_Template $_smarty_tpl)
         <ul class="navbar_text">
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
-            <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
+            <li class="navtext active"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
             <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
-            <li class="navtext active"><a class="navtext" href="admin.html">Administration</a></li>
+            <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
             <?php }?>
         </ul>
         <div class="navbar-icons">
@@ -58,50 +57,29 @@ function content_6752ef2dbb8cd7_44959357 (Smarty_Internal_Template $_smarty_tpl)
         </div>
     </nav>
     </nav>
-    
-    <div  class="gestion-fiches">
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des payes
-        </div>             
+
+    <p><a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</p></a>
+    <ul class="historic_fiche_paie">
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['fiche_paie']->value, 'fiche');
+$_smarty_tpl->tpl_vars['fiche']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['fiche']->value) {
+$_smarty_tpl->tpl_vars['fiche']->do_else = false;
+?> 
         <li>
             <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date">27/09/2024</span>
+                <span class="info">Période <?php echo $_smarty_tpl->tpl_vars['fiche']->value['periode'];?>
+ - N° <?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
+</span>
+                <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
+</span>
             </div>
         </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </ul>
-</div>
+    
     
     
     <footer class="foot_bar bar">

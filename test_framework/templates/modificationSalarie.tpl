@@ -44,36 +44,34 @@
         </h2>
         <div class="form-group">
          <div>
-<form method="post" action="./routes.php">
+<form actions="" method="post">
 
     <label>Nom :</label>
-    <input type="text" name="nom" value="{$emp.nom}" required>
+    <input type="text" name="nom" id="nom" value="{$emp.nom}" required>
 
     <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" value="{$emp.prenom}" required> 
+    <input type="text" name="prenom" id="prenom" value="{$emp.prenom}" required> 
 
     <label>Matricule :</label>
-    <input type="text" name="matricule_affichage" value="{{ salarie.id_emp }}" disabled>
+    <input type="text" name="matricule_affichage" id="matricule" value="{$emp.id_emp}" disabled>
 
     <label>Date de Naissance :</label>
-    <input type="date" name="datenaissance" value="{{ salarie.date_nais }}" required>
+    <input type="date" name="datenaissance" id="datenaissance" value="{$emp.date_nais}" required>
 
     <label>Date d'Embauche :</label>
-    <input type="date" name="dateembauche" value="{{ salarie.date_emb }}" required>
+    <input type="date" name="dateembauche" value="{$emp.date_emb}" required>
 
     <label>Salaire :</label>
-    <input type="text" name="salaire" value="{{ salarie.salaire }}" required>
+    <input type="text" name="salaire"  id="salaire" value="{$emp.salaire}" required>
 
     <label>Email :</label>
-    <input type="email" name="email" value="{{ salarie.email }}" required>
+    <input type="email" name="email" id="email" value="{$emp.email}" required>
 
     <label>Téléphone :</label>
-    <input type="text" name="tel" value="{{ salarie.tel }}" required>
+    <input type="text" name="tel" id="tel" value="{$emp.tel}" required>
 
     <button type="submit">Enregistrer les modifications</button>
 </form>
-
-          <input id="telep" type="text" size="40"/>
          </div>
         </div>
         <div class="form-actions">
