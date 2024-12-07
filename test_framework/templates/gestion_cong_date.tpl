@@ -66,7 +66,7 @@
                 <option value="maternité">maternité</option>
             </select>
           </div>
-          <input type="submit-button" value ="Envoyer la demande" class="submit submit1">
+          <input type="submit" value="Envoyer la demande" class="submit submit1 submit-button">
         </form>
       </div>
     </div>

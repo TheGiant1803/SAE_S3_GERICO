@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-07 13:30:50
+/* Smarty version 4.2.1, created on 2024-12-07 14:45:23
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67544e0a9b2fa0_55311715',
+  'unifunc' => 'content_67545f83987e57_81568891',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8568bac4e5a399223cff34fa787ecda1dbf930' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1733578243,
+      1 => 1733582721,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67544e0a9b2fa0_55311715 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67545f83987e57_81568891 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -89,7 +89,7 @@ function content_67544e0a9b2fa0_55311715 (Smarty_Internal_Template $_smarty_tpl)
                 <option value="maternité">maternité</option>
             </select>
           </div>
-          <input type="submit-button" value ="Envoyer la demande" class="submit submit1">
+          <input type="submit" value="Envoyer la demande" class="submit submit1 submit-button">
         </form>
       </div>
     </div>
