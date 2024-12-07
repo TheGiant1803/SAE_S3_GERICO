@@ -882,6 +882,9 @@ Flight::route('/suppression-@id_emp.html',function($id_emp){
         $Stmt->execute();
         Flight::redirect("/gestion_des_salaries.html");
     }
+    else{
+        Flight::redirect("/");
+    }
 
 });
 
