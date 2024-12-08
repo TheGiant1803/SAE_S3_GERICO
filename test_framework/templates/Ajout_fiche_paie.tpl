@@ -36,49 +36,21 @@
     </nav>
     </nav>
     
-    <div  class="gestion-fiches">
-    <ul class="ajout_fiche_paie">
-        <div class="gestion-text">
-            Gestion des payes
-        </div>             
-        <li>
-            <div class="list-item">
-                <span class="info">CARPENTIER Bruno - Matricule 006</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">BEAUJOUR THOMAS - Matricule 007</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">MARTIN Dominique - Matricule 009</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">DUPONT STEPHANE - Matricule 010</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">LEGOIX Jérémy - Matricule 011</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-        <li>
-            <div class="list-item">
-                <span class="info">GARNIER Alexandra - Matricule 013</span>
-                <span class="date">27/09/2024</span>
-            </div>
-        </li>
-    </ul>
-</div>
+    <div class="container_modsal">
+        <h2 class="gestion-text">
+         Ajout d'une fiche de paie
+        </h2>
+
+        <form method="post" action="" enctype="multipart/form-data">
+        <label for="date_fp">Date :</label>
+            <input type="date" id="date_fp" name="date_fp" required>
+        <label for="id_emp">Matricule :</label>
+            <input type="number" id="id_emp" name="id_emp" required>
+        <label for="fp">Fiche de paie :</label>
+            <input type="file" id="fp" name="fp" accept="application/pdf" required>
+            <input type="submit" class="envoie-button">
+        </form>
+    </div>
     
     
     <footer class="foot_bar bar">

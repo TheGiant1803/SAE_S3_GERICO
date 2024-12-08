@@ -163,7 +163,7 @@ function admin() {
 }
 Flight::route('/admin.html', 'admin');
 
-function Ajout_fiche_paie() {
+function Ajout_fiche_paie_aff() {
         // Démarrer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -184,7 +184,40 @@ function Ajout_fiche_paie() {
     if($_SESSION['user_admin']==1){Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
     
 }
-Flight::route('/Ajout_fiche_paie.html', 'Ajout_fiche_paie');
+
+function Ajout_fiche_paie_aj() {
+    $pdo = Flight::get('pdo');
+
+    // Récupérer les données du formulaire
+    $date_fp = $_POST['date_fp'];
+    $id_emp = $_POST['id_emp'];
+
+    // Vérifier si le fichier a bien été uploadé
+    if (isset($_FILES['fp']) && $_FILES['fp']['error'] === UPLOAD_ERR_OK) {
+        // Lire le contenu du fichier
+        $fileTmpPath = $_FILES['fp']['tmp_name'];
+        $fileData = file_get_contents($fileTmpPath); // Convertir le fichier en données binaires
+
+        // Préparer et exécuter la requête SQL
+        $stmt = $pdo->prepare("INSERT INTO fiche_paie(date_fp, fp, id_emp) VALUES (:date_fp, :fp, :id_emp)");
+        $stmt->execute([
+            ':date_fp' => $date_fp,
+            ':fp' => $fileData, // Sauvegarder les données binaires
+            ':id_emp' => $id_emp
+        ]);
+
+        // Redirection après succès
+        Flight::redirect('/Ajout_fiche_paie.html');
+    } else {
+        // Gestion des erreurs
+        Flight::halt(400, 'Erreur lors du téléchargement du fichier');
+    }
+}
+
+
+Flight::route('GET /Ajout_fiche_paie.html', 'Ajout_fiche_paie_aff');
+
+Flight::route('POST /Ajout_fiche_paie.html', 'Ajout_fiche_paie_aj');
 
 function conges1() {
         // Démarrer la session si ce n'est pas déjà fait
@@ -357,9 +390,7 @@ function aff_fiche_paie(){
 
     $post = Flight::request()->data;
 
-    $idToFetch = $post->id;
-    // Assume you want to display the PDF for fiche with ID 1
-    $idToFetch = 1; // Change this to the correct ID
+    $idToFetch = $post->id_fiche;
 
     // Prepare the SQL statement to select the PDF data
     $stmt = $pdo->prepare("SELECT fp FROM fiche_paie WHERE id_fp = :id");

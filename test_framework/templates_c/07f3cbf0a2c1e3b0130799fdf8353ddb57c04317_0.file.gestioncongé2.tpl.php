@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-07 14:45:59
+/* Smarty version 4.2.1, created on 2024-12-08 21:26:04
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67545fa73287f6_70840701',
+  'unifunc' => 'content_67560eecb17296_27843635',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733578356,
+      1 => 1733693154,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67545fa73287f6_70840701 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67560eecb17296_27843635 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -60,13 +60,6 @@ function content_67545fa73287f6_70840701 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     <main>
         <h1 class="gestion-text">Mes demandes de congés</h1>
-
-        <div class="buttons">
-            <label for="nb-elements">Afficher </label>
-            <input type="number" id="nb-elements" value="5" min="1" />
-            <label for="nb-elements">éléments</label>
-            <button class="btn-classique">Afficher</button>
-        </div>
         
         <div class="table-container">
         <table id="table">
@@ -116,64 +109,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 
             </tbody>
         </table>
-        </div>
-        <!-- Boutons -->
-        <div class="buttons">
-            <button class="btn-classique" onclick="exporterCSV()">Exporter le tableau</button>
-            <button class="btn-classique" onclick="ajouterLigne()">Ajouter une ligne</button>
-        </div>
-    
-        <?php echo '<script'; ?>
->
-            // Fonction pour exporter le tableau en CSV
-            function exporterCSV() {
-                let table = document.getElementById("table");
-                let rows = table.rows;
-                let csvContent = "";
-    
-                for (let i = 0; i < rows.length; i++) {
-                    let cols = rows[i].querySelectorAll("td, th");
-                    let rowContent = [];
-                    cols.forEach(function(col) {
-                        rowContent.push(col.textContent);
-                    });
-                    csvContent += rowContent.join(",") + "\n";
-                }
-    
-                // Télécharger le fichier CSV
-                let blob = new Blob([csvContent], { type: "text/csv" });
-                let link = document.createElement("a");
-                link.href = URL.createObjectURL(blob);
-                link.download = "tableau.csv";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-    
-            // Fonction pour ajouter une ligne au tableau
-            function ajouterLigne() {
-                let table = document.getElementById("table").getElementsByTagName("tbody")[0];
-                let rowCount = table.rows.length + 1; // Pour numéroter les lignes automatiquement
-                let newRow = table.insertRow();
-    
-                // Créer des cellules et leur contenu
-                let cell1 = newRow.insertCell(0);
-                let cell2 = newRow.insertCell(1);
-                let cell3 = newRow.insertCell(2);
-                let cell4 = newRow.insertCell(3);
-                let cell5 = newRow.insertCell(4);
-                let cell6 = newRow.insertCell(5);
-    
-                cell1.textContent = rowCount;
-                cell2.textContent = "2024-01-05"; // Exemple de date
-                cell3.textContent = "2024-01-06";
-                cell4.textContent = "Incident";
-                cell5.textContent = "24h";
-                cell6.textContent = "En cours";
-            }
-
-        <?php echo '</script'; ?>
->
+        </div>            
     
     </main>
     

@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-12-08 21:22:35
+  from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\ajoutSalarie.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_67560e1bb1b8f0_60183423',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '227609d81a6e4343b380b5c5163f78ce973fcc91' => 
+    array (
+      0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\ajoutSalarie.tpl',
+      1 => 1733692953,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_67560e1bb1b8f0_60183423 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -25,9 +48,9 @@
                 <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
                 <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
                 <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-                {if $user_admin==1}
+                <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
                 <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
-                {/if}
+                <?php }?>
             </ul>
             <div class="navbar-icons">
                 <a class="navbar-icons" href="#notifications">
@@ -123,3 +146,5 @@
 </body>
 </html>
 
+<?php }
+}

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-07 14:39:56
+/* Smarty version 4.2.1, created on 2024-12-08 21:12:52
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67545e3c66abf2_65388889',
+  'unifunc' => 'content_67560bd4160346_93433887',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1733564557,
+      1 => 1733692341,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67545e3c66abf2_65388889 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67560bd4160346_93433887 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -77,7 +77,7 @@ $_smarty_tpl->tpl_vars['fiche']->do_else = false;
                         <form action="#" method="post">
                             <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
 ">
-                            <input type="submit" value="PDF" class="apparance-bouton-pdf">
+                            <input type="submit" value="PDF" class="pdf-button">
                         </form> 
                     </span>
                     <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
