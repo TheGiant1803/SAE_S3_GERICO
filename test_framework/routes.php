@@ -358,6 +358,29 @@ function cookies(){
 }
 Flight::route('GET /cookies.html', 'cookies');
 
+function politique(){
+    // Démarrer la session si ce n'est pas déjà fait
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION['user_id'])==false){
+        Flight::redirect('/connexion.html');
+    }
+    
+    // Préparer les données à passer au template
+    $data = [
+    // Si l'utilisateur est connecté, passez son nom
+    'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+    'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+    'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+    'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+    ];
+
+    Flight::render('./templates/politique_rgpd.tpl', $data);
+}
+Flight::route('GET /politique_rgpd.html', 'politique_rgpd');
+
 
 function Fiche_De_Paie() {
         // Démarrer la session si ce n'est pas déjà fait

@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-12-17 08:26:50
+  from 'C:\laragon\www\SAE_S3_GERICO\test_framework\templates\mot_de_passe.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_676135ca4916f1_82799663',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'ab3db36cdff2b9270a91942c37718638e6d5356b' => 
+    array (
+      0 => 'C:\\laragon\\www\\SAE_S3_GERICO\\test_framework\\templates\\mot_de_passe.tpl',
+      1 => 1734423023,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_676135ca4916f1_82799663 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -31,10 +54,12 @@
         <footer class="foot_bar bar">
             <div class="foot_titre">@2024 Gerico. Transport</div>
             <ul class="foot_ul_text">
-                <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
+                <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
                 <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
                 <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
             </ul>
         </footer>
     </body>
 </html>
+<?php }
+}
