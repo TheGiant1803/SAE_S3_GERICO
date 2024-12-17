@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 09:34:45
+/* Smarty version 4.2.1, created on 2024-12-17 10:16:55
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_676145b5ca6198_76402345',
+  'unifunc' => 'content_67614f97f1dbd6_96687203',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1734428074,
+      1 => 1734430588,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_676145b5ca6198_76402345 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67614f97f1dbd6_96687203 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -58,14 +58,15 @@ function content_676145b5ca6198_76402345 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
 
-    <div class="centrer-titre-fiche">
-        <form action="" method="post">
-            <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche_paie']->value[0]['id_fp'];?>
-">
-            <input type="submit" value="Consulter votre derniere fiche de paie">
-        </form>
-    </div>
+    
     <div class="gestion-fiches">
+        <div class="btn-consulter-fiche">
+            <form action="" method="post">
+                <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche_paie']->value[0]['id_fp'];?>
+">
+                <input type="submit" class="consulter-dernier-fiche" value="Consulter votre derniere fiche de paie">
+            </form>
+        </div>
         <ul class="ajout_fiche_paie">
             <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['fiche_paie']->value, 'fiche');
@@ -112,9 +113,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
-            <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
+            <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>
     </footer>
     
