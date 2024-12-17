@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-12-17 09:19:25
+  from 'C:\laragon\www\SAE_S3_GERICO\test_framework\templates\cookies.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_6761421d651af9_24219912',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '8366458614247ab3b29f3d282b218b63153c4aff' => 
+    array (
+      0 => 'C:\\laragon\\www\\SAE_S3_GERICO\\test_framework\\templates\\cookies.tpl',
+      1 => 1734426932,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_6761421d651af9_24219912 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -21,9 +44,9 @@
             <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            {if $user_admin==1}
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
-            {/if}
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -96,3 +119,5 @@
 </body>
 </html>
 
+<?php }
+}

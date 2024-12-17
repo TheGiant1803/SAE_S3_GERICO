@@ -933,6 +933,13 @@ input[type="text"]{
     padding-left: 20px; 
     margin-bottom: 20px;
 }
+
+/*-----------------------------------------------RGPD--------------------------------------------*/
+.politique-espace-block{
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    width: 860px;
+}
   /*---------------------------*/
   /*----------------------Responsive TELEPHONE ------------------*/
 
