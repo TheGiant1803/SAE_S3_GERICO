@@ -597,10 +597,26 @@ function gestioncongé2() {
     'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
     ];
 
+    // Connexion à la base de données via Flight
     $pdo = Flight::get('pdo');
-    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
-    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+
+    $limit = 5;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':matricule', $_SESSION['user_id'], PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM demande_cp WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+    $total_demandes = $stmt->fetchColumn();
+    $total_pages = ceil($total_demandes / $limit);
+
 
     function calculerDateFin($dateDebut, $duree, $heure_deb) {
         $date = new DateTime($dateDebut);
@@ -630,6 +646,8 @@ function gestioncongé2() {
     }
 
     $data['demande_cp'] = $demande_cp;
+    $data['page'] = $page;
+    $data['total_pages'] = $total_pages;
 
 Flight::render('./templates/gestioncongé2.tpl', $data);
 }
