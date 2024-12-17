@@ -379,7 +379,7 @@ function politique(){
 
     Flight::render('./templates/politique_rgpd.tpl', $data);
 }
-Flight::route('GET /politique_rgpd.html', 'politique_rgpd');
+Flight::route('GET /politique_rgpd.html', 'politique');
 
 
 function Fiche_De_Paie() {

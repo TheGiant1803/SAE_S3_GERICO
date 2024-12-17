@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-08 21:26:04
+/* Smarty version 4.2.1, created on 2024-12-17 09:34:36
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67560eecb17296_27843635',
+  'unifunc' => 'content_676145acd633a6_62936072',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1733693154,
+      1 => 1734428074,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67560eecb17296_27843635 (Smarty_Internal_Template $_smarty_tpl) {
+function content_676145acd633a6_62936072 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -109,6 +109,19 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 
             </tbody>
         </table>
+
+        <!-- Navigation de la pagination -->
+        <div class="separation-des-boutons">
+            <?php if ($_smarty_tpl->tpl_vars['page']->value > 1) {?>
+                <a class="apparance-des-liens" href="./gestioncongé2.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value-1;?>
+">Précédent</a>
+            <?php }?>
+
+            <?php if ($_smarty_tpl->tpl_vars['page']->value < $_smarty_tpl->tpl_vars['total_pages']->value) {?>
+                <a class="apparance-des-liens" href="./gestioncongé2.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value+1;?>
+">Suivant</a>
+            <?php }?>
+        </div>
         </div>            
     
     </main>
