@@ -61,7 +61,7 @@
                             <td>{$conge.duree|escape}</td>
                             <td>
                                 {if $conge.valid === NULL}
-                                    <form action="" method="post">
+                                    <form action="" method="post" class="btn-confirmer-centrer">
                                     <div>
                                         <input type="hidden" id="id_dcp" name="id_dcp" value="{$conge.id_dcp}">
                                         <input type="hidden" id="page" name="page" value="{$page}">

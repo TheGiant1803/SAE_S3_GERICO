@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 09:25:46
+/* Smarty version 4.2.1, created on 2024-12-17 09:44:32
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\admin_validation_congés.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6761439a7fdf05_57850460',
+  'unifunc' => 'content_676148008f5b92_21192556',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bfeeb2a0572e04f4400424b3ebf0af72a24f4104' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\admin_validation_congés.tpl',
-      1 => 1734427545,
+      1 => 1734428665,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6761439a7fdf05_57850460 (Smarty_Internal_Template $_smarty_tpl) {
+function content_676148008f5b92_21192556 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -94,7 +94,7 @@ $_smarty_tpl->tpl_vars['conge']->do_else = false;
 </td>
                             <td>
                                 <?php if ($_smarty_tpl->tpl_vars['conge']->value['valid'] === NULL) {?>
-                                    <form action="" method="post">
+                                    <form action="" method="post" class="btn-confirmer-centrer">
                                     <div>
                                         <input type="hidden" id="id_dcp" name="id_dcp" value="<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
 ">
