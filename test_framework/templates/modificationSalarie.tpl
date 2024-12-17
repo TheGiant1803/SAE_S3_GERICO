@@ -74,14 +74,6 @@
 </form>
          </div>
         </div>
-        <div class="form-actions">
-         <button class="reset">
-          Réinitialiser
-         </button>
-         <button>
-          Valider
-         </button>
-        </div>
        </div>
 
     

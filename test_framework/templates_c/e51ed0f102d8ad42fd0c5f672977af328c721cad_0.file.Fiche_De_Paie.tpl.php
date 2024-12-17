@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-08 21:12:52
+/* Smarty version 4.2.1, created on 2024-12-10 15:50:06
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67560bd4160346_93433887',
+  'unifunc' => 'content_6758632ee42133_61179923',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1733692341,
+      1 => 1733845803,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67560bd4160346_93433887 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6758632ee42133_61179923 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,7 +59,11 @@ function content_67560bd4160346_93433887 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
 
     <div class="centrer-titre-fiche">
-        <a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</a>
+        <form action="" method="post">
+            <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche_paie']->value[0]['id_fp'];?>
+">
+            <input type="submit" value="Consulter votre derniere fiche de paie">
+        </form>
     </div>
     <div class="gestion-fiches">
         <ul class="ajout_fiche_paie">
@@ -74,13 +78,13 @@ $_smarty_tpl->tpl_vars['fiche']->do_else = false;
                     <span class="info">Période <?php echo $_smarty_tpl->tpl_vars['fiche']->value['periode'];?>
  - N° <?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
  - 
-                        <form action="#" method="post">
+                        <form action="" method="post">
                             <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche']->value['id_fp'];?>
 ">
                             <input type="submit" value="PDF" class="pdf-button">
                         </form> 
                     </span>
-                    <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date'];?>
+                    <span class="date"><?php echo $_smarty_tpl->tpl_vars['fiche']->value['date_fiche'];?>
 </span> 
                 </div>
             
@@ -89,9 +93,20 @@ $_smarty_tpl->tpl_vars['fiche']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </ul>
+    
+    
+    <div class="separation-des-boutons">
+        <?php if ($_smarty_tpl->tpl_vars['page']->value > 1) {?>
+            <a class="apparance-des-liens" href="./Fiche_De_Paie.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value-1;?>
+">Précédent</a>
+        <?php }?>
+        
+        <?php if ($_smarty_tpl->tpl_vars['page']->value < $_smarty_tpl->tpl_vars['total_pages']->value) {?>
+            <a class="apparance-des-liens" href="./Fiche_De_Paie.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value+1;?>
+">Suivant</a>
+        <?php }?>
     </div>
-    
-    
+</div>
     
     
     <footer class="foot_bar bar">

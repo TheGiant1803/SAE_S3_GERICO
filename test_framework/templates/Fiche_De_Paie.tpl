@@ -36,7 +36,10 @@
     </nav>
 
     <div class="centrer-titre-fiche">
-        <a class="consult_paie" href="../assets/test_fiche_paie.pdf">Consulter votre dernière fiche de paie</a>
+        <form action="" method="post">
+            <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche_paie[0]['id_fp']}">
+            <input type="submit" value="Consulter votre derniere fiche de paie">
+        </form>
     </div>
     <div class="gestion-fiches">
         <ul class="ajout_fiche_paie">
@@ -44,20 +47,29 @@
             <li>
                 <div class="list-item">
                     <span class="info">Période {$fiche.periode} - N° {$fiche.id_fp} - 
-                        <form action="#" method="post">
+                        <form action="" method="post">
                             <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche.id_fp}">
                             <input type="submit" value="PDF" class="pdf-button">
                         </form> 
                     </span>
-                    <span class="date">{$fiche.date}</span> 
+                    <span class="date">{$fiche.date_fiche}</span> 
                 </div>
             
             </li>
             {/foreach}
         </ul>
+    
+    
+    <div class="separation-des-boutons">
+        {if $page > 1}
+            <a class="apparance-des-liens" href="./Fiche_De_Paie.html?page={$page-1}">Précédent</a>
+        {/if}
+        
+        {if $page < $total_pages}
+            <a class="apparance-des-liens" href="./Fiche_De_Paie.html?page={$page+1}">Suivant</a>
+        {/if}
     </div>
-    
-    
+</div>
     
     
     <footer class="foot_bar bar">

@@ -106,7 +106,7 @@ function admin_validation_congés_aff() {
         SELECT d.id_dcp, e.nom, e.prenom, d.motif, d.duree, d.valid 
         FROM demande_cp d 
         JOIN employe e ON d.id_emp = e.id_emp 
-        ORDER BY d.id_dcp ASC 
+        ORDER BY d.date_dcp DESC 
         LIMIT :limit OFFSET :offset
     ');
     $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -373,10 +373,37 @@ function Fiche_De_Paie() {
         ];
 
         $pdo = Flight::get('pdo');
-        $stmt = $pdo->prepare("SELECT DATE_FORMAT(date_fp, '%e/%c/%Y') as date, id_emp, id_fp, DATE_FORMAT(date_fp, '%c/%y') as periode
-                                         FROM fiche_paie WHERE id_emp = :matricule");
-        $stmt->execute([':matricule' => $_SESSION['user_id']]);
+
+        //kaka
+        // Pagination
+        $limit = 5; // Nombre de fiche de paie par page
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($page - 1) * $limit;
+
+        $stmt = $pdo->prepare('
+                                SELECT DATE_FORMAT(date_fp, "%e/%c/%Y") as date_fiche, id_emp, id_fp, DATE_FORMAT(date_fp, "%c/%y") as periode
+                                FROM fiche_paie WHERE id_emp = :matricule ORDER BY date_fp DESC 
+                                LIMIT :limit OFFSET :offset'
+                            );
+        $stmt->bindValue(':matricule', $_SESSION['user_id'], PDO::PARAM_INT);
+        $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
         $fiche_paie = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $pdo->prepare('SELECT COUNT(id_fp) FROM fiche_paie WHERE id_emp = :matricule');
+        $stmt->bindValue(':matricule', $_SESSION['user_id'], PDO::PARAM_INT);
+        $stmt->execute();
+        $total_fp = $stmt->fetchColumn();
+        $total_pages = ceil($total_fp / $limit);
+        if($page > $total_pages)
+        {
+            $page = 1;
+        }
+
+        $data['page'] = $page;
+        $data['total_pages'] = $total_pages;
         $data['fiche_paie'] = $fiche_paie;
 
     Flight::render('./templates/Fiche_De_Paie.tpl', $data);
@@ -1115,32 +1142,6 @@ Flight::route('GET /ajoutSalarie.html', 'ajoutSalarieAffichage');
 Flight::route ('POST /ajoutSalarie.html', 'ajoutSalarie');
 
 
-
-/*function modifierSalarieAffichage() {
-    $matricule = Flight::request()->query['matricule']; // Récupération du matricule depuis l'URL
-
-    if (empty($matricule)) {
-        Flight::redirect('/gestion_des_salaries.html');
-        return;
-    }
-
-    $pdo = Flight::get('pdo');
-
-    // Récupérer les informations du salarié dans la base de données
-    $stmt = $pdo->prepare("SELECT * FROM employe WHERE id_emp = :matricule");
-    $stmt->execute([':matricule' => $matricule]);
-
-    $salarie = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$salarie) {
-        Flight::redirect('/gestion_des_salaries.html'); // Redirection si le salarié n'existe pas
-        return;
-    }
-
-    // Transmettre les données au formulaire
-    Flight::render('modifSalarieForm.html', ['salarie' => $salarie]);
-}*/
-
 Flight::route('GET /modification-@id_empl.html',function($id_empl){
 
     if (session_status() == PHP_SESSION_NONE) {
@@ -1190,25 +1191,25 @@ function modifSalarie($id_empl) {
     } elseif (!ctype_digit($post->matricule)) {
         $errors['matricule'] = "Le matricule doit être une série de chiffres";
     }
-    /*if (empty($post->datenaissance)) {
+    if (empty($post->datenaissance)) {
         $errors['datenaissance'] = "La date de naissance est requise";
-    } else {
+    } /*else {
         $date = DateTime::createFromFormat('Y-m-d', $post->datenaissance);
         if (!$date || $date->format('Y-m-d') !== $post->datenaissance) {
             $errors['datenaissance'] = "La date de naissance doit être une date valide au format YYYY-MM-DD";
         }
-    }
+    }*/
     if (empty($post->dateembauche)) {
         $errors['dateembauche'] = "La date d'embauche est requise";
-    } else {
+    } /*else {
         $date = DateTime::createFromFormat('Y-m-d', $post->dateembauche);
         if (!$date || $date->format('Y-m-d') !== $post->dateembauche) {
             $errors['dateembauche'] = "La date d'embauche doit être une date valide au format YYYY-MM-DD";
         }
-    }
+    }*/
     if (empty($post->salaire)) {
         $errors['salaire'] = "Le salaire est requis";
-    } elseif (!is_numeric($post->salaire)) {
+    } /*elseif (!is_numeric($post->salaire)) {
         $errors['salaire'] = "Le salaire doit être une série de chiffres";
     }*/
     if (empty($post->tel)) {

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-07 14:45:23
+/* Smarty version 4.2.1, created on 2024-12-09 15:44:11
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestion_cong_date.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67545f83987e57_81568891',
+  'unifunc' => 'content_6757104b7a9356_82959651',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'da8568bac4e5a399223cff34fa787ecda1dbf930' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestion_cong_date.tpl',
-      1 => 1733582721,
+      1 => 1733759048,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,13 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67545f83987e57_81568891 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6757104b7a9356_82959651 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion date de congés</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
   </head>
   <body>
@@ -89,7 +88,7 @@ function content_67545f83987e57_81568891 (Smarty_Internal_Template $_smarty_tpl)
                 <option value="maternité">maternité</option>
             </select>
           </div>
-          <input type="submit" value="Envoyer la demande" class="submit submit1 submit-button">
+          <input type="submit" value="Envoyer la demande" class="envoie-button">
         </form>
       </div>
     </div>
@@ -104,8 +103,5 @@ function content_67545f83987e57_81568891 (Smarty_Internal_Template $_smarty_tpl)
   </footer>
 
   </body>
-  <?php echo '<script'; ?>
- src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"><?php echo '</script'; ?>
->
 </html><?php }
 }
