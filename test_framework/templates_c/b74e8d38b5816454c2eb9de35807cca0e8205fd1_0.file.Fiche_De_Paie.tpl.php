@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 08:39:33
+/* Smarty version 4.2.1, created on 2024-12-17 09:56:05
   from 'C:\Users\cheva\OneDrive\Bureau\Cours\SEMESTRE 3\SAE web\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_676138c58265d5_44122111',
+  'unifunc' => 'content_67614ab53fcd55_82599940',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b74e8d38b5816454c2eb9de35807cca0e8205fd1' => 
     array (
       0 => 'C:\\Users\\cheva\\OneDrive\\Bureau\\Cours\\SEMESTRE 3\\SAE web\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1734424756,
+      1 => 1734429347,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_676138c58265d5_44122111 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67614ab53fcd55_82599940 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -64,7 +64,7 @@ function content_676138c58265d5_44122111 (Smarty_Internal_Template $_smarty_tpl)
             <form action="" method="post">
                 <input type="hidden" id="id_fiche" name="id_fiche" value="<?php echo $_smarty_tpl->tpl_vars['fiche_paie']->value[0]['id_fp'];?>
 ">
-                <input type="submit" value="Consulter votre derniere fiche de paie">
+                <input type="submit" class="consulter-dernier-fiche" value="Consulter votre derniere fiche de paie">
             </form>
         </div>
         <ul class="ajout_fiche_paie">

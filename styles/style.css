@@ -575,6 +575,9 @@ th, td {
     font-size: 20px;
     
 }
+.consulter-dernier-fiche{
+    width: 300px;
+}
 th {
     background-color: #517aac;
     color: white;

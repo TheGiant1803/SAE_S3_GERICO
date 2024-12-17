@@ -40,7 +40,7 @@
         <div class="btn-consulter-fiche">
             <form action="" method="post">
                 <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche_paie[0]['id_fp']}">
-                <input type="submit" value="Consulter votre derniere fiche de paie">
+                <input type="submit" class="consulter-dernier-fiche" value="Consulter votre derniere fiche de paie">
             </form>
         </div>
         <ul class="ajout_fiche_paie">
