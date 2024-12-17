@@ -1171,6 +1171,20 @@ input[type="text"]{
         position: static;
     }
 
+    /*--------------------------------Mentions-Légales--------------------------------*/
+
+    .container-mentions  {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .titre-mentions h1, h2{
+        color: #333;
+    }
+    .para-mentions p{
+        margin: 10px 0;
+    }
+
     /*--------------------------------FOOTER--------------------------------*/
     .foot_bar{
         flex-direction: column;
