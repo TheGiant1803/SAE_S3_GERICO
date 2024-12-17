@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 08:20:40
+/* Smarty version 4.2.1, created on 2024-12-17 08:49:59
   from 'C:\Users\carpe\SAE_S3_GERICO\test_framework\templates\gestion_des_salaries.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67613458644952_40990972',
+  'unifunc' => 'content_67613b37670c79_98214280',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1995a552d31931f87a06c0ab632edf3195c4c5ac' => 
     array (
       0 => 'C:\\Users\\carpe\\SAE_S3_GERICO\\test_framework\\templates\\gestion_des_salaries.tpl',
-      1 => 1734423219,
+      1 => 1734425393,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67613458644952_40990972 (Smarty_Internal_Template $_smarty_tpl) {
+function content_67613b37670c79_98214280 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -81,7 +81,8 @@ $_smarty_tpl->tpl_vars['employe']->do_else = false;
  - Matricule <?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
 </span>
                             <span class="date"> <a href="./modification-<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
-.html">MODIFIER</a> | SUPPRIMER </span>
+.html">MODIFIER</a> | <a href="./suppression-<?php echo $_smarty_tpl->tpl_vars['employe']->value['id_emp'];?>
+.html" onclick="return confirmSuppression(event)">SUPPRIMER</a> </span>
                         </div>
                         <?php echo '<script'; ?>
 >
