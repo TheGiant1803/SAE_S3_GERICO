@@ -35,69 +35,76 @@
     </nav>
     </nav>
 
-    <h1>Gestion des congés</h1>
+    <div class="ajouter-margin">
+        <div>
+            <h1 class="gestion-text">Gestion des congés</h1>
+            <p class="titre-p-conges">Liste des demandes de congés :</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Cause</th>
+                        <th>Durée</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {if !empty($conges)}
+                        {foreach from=$conges item=conge}
+                        <tr>
+                            <td>{$conge.id_dcp|escape}</td>
+                            <td>{$conge.nom|escape}</td>
+                            <td>{$conge.prenom|escape}</td>
+                            <td>{$conge.motif|escape}</td>
+                            <td>{$conge.duree|escape}</td>
+                            <td>
+                                {if $conge.valid === NULL}
+                                    <form action="" method="post">
+                                    <div>
+                                        <input type="hidden" id="id_dcp" name="id_dcp" value="{$conge.id_dcp}">
+                                        <input type="hidden" id="page" name="page" value="{$page}">
+                                        <label for="accepte">Acceptée</label>
+                                        <input type="radio" id="accepte" name="demande{$conge.id_dcp}" value="accepte">
+                                        <label for="accepte">Refusée</label>
+                                        <input type="radio" id="refuse" name="demande{$conge.id_dcp}" value="refuse">
+                                    </div>
+                                        <input type="submit" class="btn-confirmer" name="submit_demande{$conge.id_dcp}" value ="Confirmer">
+                                    </form>
+                                {else}
+                                    <span class="statut">
+                                        {if $conge.valid === 1}Accepté
+                                        {elseif $conge.valid === 0}Refusé{/if}
+                                        </span>
+                                {/if}
+                            </td>
 
-    <p>Liste des demandes de congés :</p>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Cause</th>
-                <th>Durée</th>
-                <th>Statut</th>
-            </tr>
-        </thead>
-        <tbody>
-            {if !empty($conges)}
-                {foreach from=$conges item=conge}
-                <tr>
-                    <td>{$conge.id_dcp|escape}</td>
-                    <td>{$conge.nom|escape}</td>
-                    <td>{$conge.prenom|escape}</td>
-                    <td>{$conge.motif|escape}</td>
-                    <td>{$conge.duree|escape}</td>
-                    <td>
-                        {if $conge.valid === NULL}
-                            <form action="" method="post">
-                            <div>
-                                <input type="hidden" id="id_dcp" name="id_dcp" value="{$conge.id_dcp}">
-                                <input type="hidden" id="page" name="page" value="{$page}">
-                                <label for="accepte">Acceptée</label>
-                                <input type="radio" id="accepte" name="demande{$conge.id_dcp}" value="accepte">
-                                <label for="accepte">Refusée</label>
-                                <input type="radio" id="refuse" name="demande{$conge.id_dcp}" value="refuse">
-                            </div>
-                                <input type="submit" name="submit_demande{$conge.id_dcp}" value ="Confirmer">
-                            </form>
-                        {else}
-                            <span class="statut">
-                                {if $conge.valid === 1}Accepté
-                                {elseif $conge.valid === 0}Refusé{/if}
-                                </span>
-                        {/if}
-                    </td>
-
-                </tr>
-                {/foreach}
-            {else}
-                <tr>
-                    <td colspan="5">Aucun employé trouvé.</td>
-                </tr>
-            {/if}
-        </tbody>
-    </table>
-
-    <div>
-        {if $page > 1}
-            <a href="./admin_validation_congés.html?page={$page-1}">Précédent</a>
-        {/if}
-        
-        {if $page < $total_pages}
-            <a href="./admin_validation_congés.html?page={$page+1}">Suivant</a>
-        {/if}
+                        </tr>
+                        {/foreach}
+                    {else}
+                        <tr>
+                            <td colspan="5">Aucun employé trouvé.</td>
+                        </tr>
+                    {/if}
+                </tbody>
+            </table>
+            </div>
+        <div class="centrer-suivant-preced">
+            <div>
+                {if $page > 1}
+                    <a class="apparance-des-liens" href="./admin_validation_congés.html?page={$page-1}">Précédent</a>
+                {/if}
+                
+                {if $page < $total_pages}
+                    <a class="apparance-des-liens" href="./admin_validation_congés.html?page={$page+1}">Suivant</a>
+                {/if}
+            </div>
+        </div>
     </div>
+    
+
+    
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
