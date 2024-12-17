@@ -131,7 +131,10 @@ function admin_validation_congés_aff() {
     ];
 
     // Rendre le template
-    Flight::render('./templates/admin_validation_congés.tpl', $data);
+    if($_SESSION['user_admin']==1){
+        Flight::render('./templates/admin_validation_congés.tpl', $data);
+    }
+    else{Flight::redirect('/');}
 }
 Flight::route('GET /admin_validation_congés.html', 'admin_validation_congés_aff');
 
@@ -159,6 +162,7 @@ function admin() {
         ];
     if($_SESSION['user_admin']==1)
     {Flight::render('./templates/admin.tpl',$data);}
+    else{Flight::redirect('/');}
     
 }
 Flight::route('/admin.html', 'admin');
@@ -181,7 +185,9 @@ function Ajout_fiche_paie_aff() {
         'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
         ];
-    if($_SESSION['user_admin']==1){Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
+    if($_SESSION['user_admin']==1)
+    {Flight::render('./templates/Ajout_fiche_paie.tpl', $data);}
+    else{Flight::redirect('/');}
     
 }
 
@@ -353,6 +359,29 @@ function cookies(){
 Flight::route('GET /cookies.html', 'cookies');
 
 function mentions(){
+        // Démarrer la session si ce n'est pas déjà fait
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if(isset($_SESSION['user_id'])==false){
+            Flight::redirect('/connexion.html');
+        }
+        
+        // Préparer les données à passer au template
+        $data = [
+        // Si l'utilisateur est connecté, passez son nom
+        'user_name' => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
+        'user_prenom' => isset($_SESSION['user_prenom']) ? $_SESSION['user_prenom'] : null,
+        'user_admin' => isset($_SESSION['user_admin']) ? $_SESSION['user_admin'] : null,
+        'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
+        ];
+    
+        Flight::render('./templates/mentions.tpl', $data);
+    }
+    Flight::route('GET /mentions.html', 'mentions');
+
+function politique(){
     // Démarrer la session si ce n'est pas déjà fait
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -371,9 +400,12 @@ function mentions(){
     'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
     ];
 
-    Flight::render('./templates/mentions.tpl', $data);
+    Flight::render('./templates/politique_rgpd.tpl', $data);
 }
-Flight::route('GET /mentions.html', 'mentions');
+Flight::route('GET /politique_rgpd.html', 'politique');
+
+
+
 
 function Fiche_De_Paie() {
         // Démarrer la session si ce n'est pas déjà fait
@@ -595,6 +627,7 @@ function gestion_des_salaries() {
 
     // Passer les données au template
     if($_SESSION['user_admin']==1){Flight::render('./templates/gestion_des_salaries.tpl', $data);}
+    else{Flight::redirect('/');}
     
 }
 Flight::route('/gestion_des_salaries.html', 'gestion_des_salaries');
@@ -619,10 +652,26 @@ function gestioncongé2() {
     'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null
     ];
 
+    // Connexion à la base de données via Flight
     $pdo = Flight::get('pdo');
-    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule");
-    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+
+    $limit = 5;
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+
+    $stmt = $pdo->prepare("SELECT * FROM demande_cp WHERE id_emp = :matricule LIMIT :limit OFFSET :offset");
+    $stmt->bindValue(':matricule', $_SESSION['user_id'], PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->execute();
     $demande_cp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM demande_cp WHERE id_emp = :matricule");
+    $stmt->execute([':matricule' => $_SESSION['user_id']]);
+    $total_demandes = $stmt->fetchColumn();
+    $total_pages = ceil($total_demandes / $limit);
+
 
     function calculerDateFin($dateDebut, $duree, $heure_deb) {
         $date = new DateTime($dateDebut);
@@ -652,6 +701,8 @@ function gestioncongé2() {
     }
 
     $data['demande_cp'] = $demande_cp;
+    $data['page'] = $page;
+    $data['total_pages'] = $total_pages;
 
 Flight::render('./templates/gestioncongé2.tpl', $data);
 }
@@ -679,6 +730,7 @@ function modificationSalarie() {
     if($_SESSION['user_admin']==1){
         Flight::render('./templates/modificationSalarie.tpl', $data);
     }
+    else{Flight::redirect('/');}
     
 }
 Flight::route('/modificationSalarie.html', 'modificationSalarie');
@@ -1069,6 +1121,7 @@ function ajoutSalarieAffichage(){
         'user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
         ];
         if($_SESSION['user_admin']==1){Flight::render('./templates/ajoutSalarie.tpl',$data);}
+        else{Flight::redirect('/');}
         
 }
 

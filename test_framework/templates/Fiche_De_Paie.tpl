@@ -35,13 +35,14 @@
     </nav>
     </nav>
 
-    <div class="centrer-titre-fiche">
-        <form action="" method="post">
-            <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche_paie[0]['id_fp']}">
-            <input type="submit" value="Consulter votre derniere fiche de paie">
-        </form>
-    </div>
+    
     <div class="gestion-fiches">
+        <div class="btn-consulter-fiche">
+            <form action="" method="post">
+                <input type="hidden" id="id_fiche" name="id_fiche" value="{$fiche_paie[0]['id_fp']}">
+                <input type="submit" class="consulter-dernier-fiche" value="Consulter votre derniere fiche de paie">
+            </form>
+        </div>
         <ul class="ajout_fiche_paie">
             {foreach $fiche_paie as $fiche} 
             <li>
@@ -75,7 +76,7 @@
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>

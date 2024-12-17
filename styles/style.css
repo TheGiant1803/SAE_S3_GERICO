@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Chau Philomene One', sans-serif;
+    font-family: sans-serif;
     background-color: #f0f2f5;
     display: flex;
     flex-direction: column;
@@ -72,6 +72,7 @@ input {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: white;
 }
 
 button {
@@ -567,12 +568,33 @@ table, th, td {
 th, td {
     padding: 12px;
 }
-
+.titre-p-conges{
+    font-family: 'Chau PhilomeneOne';
+    margin-left: 7px;
+    color:#517aac;
+    font-size: 20px;
+    
+}
+.consulter-dernier-fiche{
+    width: 300px;
+}
 th {
     background-color: #517aac;
     color: white;
 }
-
+.ajouter-margin{
+    margin-top:50px;
+    margin-bottom: 50px;
+}
+.btn-confirmer{
+    background-color: #517aac;
+    color:white;
+    width: 40%;
+    align-items: center;
+}
+.btn-confirmer-centrer{
+    align-items: center;
+}
 td {
     background-color: #f9f9f9;
 }
@@ -649,7 +671,10 @@ input[type="number"] {
 }
 
 /* ------------------------ MODIFICATION DE TANGUY historique fiche------------------------------------ */
-
+.btn-consulter-fiche{
+    margin-bottom: 50px;
+   
+}
 .consult_paie{
     display: flex;
     justify-content: center;
@@ -662,11 +687,7 @@ input[type="number"] {
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.centrer-titre-fiche{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 .list-item {
     display: flex; /* Utilise flexbox pour l'alignement */
     justify-content: space-between; /* Espace entre les éléments */
@@ -784,6 +805,8 @@ input[type="date"] {
     display:flex;
     flex-direction: column;
     padding:8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #start{
@@ -791,6 +814,8 @@ input[type="date"] {
     flex-direction: column;
     padding-top:8px;
     padding-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #date_cong{
@@ -849,6 +874,8 @@ input[type="date"] {
     text-align: center;
     margin: 0px;
     padding: 5px 0px 5px 0px;
+    font-family: 'Chau PhilomeneOne';
+    margin-top: 15px;
 }
 
 .container-cong h1{
@@ -898,6 +925,7 @@ input[type="text"]{
 .form-cong{
     display:flex;
     justify-content: center;
+    flex-direction: column;
 }
 /*-----------------------------------------------COOKIES--------------------------------------------*/
 .cookies-en-general{
@@ -933,6 +961,13 @@ input[type="text"]{
     margin-top: 20px;
     padding-left: 20px; 
     margin-bottom: 20px;
+}
+
+/*-----------------------------------------------RGPD--------------------------------------------*/
+.politique-espace-block{
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    width: 860px;
 }
   /*---------------------------*/
   /*----------------------Responsive TELEPHONE ------------------*/

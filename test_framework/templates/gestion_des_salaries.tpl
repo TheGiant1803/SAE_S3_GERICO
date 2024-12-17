@@ -49,7 +49,7 @@
                     <li>
                         <div class="list-item">
                             <span class="info">{$employe.nom} {$employe.prenom} - Matricule {$employe.id_emp}</span>
-                            <span class="date"> <a href="./modification-{$employe.id_emp}.html">MODIFIER</a> | SUPPRIMER </span>
+                            <span class="date"> <a href="./modification-{$employe.id_emp}.html">MODIFIER</a> | <a href="./suppression-{$employe.id_emp}.html" onclick="return confirmSuppression(event)">SUPPRIMER</a> </span>
                         </div>
                         <script>
                             function confirmSuppression(event) {
@@ -91,7 +91,7 @@
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>

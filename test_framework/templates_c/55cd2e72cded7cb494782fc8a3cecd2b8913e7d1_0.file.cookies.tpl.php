@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-09 09:47:03
+/* Smarty version 4.2.1, created on 2024-12-17 09:37:46
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\cookies.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_6756bc972c1da4_78433990',
+  'unifunc' => 'content_6761466a50e836_25077464',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '55cd2e72cded7cb494782fc8a3cecd2b8913e7d1' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\cookies.tpl',
-      1 => 1733564557,
+      1 => 1734428169,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6756bc972c1da4_78433990 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6761466a50e836_25077464 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -110,7 +110,7 @@ function content_6756bc972c1da4_78433990 (Smarty_Internal_Template $_smarty_tpl)
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
         </ul>

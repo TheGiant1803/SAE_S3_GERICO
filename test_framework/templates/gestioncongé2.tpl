@@ -36,9 +36,8 @@
     </nav>
     </nav>
     <main>
-        <h1 class="gestion-text">Mes demandes de congés</h1>
-        
         <div class="table-container">
+            <h1 class="gestion-text">Mes demandes de congés</h1>
         <table id="table">
             <thead>
                 <tr>
@@ -74,6 +73,17 @@
                 
             </tbody>
         </table>
+
+        <!-- Navigation de la pagination -->
+        <div class="separation-des-boutons">
+            {if $page > 1}
+                <a class="apparance-des-liens" href="./gestioncongé2.html?page={$page-1}">Précédent</a>
+            {/if}
+
+            {if $page < $total_pages}
+                <a class="apparance-des-liens" href="./gestioncongé2.html?page={$page+1}">Suivant</a>
+            {/if}
+        </div>
         </div>            
     
     </main>
@@ -81,7 +91,7 @@
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
             <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>
