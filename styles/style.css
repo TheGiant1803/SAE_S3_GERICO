@@ -804,6 +804,8 @@ input[type="date"] {
     display:flex;
     flex-direction: column;
     padding:8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #start{
@@ -811,6 +813,8 @@ input[type="date"] {
     flex-direction: column;
     padding-top:8px;
     padding-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #date_cong{
