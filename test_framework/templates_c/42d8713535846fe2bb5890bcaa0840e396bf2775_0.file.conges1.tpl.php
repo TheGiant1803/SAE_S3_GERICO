@@ -1,11 +1,33 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 4.2.1, created on 2024-12-17 09:59:09
+  from 'C:\Users\Lenny\SAE_S3_GERICO\test_framework\templates\conges1.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '4.2.1',
+  'unifunc' => 'content_67614b6d2200b7_02320716',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '42d8713535846fe2bb5890bcaa0840e396bf2775' => 
+    array (
+      0 => 'C:\\Users\\Lenny\\SAE_S3_GERICO\\test_framework\\templates\\conges1.tpl',
+      1 => 1734428952,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_67614b6d2200b7_02320716 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes demandes de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
-    <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one">
 </head>
 <body>
     <nav>
@@ -18,12 +40,12 @@
             </a>
         </div>
         <ul class="navbar_text">
-            <li class="navtext "><a class="navtext" href="./">Accueil</a></li>
+            <li class="navtext"><a class="navtext" href="./">Accueil</a></li>
             <li class="navtext active"><a class="navtext" href="congé1.html">Gestion des congés</a></li>
             <li class="navtext"><a class="navtext" href="Fiche_De_Paie.html">Consulter vos fiches de paie</a></li>
-            {if $user_admin==1}
+            <?php if ($_smarty_tpl->tpl_vars['user_admin']->value == 1) {?>
             <li class="navtext"><a class="navtext" href="admin.html">Administration</a></li>
-            {/if}
+            <?php }?>
         </ul>
         <div class="navbar-icons">
             <a class="navbar-icons" href="#notifications">
@@ -36,46 +58,19 @@
     </nav>
     </nav>
     <main>
-        <h1 class="gestion-text">Mes demandes de congés</h1>
-        
-        <div class="table-container">
-        <table id="table">
-            <thead>
-                <tr>
-                    <th>N°</th>
-                    <th>Date début</th>
-                    <th>Date retour</th>
-                    <th>Cause</th>
-                    <th>Durée</th>
-                    <th>Statut</th>
-                </tr>
-            </thead>
-            <tbody>
-                {foreach $demande_cp as $demande} 
-                <tr>
-                    <td>{$demande.id_dcp}</td>
-                    <td>{$demande.date_dcp}</td>
-                    <td>
-                        {$demande.date_retour}
-                    </td>  
-                    <td>{$demande.motif}</td>
-                    <td>{$demande.duree / 2} jour(s)</td>
-                    <td>            
-                        {if $demande.valid === null}
-                            En attente
-                        {elseif $demande.valid === 0}
-                            Refusé
-                        {elseif $demande.valid === 1}
-                            Accepté
-                        {/if}
-                    </td>
-                </tr>
-                {/foreach}
-                
-            </tbody>
-        </table>
-        </div>            
+        <div class="container_b">
+            <a class="navtext_cong" href="gestioncongé2.html">
+            <div class="box">
+                <button>Historique de mes congés</button>
+            </div>
+            </a>
     
+            <a class="navtext_cong" href="gestion_cong_date.html">
+            <div class="box">
+                <button>Demander un congé</button>
+            </div>
+            </a>
+        </div>
     </main>
     
     <footer class="foot_bar bar">
@@ -88,4 +83,5 @@
     </footer>
     
 </body>
-</html>
+</html><?php }
+}
