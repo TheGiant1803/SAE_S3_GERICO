@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 09:33:58
+/* Smarty version 4.2.1, created on 2025-01-07 08:10:09
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\admin_validation_congés.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67614586e17620_96757531',
+  'unifunc' => 'content_677ce161470b23_47375747',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe615ce658436181daa2a7662be26e6272b2e481' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\admin_validation_congés.tpl',
-      1 => 1734428028,
+      1 => 1736237287,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67614586e17620_96757531 (Smarty_Internal_Template $_smarty_tpl) {
+function content_677ce161470b23_47375747 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -94,7 +94,7 @@ $_smarty_tpl->tpl_vars['conge']->do_else = false;
 </td>
                             <td>
                                 <?php if ($_smarty_tpl->tpl_vars['conge']->value['valid'] === NULL) {?>
-                                    <form action="" method="post">
+                                    <form action="" method="post" class="btn-confirmer-centrer">
                                     <div>
                                         <input type="hidden" id="id_dcp" name="id_dcp" value="<?php echo $_smarty_tpl->tpl_vars['conge']->value['id_dcp'];?>
 ">
@@ -151,9 +151,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="#cookies">Gestion des cookies</a></li>
-            <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
+            <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>
     </footer>
     

@@ -75,7 +75,7 @@
         </table>
 
         <!-- Navigation de la pagination -->
-        <div class="separation-des-boutons">
+        <div class="centrer-suivant-preced">
             {if $page > 1}
                 <a class="apparance-des-liens" href="./gestioncongé2.html?page={$page-1}">Précédent</a>
             {/if}
@@ -84,7 +84,7 @@
                 <a class="apparance-des-liens" href="./gestioncongé2.html?page={$page+1}">Suivant</a>
             {/if}
         </div>
-        </div>            
+    </div>            
     
     </main>
     

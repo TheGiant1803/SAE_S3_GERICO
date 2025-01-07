@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 09:34:36
+/* Smarty version 4.2.1, created on 2025-01-07 08:10:11
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\gestioncongé2.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_676145acd633a6_62936072',
+  'unifunc' => 'content_677ce163652e22_86751829',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '07f3cbf0a2c1e3b0130799fdf8353ddb57c04317' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\gestioncongé2.tpl',
-      1 => 1734428074,
+      1 => 1736237405,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_676145acd633a6_62936072 (Smarty_Internal_Template $_smarty_tpl) {
+function content_677ce163652e22_86751829 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -59,9 +59,8 @@ function content_676145acd633a6_62936072 (Smarty_Internal_Template $_smarty_tpl)
     </nav>
     </nav>
     <main>
-        <h1 class="gestion-text">Mes demandes de congés</h1>
-        
         <div class="table-container">
+            <h1 class="gestion-text">Mes demandes de congés</h1>
         <table id="table">
             <thead>
                 <tr>
@@ -111,7 +110,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
         </table>
 
         <!-- Navigation de la pagination -->
-        <div class="separation-des-boutons">
+        <div class="centrer-suivant-preced">
             <?php if ($_smarty_tpl->tpl_vars['page']->value > 1) {?>
                 <a class="apparance-des-liens" href="./gestioncongé2.html?page=<?php echo $_smarty_tpl->tpl_vars['page']->value-1;?>
 ">Précédent</a>
@@ -122,16 +121,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 ">Suivant</a>
             <?php }?>
         </div>
-        </div>            
+    </div>            
     
     </main>
     
     <footer class="foot_bar bar">
         <div class="foot_titre">@2024 Gerico. Transport</div>
         <ul class="foot_ul_text">
-            <li class="foot_text"><a class="foot_text" href="#rgpd">Politique RGPD</a></li>
+            <li class="foot_text"><a class="foot_text" href="politique_rgpd.html">Politique RGPD</a></li>
             <li class="foot_text"><a class="foot_text" href="cookies.html">Gestion des cookies</a></li>
-            <li class="foot_text"><a class="foot_text" href="#mentions">Mentions légales</a></li>
+            <li class="foot_text"><a class="foot_text" href="./mentions.html">Mentions légales</a></li>
         </ul>
     </footer>
     
