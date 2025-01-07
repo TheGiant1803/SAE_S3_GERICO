@@ -8,6 +8,8 @@
             rel="stylesheet"
             href="../assets/chau-philomene-one/ChauPhilomeneOne-Regular.ttf">
         <link rel="stylesheet" href="../styles/style.css">
+            <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
     </head>
     <body>
         <nav class="bar"></nav>

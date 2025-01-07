@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>

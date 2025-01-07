@@ -6,6 +6,8 @@
     <title>Mes demandes de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link href="C:\Users\Lenny\SAE3\SAE_S3_GERICO\assets\chau-philomene-one">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>

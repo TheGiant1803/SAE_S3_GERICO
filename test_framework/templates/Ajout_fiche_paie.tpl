@@ -6,6 +6,8 @@
     <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>

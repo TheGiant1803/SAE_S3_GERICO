@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 10:16:46
+/* Smarty version 4.2.1, created on 2025-01-07 09:05:19
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\conges1.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67614f8edb30b0_51568951',
+  'unifunc' => 'content_677cee4fdc55e6_22172774',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b0d2893acad73f607510a2467bf6d41dd6382c1c' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\conges1.tpl',
-      1 => 1734430588,
+      1 => 1736240589,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67614f8edb30b0_51568951 (Smarty_Internal_Template $_smarty_tpl) {
+function content_677cee4fdc55e6_22172774 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,6 +28,8 @@ function content_67614f8edb30b0_51568951 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes demandes de congés</title>
     <link rel="stylesheet" href="../styles/style.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>

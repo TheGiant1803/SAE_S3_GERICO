@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-17 10:16:55
+/* Smarty version 4.2.1, created on 2025-01-07 09:05:20
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\Fiche_De_Paie.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_67614f97f1dbd6_96687203',
+  'unifunc' => 'content_677cee50ce95e5_64618973',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e51ed0f102d8ad42fd0c5f672977af328c721cad' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\Fiche_De_Paie.tpl',
-      1 => 1734430588,
+      1 => 1736240598,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_67614f97f1dbd6_96687203 (Smarty_Internal_Template $_smarty_tpl) {
+function content_677cee50ce95e5_64618973 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,6 +28,8 @@ function content_67614f97f1dbd6_96687203 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des fiches de paie</title>
     <link rel="stylesheet" href="../styles/style.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>

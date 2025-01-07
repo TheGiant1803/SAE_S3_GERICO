@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créer un nouveau compte</title>
     <link rel="stylesheet" href="../styles/style.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav class="bar"></nav>

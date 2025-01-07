@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 4.2.1, created on 2024-12-19 13:51:11
+/* Smarty version 4.2.1, created on 2025-01-07 09:05:22
   from 'C:\Users\Antoine\OneDrive\Bureau\But\BUT2\S3\SAE_S3_GERICO\test_framework\templates\admin.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '4.2.1',
-  'unifunc' => 'content_676424cf29da62_35111982',
+  'unifunc' => 'content_677cee52745fc4_17590866',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'a21689ebb4ecc8f794626c7b5c28ded63124b101' => 
     array (
       0 => 'C:\\Users\\Antoine\\OneDrive\\Bureau\\But\\BUT2\\S3\\SAE_S3_GERICO\\test_framework\\templates\\admin.tpl',
-      1 => 1734430588,
+      1 => 1736240543,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_676424cf29da62_35111982 (Smarty_Internal_Template $_smarty_tpl) {
+function content_677cee52745fc4_17590866 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -28,6 +28,8 @@ function content_676424cf29da62_35111982 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration</title>
     <link rel="stylesheet" href="../styles/style.css">
+        <link rel="icon" type="image/png" href="../../assets/ptitlogo.png">
+
 </head>
 <body>
     <nav>
